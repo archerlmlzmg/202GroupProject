@@ -15,4 +15,20 @@ public class BruceLee extends Figure implements Fighter
     public void act()
     {
     }
+
+    /**
+     * 
+     */
+    public int punch()
+    {
+        return 50;
+    }
+
+    /**
+     * 
+     */
+    public int kick()
+    {
+        return 100;
+    }
 }
