@@ -1,5 +1,7 @@
 # 202GroupProject
+
 Project:Bruce Lee saves Lucy
+
 Team members:
           Xing Yang, 
           Ming Tang, 
