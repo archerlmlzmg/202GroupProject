@@ -8,8 +8,10 @@
     </imports>
     <implements/>
     <fields>
+        <comment xml:space="preserve">the health point</comment>
         <variable access="private" type="int" name="hp" value="0" value-java="0" enable="true"/>
         <variable access="private" type="String" name="name" enable="true"/>
+        <comment xml:space="preserve">the denfence ability indicates the point that can be deducted from every attack</comment>
         <variable access="private" type="int" name="basicDenfence" value="10" value-java="10" enable="true"/>
     </fields>
     <constructors/>

@@ -8,8 +8,10 @@ import java.awt.Color;
  */
 public class Figure extends Actor
 {
+    /* the health point*/
     private int hp = 0;
     private String name;
+    /* the denfence ability indicates the point that can be deducted from every attack*/
     private int basicDenfence = 10;
 
     /**
