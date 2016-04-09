@@ -1,8 +1,9 @@
 #BlueJ class context
 comment0.target=BruceLee
-comment0.text=\r\n\ \r\n
+comment0.text=\n\ \n
 comment1.params=
 comment1.target=void\ act()
+<<<<<<< HEAD
 comment1.text=\r\n\ \r\n
 comment2.params=
 comment2.target=int\ punch()
@@ -11,3 +12,7 @@ comment3.params=
 comment3.target=int\ kick()
 comment3.text=\r\n\ \r\n
 numComments=4
+=======
+comment1.text=\n\ \n
+numComments=2
+>>>>>>> f7e3ffd6af8b9b86baa8ea1abfb7f688c65f3bd1
