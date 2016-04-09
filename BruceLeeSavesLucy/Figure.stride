@@ -7,7 +7,11 @@
         <import target="java.awt.Color" enable="true"/>
     </imports>
     <implements/>
-    <fields/>
+    <fields>
+        <variable access="private" type="int" name="hp" value="0" value-java="0" enable="true"/>
+        <variable access="private" type="String" name="name" enable="true"/>
+        <variable access="private" type="int" name="basicDenfence" value="10" value-java="10" enable="true"/>
+    </fields>
     <constructors/>
     <methods>
         <method access="public" type="void" name="act" enable="true">

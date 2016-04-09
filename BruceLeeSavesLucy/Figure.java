@@ -8,6 +8,9 @@ import java.awt.Color;
  */
 public class Figure extends Actor
 {
+    private int hp = 0;
+    private String name;
+    private int basicDenfence = 10;
 
     /**
      * 

@@ -6,7 +6,7 @@ import java.awt.Color;
 /**
  * 
  */
-public class Enemy1 extends Figure
+public class Enemy1 extends Figure implements Fighter
 {
 
     /**
@@ -14,5 +14,21 @@ public class Enemy1 extends Figure
      */
     public void act()
     {
+    }
+
+    /**
+     * 
+     */
+    public int punch()
+    {
+        return 100;
+    }
+
+    /**
+     * 
+     */
+    public int kick()
+    {
+        return 100;
     }
 }
