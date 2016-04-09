@@ -6,7 +6,7 @@ import java.awt.Color;
 /**
  * 
  */
-public class Enemy1 extends Figure
+public class Enemy3 extends Figure
 {
 
     /**
