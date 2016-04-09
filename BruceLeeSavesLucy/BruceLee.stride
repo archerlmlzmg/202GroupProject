@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    <class name="BruceLee" extends="Figure" enable="true">
-        <imports>        
-            <import target="java.util.*" enable="true"/>
-            <import target="greenfoot.*" enable="true"/>
-            <import target="java.awt.Color" enable="true"/>
-        </imports>
-        <methods>
-            <method access="public" type="void" name="act" enable="true">
-                <params/>
-                <body/>
-            </method>
-        </methods>
-    </class>
+<class name="BruceLee" extends="Figure" enable="true" strideversion="1">
+    <javadoc xml:space="preserve"/>
+    <imports>
+        <import target="java.util.*" enable="true"/>
+        <import target="greenfoot.*" enable="true"/>
+        <import target="java.awt.Color" enable="true"/>
+    </imports>
+    <implements>
+        <implementstype type="Fighter"/>
+    </implements>
+    <fields/>
+    <constructors/>
+    <methods>
+        <method access="public" type="void" name="act" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body/>
+        </method>
+    </methods>
+</class>

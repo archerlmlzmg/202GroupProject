@@ -6,7 +6,7 @@ import java.awt.Color;
 /**
  * 
  */
-public class BruceLee extends Figure
+public class BruceLee extends Figure implements Fighter
 {
 
     /**
