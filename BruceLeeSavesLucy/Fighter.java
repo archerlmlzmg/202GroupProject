@@ -9,4 +9,8 @@ public interface Fighter
 {
     public int punch();
     public int kick();
+    /**
+     * when this method is being used, the damage will be weakened
+     */
+    public int defend();
 }
