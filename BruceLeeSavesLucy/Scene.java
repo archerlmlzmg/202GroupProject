@@ -8,6 +8,10 @@ import java.awt.Color;
  */
 public class Scene extends World
 {
+    private int activeAreaX1 = 10;
+    private int activeAreaX2 = 700;
+    private int activeAreaY1 = 10;
+    private int activeAreaY2 = 500;
 
     /**
      * 
