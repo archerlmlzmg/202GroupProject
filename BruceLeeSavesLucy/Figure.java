@@ -12,12 +12,20 @@ public class Figure extends Actor
     private int hp = 0;
     private String name;
     /* the denfence ability indicates the point that can be deducted from every attack*/
+    private int walkingSpeed = 5;
     private int basicDenfence = 10;
 
     /**
      * 
      */
     public void act()
+    {
+    }
+
+    /**
+     * 
+     */
+    public void walkLeft()
     {
     }
 }
