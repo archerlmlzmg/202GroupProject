@@ -227,13 +227,68 @@ public class Enemy1 extends Figure implements Fighter
 
 	}
 
-    /**
-     * 
-     */
-    public int punch()
-    {
-        return 100;
-    }
+
+	/**
+	 * This method punch, It controls the punch motion in the direction it's
+	 * facing.
+	 */
+	public void punch(int direct) {
+		if (direct == 0) {
+			switch (PLDirection) {
+			case 0:
+				setImage(PLeft[PLDirection]);
+				PLDirection++;
+				break;
+			case 1:
+				setImage(PLeft[PLDirection]);
+				PLDirection++;
+				break;
+			case 2:
+				setImage(PLeft[PLDirection]);
+				PLDirection++;
+				break;
+			case 3:
+				setImage(PLeft[PLDirection]);
+				PLDirection++;
+				break;
+			case 4:
+				Greenfoot.playSound("punch2.mp3");
+				setImage(PLeft[PLDirection]);
+				PLDirection = 0;
+				break;
+			}
+
+		}
+
+		if (direct == 1) {
+			switch (PRDirection) {
+			case 0:
+				setImage(PRight[PRDirection]);
+				PRDirection++;
+				break;
+			case 1:
+				setImage(PRight[PRDirection]);
+				PRDirection++;
+				break;
+			case 2:
+				setImage(PRight[PRDirection]);
+				PRDirection++;
+				break;
+			case 3:
+				setImage(PRight[PRDirection]);
+				PRDirection++;
+				break;
+			case 4:
+				Greenfoot.playSound("punch2.mp3");
+				setImage(PRight[PRDirection]);
+				PRDirection = 0;
+				break;
+			}
+
+		}
+		singlePunch = false;
+
+	}
 
     /**
      * 
