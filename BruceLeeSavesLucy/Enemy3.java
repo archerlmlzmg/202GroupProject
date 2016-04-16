@@ -219,6 +219,106 @@ public class Enemy3 extends Figure implements Fighter
         
         }
         damage++;
+         public void death(int b)
+    { 
+        if(damage >= 6 && b != 5)
+        {           
+            for(int i = 0; i < 7; i++)
+            {
+                switch(bloodNum)           
+                {
+                    case 0 :
+                        setImage(Blood[bloodNum]);
+                        bloodNum = 6;
+                        Greenfoot.delay(1);
+                        Greenfoot.playSound("stab1.mp3");
+                    break;
+                    case 1 :
+                        setImage(Blood[bloodNum]);
+                        bloodNum--;
+                        Greenfoot.playSound("stab1.mp3");
+                    break;
+                    case 2 :
+                        setImage(Blood[bloodNum]);
+                        bloodNum--;
+                        Greenfoot.delay(1);
+                        Greenfoot.playSound("stab1.mp3");
+                    break;
+                    case 3 :
+                        setImage(Blood[bloodNum]);
+                        bloodNum--;
+                        Greenfoot.playSound("stab1.mp3");
+                    break;
+                    case 4 :
+                        setImage(Blood[bloodNum]);
+                        bloodNum--;
+                        Greenfoot.delay(1);
+                        Greenfoot.playSound("stab1.mp3");
+                    break;
+                    case 5 :
+                        setImage(Blood[bloodNum]);
+                        bloodNum--;
+                        Greenfoot.playSound("stab.mp3");
+                    break;
+                    case 6 :
+                        setImage(Blood[bloodNum]);
+                        bloodNum--;
+                        Greenfoot.delay(1);
+                        Greenfoot.playSound("girlscream.mp3");
+                    break;
+                } 
+                Greenfoot.playSound("impressive.mp3");
+                
+            }
+            level.singleNinjas(0);
+            MileenaExploding();
+            
+        }
+        
+        else if(b == 5)
+        {
+            MileenaExploding();
+            level.singleNinjas(0);
+        }
+        
+    }
+     
+     
+  
+    public int getXPlayer()
+    {
+        return xPlayer;
+    }
+       
+       
+  
+    public int getYPlayer()
+    {
+        return yPlayer;
+    } 
+      
+    
+  
+    public void MileenaExploding()
+    {
+        placeMileenaExploding(getX(), getY(), NUM_FRAGMENTS);
+        Greenfoot.playSound("girlscream.mp3");
+        Greenfoot.playSound("toasty1.mp3");
+        getWorld().removeObject(this);       
+    }
+    
+    
+ 
+    private void placeMileenaExploding(int x, int y, int numFragments)
+    {
+        for(int i = 0; i < numFragments; i++)
+        {
+            getWorld().addObject(new MileenaExploding(), getX(), getY());
+        }
+        
+    }    
+    
+    }
         death(0);
     }
 }
