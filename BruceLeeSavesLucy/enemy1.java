@@ -84,6 +84,104 @@ public class Enemy1 extends Figure implements Fighter
         fall();
         death(die);
     }
+    
+   /**
+    * This method move, It is for walking or attack motion to punch in the direction it's facing.
+    */
+    private void move()
+    {
+        if(pacing > 0)   
+        {
+            direction = 0;                             
+            switch(LDirection)              
+            {
+                case 0 :
+                    setImage(Left[LDirection]);
+                    LDirection++;
+                    pacing--;
+                break;
+                case 1 :
+                    setImage(Left[LDirection]);
+                    LDirection++;
+                    pacing--;
+                break;
+                case 2 :
+                    setImage(Left[LDirection]);
+                    LDirection++;
+                    pacing--;
+                break;
+                case 3 :
+                    setImage(Left[LDirection]);
+                    LDirection++;
+                    pacing--;
+                break;
+                case 4 :
+                    Greenfoot.playSound(ENEMY1_NAME + "walking.mp3");
+                    setImage(Left[LDirection]);
+                    LDirection = 0;
+                    pacing--;
+                break;
+            }
+            moveLeft();
+        
+            if(pacing == 1)
+                pacing = -13;
+                
+        }
+        
+        if(pacing <= 0)  
+        {
+            direction = 1;              
+            switch(RDirection)         
+            {
+                case 0 :
+                    setImage(Right[RDirection]);
+                    RDirection++;
+                    pacing++;
+                break;
+                case 1 :
+                    setImage(Right[RDirection]);
+                    RDirection++;
+                    pacing++;
+                break;
+                case 2 :
+                    setImage(Right[RDirection]);
+                    RDirection++;
+                    pacing++;
+                break;
+                case 3 :
+                    setImage(Right[RDirection]);
+                    RDirection++;
+                    pacing++;
+                break;
+                case 4 :
+                    Greenfoot.playSound("gorowalking.mp3");
+                    setImage(Right[RDirection]);
+                    RDirection = 0;
+                    pacing++;
+                break;
+            }
+            moveRight();
+            
+            if(pacing == -1)
+                pacing = 13;
+                
+        }
+
+        BruceLee lee = (BruceLee) getOneObjectAtOffset(20, 0, BruceLee.class);  //BruceLee at the left direction
+        BruceLee leejab = (BruceLee) getOneObjectAtOffset(-20, 0, BruceLee.class);   //BruceLee at the right direction
+        if(lee != null || leejab != null)         
+        { 
+            if(lee != null)
+                dir = 0;         //0 is the left direction                   
+                punch(dir);  
+                
+            if(leejab != null)                    
+                dir = 1;        //1 is the right direction
+                 
+        }
+        
+    }
 
     /**
      * 
