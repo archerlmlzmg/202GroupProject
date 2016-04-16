@@ -183,6 +183,50 @@ public class Enemy1 extends Figure implements Fighter
         
     }
 
+	//////////////////////////////////////////////////////////////////////////////////
+	/**
+	 * This method moveLeft, It checks for wall collision and to see if out of
+	 * bounds.
+	 */
+	public void moveLeft() {
+		if (wall()) {
+			xPlayer -= hSpeed;
+			if (yPlayer >= 400)
+				yPlayer = 399;
+
+			if (xPlayer >= level.getWorldWidth() || xPlayer <= 0) {
+				die = 5;
+			}
+
+			else
+				setLocation(xPlayer, yPlayer);
+
+		}
+
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////
+	/**
+	 * This method moveRight, It checks for wall collision and to see if out of
+	 * bounds.
+	 */
+	public void moveRight() {
+		if (wall()) {
+			xPlayer += hSpeed;
+			if (yPlayer >= 400)
+				yPlayer = 399;
+
+			if (xPlayer >= level.getWorldWidth() || xPlayer <= 0) {
+				die = 5;
+			}
+
+			else
+				setLocation(xPlayer, yPlayer);
+
+		}
+
+	}
+
     /**
      * 
      */
