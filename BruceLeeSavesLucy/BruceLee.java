@@ -196,4 +196,55 @@ public class BruceLee extends Figure implements Fighter
         }
         
     }
+    
+    //////////////////////////////////////////////////////////////////////////////////  
+    /**
+    * This method throwstar, It creates the throwing star and decrements
+    *                        the number of throwing stars in inventory.                       
+    */
+    public void throwStar()
+    {
+        NStars--;
+        int x = 0;
+        int y = 0;
+        if(direction == 1)
+        {
+            x = getX()+28;
+            y = getY()-6;
+        }
+        
+        else 
+        {
+            x = getX()+4;
+            y = getY()-20;
+        }
+        getWorld().addObject(new ThrowingStar2(), x, y);
+        myLabel.setText("Throwing Stars: " + NStars);
+        
+    }
+
+    /**
+    * This method direct, It returns the direction of the character for other classes to call.
+    */
+    public boolean direct()
+    {
+        if(direction == 0)
+            return false;
+          
+            return true;
+    }
+      
+      
+    //////////////////////////////////////////////////////////////////////////////////   
+    /**
+    * This method wall, It checks for the wall. 
+    */
+    public boolean wall()
+    {
+        Actor attack = getOneObjectAtOffset(20, 0, Wall.class);
+        if(attack != null) 
+            return false;
+          
+            return true;
+    }
 }
