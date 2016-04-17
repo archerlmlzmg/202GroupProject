@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.target=Fighter
-comment0.text=\r\n\ this\ is\ the\ interface\ for\ all\ the\ figures\ that\ can\ fight\ in\ the\ game\r\n\ it\ includes\ the\ basic\ attack\ movement\r\n\ \r\n\ @author\ (Ming\ Tang)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=
-comment1.target=int\ punch()
-comment2.params=
-comment2.target=int\ kick()
-numComments=3
