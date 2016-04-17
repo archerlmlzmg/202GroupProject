@@ -175,7 +175,13 @@ public class Enemy2 extends Figure implements Fighter
         singlePunch = false;
          
     }
-   
+   public void addedToWorld(World world)
+    {
+        level = (AirHead) world;                
+        xPlayer = getX();                        
+        yPlayer = getY();                       
+        feet = getImage().getHeight() / 1;
+    }
 
     /**
      * 
