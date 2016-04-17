@@ -1,0 +1,22 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf460
+{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\margl1440\margr1440\vieww25400\viewh13600\viewkind0
+\deftab720
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl400\partightenfactor0
+\ls1\ilvl0
+\f0\fs30 \cf0 {\listtext	\'95	}Design Pattern\
+{\listtext	\'95	}\expnd0\expndtw0\kerning0
+State: if HP is lower than certain value, invincible state (within 5 second, no attack from enemy is valid)\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl400\partightenfactor0
+\ls1\ilvl0\cf0 \kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+Observer: HP for each figure (Bruce Lee on the left, enemies on the right), motion speed
+\f1\fs24 \
+\ls1\ilvl0
+\f0\fs30 \kerning1\expnd0\expndtw0 {\listtext	\'95	}\
+{\listtext	\'95	}Weekly XP Value\
+{\listtext	\'95	}\expnd0\expndtw0\kerning0
+Courage(Sheng Zhou): In this week\'92s progress, each of us met some kind of challenges. Ming, one of our team members has the task to make new figures for our project. It is a time-consumer task and it is hard to start at the beginning since there are so many characters needed to be figured out. Also, each character should have at least two poses so that the game could be really smooth. To be honest, the best thing being part of our team is that we help and cheers each other often. The rest of the team encourage Ming not to be worried a lot but start from the main character which is Bruce Lee. Now, with the explicit purpose, Ming feels better and have done some scratches of this main character. The rest of us focus on the basic setup for each character. We have assigned each people piece of work. I am the one to know how to set the world in green foot. When I have problem, others are willing to encourage you to find out the solution. Minglu, Xing and Xinlei are working together for the enemy characters. All of us trust each other and think we could complete the work perfectly. All of us cheer others up and make big improvement for our project. We may meet some obstacles in the progress of doing the team project, but we all know that each one has the whole team always there behind. \uc0\u8232 \
+}
