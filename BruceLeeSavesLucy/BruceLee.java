@@ -49,7 +49,8 @@ public class BruceLee extends Figure
         traverseMotionSet();
         
     }
-    private void setStand2Right(){   
+    private void setStand2Right(){
+        //if(this.getCurrentPose() == Figure.POSE_STAND && this.getCurrentMotionSet.equal(stand2Right))
         this.current_motion_index = 0;
         this.setDirection(Figure.DIRECTION_RIGHT);
         this.setCurrentMotionSet(stand2RightSet);
@@ -59,9 +60,20 @@ public class BruceLee extends Figure
         this.setCurrentMotionSet(stand2RightSet);
     }
     public void setWalk2Right(){
+        /*
+         * this condition means this stroke continues previous motion
+         */
+        if(this.getCurrentPose() == Figure.POSE_WALK &&
+        this.currentMotionSet.equals(walk2RightSet)&&
+        this.getDirection()== Figure.DIRECTION_RIGHT){
+            this.current_motion_index++;
+        }else{//this is a new stroke(command)
+            this.setDirection(Figure.DIRECTION_RIGHT);
+            this.setCurrentMotionSet(walk2RightSet);
+            this.current_motion_index=0;
+        }
         setLocation(getX()+moveStepLength,getY());
-        this.setDirection(Figure.DIRECTION_RIGHT);
-        this.setCurrentMotionSet(walk2RightSet);
+        
     }
     public void setWalk2Left(){
         setLocation(getX()+moveStepLength,getY());
@@ -81,9 +93,6 @@ public class BruceLee extends Figure
         setImage(motionSet[current_motion_index]);
         if(current_motion_index == motionSet.length - 1){
             current_motion_index = 0;
-            if(this.getCurrentPose() != Figure.POSE_STAND){
-                this.setCurrentPose(Figure.POSE_STAND);
-            }
         }else{
             current_motion_index++;
         }
