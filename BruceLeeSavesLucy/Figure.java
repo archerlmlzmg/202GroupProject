@@ -38,6 +38,9 @@ public class Figure extends Actor
     public int getCurrentPose(){
         return this.currentPose;
     }
+    public int setCurrentPose(int pose){
+        this.currentPose = pose;
+    }
     public void setPoseStandRight(){
     }
     public void setPoseStandLeft(){

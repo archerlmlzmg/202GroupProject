@@ -21,7 +21,11 @@ public class BruceLee extends Figure
             int m = i+ 1;
             stand2RightSet[i] = new GreenfootImage("bruce_" + m +".gif");
         }
-        
+        walkRightSet = new GreenfootImage[2];
+        for(int i=0; i<walkRightSet.length;i++){
+            int m = i+ 1;
+            stand2RightSet[i] = new GreenfootImage("bruce_walk_" + m +".gif");
+        }
     }
     /**
      * Act - do whatever the BruceLee wants to do. This method is called whenever
@@ -29,26 +33,37 @@ public class BruceLee extends Figure
      */
     public void act() 
     {
-        setStand();
+        if(this.getCurrentPose() == Figure.POSE_STAND)
+            setStand();
         checkKeypress();
     }
     private void setStand(){
-        GreenfootImage[] standMotionSet;
         if(this.direction == Figure.DIRECT_RIGHT)
-            standMotionSet = stand2RightSet;
+            traverseMotionSet(stand2RightSet);
         else
-            standMotionSet = stand2LeftSet;
+            traverseMotionSet(stand2LeftSet);
+            
+    }
+    public void setWalk(){
+        this.setCurrentPose(Figure.POSE_WALK)
+        traverseMotionSet(walkRightSet);
+    }
+    private void traverseMotionSet(GreenfootImage[] motionSet){
         if(moveVariable < moveSpeed){
             moveVariable++;
             return;
         }else{
             moveVariable = 0;
         }
-        setImage(standMotionSet[current_stand_index]);
-        if(current_stand_index == standMotionSet.length - 1)
+        setImage(motionSet[current_stand_index]);
+        if(current_stand_index == motionSet.length - 1){
             current_stand_index = 0;
-        else
+            if(this.getCurrentPose() != Figure.POSE_STAND){
+                this.setCurrentPose(Figure.POSE_STAND);
+            }
+        }else{
             current_stand_index++;
+        }
     }
     public void checkKeypress()
    {
