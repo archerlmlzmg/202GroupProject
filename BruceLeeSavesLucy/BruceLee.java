@@ -22,7 +22,7 @@ public class BruceLee extends Figure
             stand2RightSet[i] = new GreenfootImage("bruce_" + m +".gif");
         }
         walk2RightSet = new GreenfootImage[2];
-        for(int i=0; i<walk2RightSet.length;i++){
+        for(int i=0; i<walk2RightSet.length; i++){
             int m = i+ 1;
             stand2RightSet[i] = new GreenfootImage("bruce_walk_" + m +".gif");
         }
@@ -63,18 +63,18 @@ public class BruceLee extends Figure
         /*
          * this condition means this stroke continues previous motion
          */
-        if(this.getCurrentPose() == Figure.POSE_WALK &&
+        /*if(this.getCurrentPose() == Figure.POSE_WALK &&
         this.currentMotionSet.equals(walk2RightSet)&&
         this.getDirection()== Figure.DIRECTION_RIGHT){
             System.out.println("the same movement, one more step.");
-            this.current_motion_index++;
+            //this.current_motion_index++;
         }else{//this is a new stroke(command)
             System.out.println("the new movement, first step.");
             this.setDirection(Figure.DIRECTION_RIGHT);
             this.setCurrentMotionSet(walk2RightSet);
             this.setCurrentPose(Figure.POSE_WALK);
             this.current_motion_index=0;
-        }
+        }*/
         setLocation(getX()+moveStepLength,getY());
         
     }
