@@ -66,10 +66,13 @@ public class BruceLee extends Figure
         if(this.getCurrentPose() == Figure.POSE_WALK &&
         this.currentMotionSet.equals(walk2RightSet)&&
         this.getDirection()== Figure.DIRECTION_RIGHT){
+            System.out.println("the same movement, one more step.");
             this.current_motion_index++;
         }else{//this is a new stroke(command)
+            System.out.println("the new movement, first step.");
             this.setDirection(Figure.DIRECTION_RIGHT);
             this.setCurrentMotionSet(walk2RightSet);
+            this.setCurrentPose(Figure.POSE_WALK);
             this.current_motion_index=0;
         }
         setLocation(getX()+moveStepLength,getY());
@@ -81,12 +84,14 @@ public class BruceLee extends Figure
         this.setCurrentMotionSet(walk2LeftSet);
     }
     private void traverseMotionSet(){
+        //slow donw the motion
         if(moveVariable < moveSpeed){
             moveVariable++;
             return;
         }else{
             moveVariable = 0;
         }
+        //step to next motion
         GreenfootImage[] motionSet = this.currentMotionSet;
         if(current_motion_index >= motionSet.length)
             current_motion_index = 0;
@@ -101,16 +106,19 @@ public class BruceLee extends Figure
         System.out.println("currentMotionSet:"+this.getCurrentMotionSet().toString());
         System.out.println("current Direction:"+this.getDirection());
         System.out.println("current motion index:"+this.current_motion_index);
+        System.out.println("current Pose:"+this.getCurrentPose()+"\n");
     }
     public void checkKeypress()
    {
         if(Greenfoot.isKeyDown("right")) 
         {
             //setImage("walk.gif");
+            System.out.println("---------printing starts-----------");
             printState();
             setWalk2Right();
-            System.out.println("---------after-----------");
+            System.out.println("---------after setting-----------");
             printState();
+            System.out.println("---------printing ends-----------");
         }
         else if(Greenfoot.isKeyDown("left"))
         {
@@ -118,12 +126,15 @@ public class BruceLee extends Figure
             setLocation(getX()-moveStepLength,getY());
             direction = 2;
         }
-       
+        if(Greenfoot.isKeyDown("down")){
+            System.out.println("x:"+getX()+", y:"+getY());
+        }
             
          //else //setImage("stand.gif");
         if(!Greenfoot.isKeyDown("down")&&!Greenfoot.isKeyDown("x")&&direction==1&&!Greenfoot.isKeyDown("right"))
         {
             //setImage("stand.gif");
+            
         }
         if(!Greenfoot.isKeyDown("down")&&!Greenfoot.isKeyDown("x")&&direction==2&&!Greenfoot.isKeyDown("left"))
         {
