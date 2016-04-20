@@ -17,7 +17,8 @@ public class Figure extends Actor
     private int currentPose = 0;
     public final static int POSE_STAND = 0, POSE_WALK = 1, WALK = 2;
     public final static int DIRECT_RIGHT = 0, DIRECT_LEFT = 1;
-    public GreenfootImage[] stand2RightSet, stand2LeftSet,walkLeftSet,walkRightSet;
+    public GreenfootImage[] stand2RightSet, stand2LeftSet,walkLeftSet,walkRightSet,
+    currentMotionSet;
     public int direction = 0;
     /**
      * 

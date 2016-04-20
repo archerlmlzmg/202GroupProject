@@ -26,6 +26,8 @@ public class BruceLee extends Figure
             int m = i+ 1;
             stand2RightSet[i] = new GreenfootImage("bruce_walk_" + m +".gif");
         }
+        this.currentMotionSet = stand2RightSet;
+        this.setCurrentPose(Figure.POSE_STAND);
     }
     /**
      * Act - do whatever the BruceLee wants to do. This method is called whenever
@@ -33,28 +35,27 @@ public class BruceLee extends Figure
      */
     public void act() 
     {
-        if(this.getCurrentPose() == Figure.POSE_STAND)
-            setStand();
+        traverseMotionSet();
         checkKeypress();
     }
-    private void setStand(){
-        if(this.direction == Figure.DIRECT_RIGHT)
-            traverseMotionSet(stand2RightSet);
-        else
-            traverseMotionSet(stand2LeftSet);
-            
+    private void setStand2Right(){   
     }
-    public void setWalk(){
-        this.setCurrentPose(Figure.POSE_WALK)
-        traverseMotionSet(walkRightSet);
+    private void setStand2Left(){   
     }
-    private void traverseMotionSet(GreenfootImage[] motionSet){
+    public void setWalk2Right(){
+        setLocation(getX()+moveStepLength,getY());
+            direction = 1;
+    }
+    public void setWalk2Left(){
+    }
+    private void traverseMotionSet(){
         if(moveVariable < moveSpeed){
             moveVariable++;
             return;
         }else{
             moveVariable = 0;
         }
+        GreenfootImage[] motionSet = this.currentMotionSet;
         setImage(motionSet[current_stand_index]);
         if(current_stand_index == motionSet.length - 1){
             current_stand_index = 0;
@@ -70,8 +71,7 @@ public class BruceLee extends Figure
         if(Greenfoot.isKeyDown("right")) 
         {
             //setImage("walk.gif");
-            setLocation(getX()+moveStepLength,getY());
-            direction = 1;
+            setWalk2Right();
         }
         else if(Greenfoot.isKeyDown("left"))
         {
