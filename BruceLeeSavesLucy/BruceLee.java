@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class BruceLee extends Figure
 {
 
-    int current_stand_index = 0;
+    int current_motion_index = 0;
     int moveSpeed = 3;
     int moveVariable = 0;
     int moveStepLength = 10;
@@ -21,10 +21,20 @@ public class BruceLee extends Figure
             int m = i+ 1;
             stand2RightSet[i] = new GreenfootImage("bruce_" + m +".gif");
         }
-        walkRightSet = new GreenfootImage[2];
-        for(int i=0; i<walkRightSet.length;i++){
+        walk2RightSet = new GreenfootImage[2];
+        for(int i=0; i<walk2RightSet.length;i++){
             int m = i+ 1;
             stand2RightSet[i] = new GreenfootImage("bruce_walk_" + m +".gif");
+        }
+        stand2LeftSet = new GreenfootImage[2];
+        for(int i=0; i<stand2LeftSet.length;i++){
+            int m = i+ 1;
+            stand2LeftSet[i] = new GreenfootImage("bruce_walk_" + m +".gif");
+        }
+        walk2LeftSet = new GreenfootImage[2];
+        for(int i=0; i<walk2LeftSet.length;i++){
+            int m = i+ 1;
+            walk2LeftSet[i] = new GreenfootImage("bruce_walk_" + m +".gif");
         }
         this.currentMotionSet = stand2RightSet;
         this.setCurrentPose(Figure.POSE_STAND);
@@ -35,10 +45,12 @@ public class BruceLee extends Figure
      */
     public void act() 
     {
-        traverseMotionSet();
         checkKeypress();
+        traverseMotionSet();
+        
     }
     private void setStand2Right(){   
+        this.
         this.setDirection(Figure.DIRECTION_RIGHT);
         this.setCurrentMotionSet(stand2RightSet);
     }
@@ -64,14 +76,14 @@ public class BruceLee extends Figure
             moveVariable = 0;
         }
         GreenfootImage[] motionSet = this.currentMotionSet;
-        setImage(motionSet[current_stand_index]);
-        if(current_stand_index == motionSet.length - 1){
-            current_stand_index = 0;
+        setImage(motionSet[current_motion_index]);
+        if(current_motion_index == motionSet.length - 1){
+            current_motion_index = 0;
             if(this.getCurrentPose() != Figure.POSE_STAND){
                 this.setCurrentPose(Figure.POSE_STAND);
             }
         }else{
-            current_stand_index++;
+            current_motion_index++;
         }
     }
     public void checkKeypress()
