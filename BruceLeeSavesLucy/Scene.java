@@ -12,12 +12,17 @@ public class Scene extends World
     private int activeAreaX2 = 700;
     private int activeAreaY1 = 10;
     private int activeAreaY2 = 500;
-
+    private BruceLee bruce;
     /**
      * 
      */
     public Scene()
     {
-        super(600, 400, 1);
+        super(800, 500, 1);
+        bruce = new BruceLee();
+        addObject(bruce,100,350);
+    }
+    public void act(){
+        //System.out.println("testing");
     }
 }

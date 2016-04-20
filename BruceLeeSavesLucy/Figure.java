@@ -14,7 +14,11 @@ public class Figure extends Actor
     /* the denfence ability indicates the point that can be deducted from every attack*/
     private int walkingSpeed = 5;
     private int basicDenfence = 10;
-
+    private int currentPose = 0;
+    public final static int POSE_STAND = 0, POSE_WALK = 1, WALK = 2;
+    public final static int DIRECT_RIGHT = 0, DIRECT_LEFT = 1;
+    public GreenfootImage[] stand2RightSet, stand2LeftSet,walkLeftSet,walkRightSet;
+    public int direction = 0;
     /**
      * 
      */
@@ -27,5 +31,19 @@ public class Figure extends Actor
      */
     public void walkLeft()
     {
+    }
+    public void stand(){
+    
+    }
+    public int getCurrentPose(){
+        return this.currentPose;
+    }
+    public void setPoseStandRight(){
+    }
+    public void setPoseStandLeft(){
+    }
+    public void setPoseWalkRight(){
+    }
+    public void setPoseWalkLeft(){
     }
 }
