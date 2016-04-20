@@ -50,7 +50,7 @@ public class BruceLee extends Figure
         
     }
     private void setStand2Right(){   
-        this.
+        this.current_motion_index = 0;
         this.setDirection(Figure.DIRECTION_RIGHT);
         this.setCurrentMotionSet(stand2RightSet);
     }
@@ -76,6 +76,8 @@ public class BruceLee extends Figure
             moveVariable = 0;
         }
         GreenfootImage[] motionSet = this.currentMotionSet;
+        if(current_motion_index >= motionSet.length)
+            current_motion_index = 0;
         setImage(motionSet[current_motion_index]);
         if(current_motion_index == motionSet.length - 1){
             current_motion_index = 0;
@@ -86,12 +88,20 @@ public class BruceLee extends Figure
             current_motion_index++;
         }
     }
+    public void printState(){
+        System.out.println("currentMotionSet:"+this.getCurrentMotionSet().toString());
+        System.out.println("current Direction:"+this.getDirection());
+        System.out.println("current motion index:"+this.current_motion_index);
+    }
     public void checkKeypress()
    {
         if(Greenfoot.isKeyDown("right")) 
         {
             //setImage("walk.gif");
+            printState();
             setWalk2Right();
+            System.out.println("---------after-----------");
+            printState();
         }
         else if(Greenfoot.isKeyDown("left"))
         {
