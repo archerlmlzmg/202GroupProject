@@ -16,8 +16,8 @@ public class Figure extends Actor
     private int basicDenfence = 10;
     private int currentPose = 0;
     public final static int POSE_STAND = 0, POSE_WALK = 1, WALK = 2;
-    public final static int DIRECT_RIGHT = 0, DIRECT_LEFT = 1;
-    public GreenfootImage[] stand2RightSet, stand2LeftSet,walkLeftSet,walkRightSet,
+    public final static int DIRECTION_RIGHT = 0, DIRECTION_LEFT = 1;
+    public GreenfootImage[] stand2RightSet, stand2LeftSet,walk2LeftSet,walk2RightSet,
     currentMotionSet;
     public int direction = 0;
     /**
@@ -39,8 +39,20 @@ public class Figure extends Actor
     public int getCurrentPose(){
         return this.currentPose;
     }
-    public int setCurrentPose(int pose){
+    public void setCurrentPose(int pose){
         this.currentPose = pose;
+    }
+    public int getDirection(){
+        return this.direction;
+    }
+    public void setDirection(int direction){
+        this.direction = direction;
+    }
+    public void setCurrentMotionSet(GreenfootImage[] set){
+        this.currentMotionSet = set;
+    }
+    public GreenfootImage[] getCurrentMotionSet(){
+        return this.currentMotionSet;
     }
     public void setPoseStandRight(){
     }

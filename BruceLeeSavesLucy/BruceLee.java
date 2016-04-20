@@ -39,14 +39,22 @@ public class BruceLee extends Figure
         checkKeypress();
     }
     private void setStand2Right(){   
+        this.setDirection(Figure.DIRECTION_RIGHT);
+        this.setCurrentMotionSet(stand2RightSet);
     }
-    private void setStand2Left(){   
+    private void setStand2Left(){
+        this.setDirection(Figure.DIRECTION_LEFT);
+        this.setCurrentMotionSet(stand2RightSet);
     }
     public void setWalk2Right(){
         setLocation(getX()+moveStepLength,getY());
-            direction = 1;
+        this.setDirection(Figure.DIRECTION_RIGHT);
+        this.setCurrentMotionSet(walk2RightSet);
     }
     public void setWalk2Left(){
+        setLocation(getX()+moveStepLength,getY());
+        this.setDirection(Figure.DIRECTION_LEFT);
+        this.setCurrentMotionSet(walk2LeftSet);
     }
     private void traverseMotionSet(){
         if(moveVariable < moveSpeed){
