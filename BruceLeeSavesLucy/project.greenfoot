@@ -1,5 +1,9 @@
 #Greenfoot properties
+<<<<<<< HEAD
 #Fri Apr 22 14:51:15 PDT 2016
+=======
+#Fri Apr 22 14:51:23 EDT 2016
+>>>>>>> origin/master
 editor.fx.0.height=700
 target2.width=80
 target8.name=Scene
@@ -143,13 +147,18 @@ target3.typeParameters=
 target9.showInterface=false
 target7.name=Lucy
 package.numDependencies=1
+<<<<<<< HEAD
 package.numTargets=10
 target12.name=BruceLee
+=======
+package.numTargets=9
+>>>>>>> origin/master
 >>>>>>>=4b482217589db6f74f324b4d8977b8b3ebc55041
+target12.name=BruceLee
 dependency1.type=UsesDependency
 target4.type=ClassTarget
-target12.showInterface=false
 target8.width=80
+target12.showInterface=false
 target13.height=50
 target16.name=Floor3
 target9.width=80
@@ -167,18 +176,24 @@ target3.width=80
 target4.width=80
 target8.typeParameters=
 target17.y=370
-target17.x=10
 target5.width=80
+target17.x=10
 target15.y=250
+<<<<<<< HEAD
 target15.x=10
 target4.name=Weapon2
 readme.y=10
+=======
+target4.name=Weapon1
+target15.x=10
+>>>>>>> origin/master
 class.Fighter.superclass=
+readme.y=10
 readme.x=10
 target4.height=50
-target12.typeParameters=
 readme.height=58
-target13.y=130
+target12.typeParameters=
 target1.width=80
-target13.x=10
+target13.y=130
 =\=\=\=\=\=\=
+target13.x=10
