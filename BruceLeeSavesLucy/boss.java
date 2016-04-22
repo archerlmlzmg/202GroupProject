@@ -57,8 +57,27 @@ public class boss extends Figure
             spinkickSet[i] = new GreenfootImage("boss_spinkick_" + m +".gif");
         }
         
-        this.currentMotionSet = highkickSet;
+        this.currentMotionSet = fallSet;
         this.setCurrentPose(Figure.POSE_STAND);
+    }
+    private void traverseMotionSet(){
+        //slow donw the motion
+        if(moveVariable < moveSpeed){
+            moveVariable++;
+            return;
+        }else{
+            moveVariable = 0;
+        }
+        //step to next motion
+        GreenfootImage[] motionSet = this.currentMotionSet;
+        if(current_motion_index >= motionSet.length)
+            current_motion_index = 0;
+        setImage(motionSet[current_motion_index]);
+        if(current_motion_index == motionSet.length - 1){
+            current_motion_index = 0;
+        }else{
+            current_motion_index++;
+        }
     }
     /**
      * Act - do whatever the BruceLee wants to do. This method is called whenever
@@ -66,7 +85,7 @@ public class boss extends Figure
      */
     public void act() 
     {
-   
+        traverseMotionSet();
     }
     
 }

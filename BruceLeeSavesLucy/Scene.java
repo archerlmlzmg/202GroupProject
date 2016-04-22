@@ -15,7 +15,7 @@ public class Scene extends World
     private int level = 1;
     private BruceLee bruce;
     private boss boss;
-    
+    private Joe joe;
     /**
      * 
      */
