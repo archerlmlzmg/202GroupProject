@@ -28,7 +28,7 @@ public class Joe extends Figure
                 stand2LeftSet[i] = new GreenfootImage("Joe98_stance1_f" + m +".gif");
             } 
         }
-        this.currentMotionSet = stand2RightSet;
+        this.currentMotionSet = stand2LeftSet;
         this.setCurrentPose(Figure.POSE_STAND);
     }
     /**
@@ -38,5 +38,26 @@ public class Joe extends Figure
     public void act() 
     {
         // Add your action code here.
+        move();
     }    
+    
+    public void move()
+    {
+        if(moveVariable < moveSpeed){
+            moveVariable++;
+            return;
+        }else{
+            moveVariable = 0;
+        }
+        //step to next motion
+        GreenfootImage[] motionSet = this.currentMotionSet;
+        if(current_motion_index >= motionSet.length)
+            current_motion_index = 0;
+        setImage(motionSet[current_motion_index]);
+        if(current_motion_index == motionSet.length - 1){
+            current_motion_index = 0;
+        }else{
+            current_motion_index++;
+        }
+    }
 }
