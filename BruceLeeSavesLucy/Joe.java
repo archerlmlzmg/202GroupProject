@@ -21,11 +21,15 @@ public class Joe extends Figure
             int m = i+ 1;
             if (m < 10)
             {
-                stand2LeftSet[i] = new GreenfootImage("Joe98_stance1_f0" + m +".gif");
+                GreenfootImage img = new GreenfootImage("Joe98_stance1_f0" + m +".gif");
+                img.scale(img.getWidth() - 50,img.getHeight() - 70);
+                stand2LeftSet[i] = img;
             }
             else
             {
-                stand2LeftSet[i] = new GreenfootImage("Joe98_stance1_f" + m +".gif");
+                GreenfootImage img = new GreenfootImage("Joe98_stance1_f" + m +".gif");
+                img.scale(img.getWidth() - 50,img.getHeight() - 70);
+                stand2LeftSet[i] = img;
             } 
         }
         this.currentMotionSet = stand2LeftSet;

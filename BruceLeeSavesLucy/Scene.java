@@ -35,7 +35,7 @@ public class Scene extends World
         if (currentLevel == 1)
         {
             joe = new Joe();
-            addObject(joe, 700, 300);
+            addObject(joe, 700, 350);
         }
     }
 }
