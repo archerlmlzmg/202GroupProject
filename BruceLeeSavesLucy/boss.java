@@ -66,8 +66,7 @@ public class boss extends Figure
      */
     public void act() 
     {
-        showup();
-        
+   
     }
     
 }
