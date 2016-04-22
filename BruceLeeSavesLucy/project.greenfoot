@@ -1,9 +1,5 @@
 #Greenfoot properties
-<<<<<<< HEAD
-#Fri Apr 22 16:31:15 PDT 2016
-=======
-#Fri Apr 22 16:40:39 EDT 2016
->>>>>>> origin/master
+#Fri Apr 22 16:46:03 EDT 2016
 editor.fx.0.height=700
 target2.width=80
 target8.name=Lucy
@@ -11,8 +7,8 @@ target11.y=10
 target11.x=160
 class.Figure.image=man01.png
 class.Lucy.superclass=Figure
-target7.showInterface=false
 target1.type=InterfaceTarget
+target7.showInterface=false
 mainWindow.height=683
 target6.typeParameters=
 target1.height=50
@@ -30,8 +26,8 @@ target1.showInterface=false
 target4.y=310
 target4.x=190
 class.Weapon2.superclass=Weapon
-target9.type=ClassTarget
 target4.showInterface=false
+target9.type=ClassTarget
 target2.y=190
 target14.height=50
 target2.x=10
@@ -62,9 +58,9 @@ target14.name=Floor1
 dependency1.to=BruceLee
 class.BruceLee.image=bruce_2.gif
 dependency3.type=UsesDependency
-target6.type=ClassTarget
 target2.height=50
 target2.typeParameters=
+target6.type=ClassTarget
 editor.swing.0.height=700
 class.Scene.image=floor2_long.jpg
 target9.typeParameters=
@@ -79,19 +75,11 @@ target2.showInterface=false
 dependency1.from=Scene
 target15.type=ClassTarget
 class.Joe.superclass=Figure
-<<<<<<< HEAD
-mainWindow.y=39
-editor.swing.0.y=40
-target5.showInterface=false
-mainWindow.x=206
-editor.swing.0.x=85
-=======
 mainWindow.y=33
 editor.swing.0.y=0
-target5.showInterface=false
 mainWindow.x=39
 editor.swing.0.x=0
->>>>>>> origin/master
+target5.showInterface=false
 target17.width=80
 target8.showInterface=false
 class.Weapon.superclass=greenfoot.Actor
@@ -107,14 +95,9 @@ target13.typeParameters=
 target14.y=190
 target15.width=80
 target14.x=100
-<<<<<<< HEAD
-editor.swing.0.width=958
-target6.name=Weapon1
-=======
 editor.swing.0.width=701
 target6.name=Weapon1
 class.Joe.image=Joe98_stance1_f02.gif
->>>>>>> origin/master
 target9.height=50
 target16.width=80
 class.Weapon3.superclass=Weapon
@@ -131,10 +114,10 @@ target11.name=Figure
 target12.height=50
 target13.width=80
 target9.y=10
-target9.x=70
 target17.showInterface=false
-target6.height=50
+target9.x=70
 target3.type=ClassTarget
+target6.height=50
 class.Boss.superclass=greenfoot.Actor
 target7.y=130
 target7.x=100
@@ -144,13 +127,8 @@ target5.y=310
 target5.x=10
 target7.type=ClassTarget
 target10.width=80
-<<<<<<< HEAD
-target3.y=130
-target3.x=190
-=======
 target3.y=190
 target3.x=10
->>>>>>> origin/master
 target11.width=80
 target3.height=50
 target1.y=70
@@ -170,22 +148,17 @@ target3.name=boss
 target6.showInterface=false
 class.BruceLee.superclass=Figure
 target3.typeParameters=
-target9.showInterface=false
-<<<<<<< HEAD
 dependency3.to=boss
-target7.name=BruceLee
-package.numDependencies=3
-=======
+target9.showInterface=false
 target7.name=BruceLee
 package.numDependencies=2
->>>>>>> origin/master
 package.numTargets=11
->>>>>>>=4b482217589db6f74f324b4d8977b8b3ebc55041
 target12.name=BruceLee
+>>>>>>>=4b482217589db6f74f324b4d8977b8b3ebc55041
 dependency1.type=UsesDependency
 target4.type=ClassTarget
-target8.width=80
 target12.showInterface=false
+target8.width=80
 target13.height=50
 target16.name=Floor3
 target9.width=80
@@ -204,18 +177,18 @@ target3.width=80
 target4.width=80
 target8.typeParameters=
 target17.y=370
-target5.width=80
 target17.x=10
+target5.width=80
 target15.y=250
-target4.name=Weapon3
 target15.x=10
-class.Fighter.superclass=
+target4.name=Weapon3
 readme.y=10
+class.Fighter.superclass=
 readme.x=10
 target4.height=50
-readme.height=58
 target12.typeParameters=
-target1.width=80
+readme.height=58
 target13.y=130
-=\=\=\=\=\=\=
+target1.width=80
 target13.x=10
+=\=\=\=\=\=\=

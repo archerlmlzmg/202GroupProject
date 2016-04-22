@@ -36,13 +36,10 @@ public class Scene extends World
         if (currentLevel == 1)
         {
             joe = new Joe();
-<<<<<<< HEAD
-            addObject(joe, 700, 300);
+            addObject(joe, 700, 350);
             boss = new boss();
             addObject(boss, 500, 300);
-=======
             addObject(joe, 700, 350);
->>>>>>> origin/master
         }
     }
 }
