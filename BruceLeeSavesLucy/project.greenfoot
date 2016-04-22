@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Fri Apr 22 14:51:23 EDT 2016
+#Fri Apr 22 15:14:37 EDT 2016
 editor.fx.0.height=700
 target2.width=80
 target8.name=Weapon
@@ -72,6 +72,7 @@ target15.height=50
 target2.showInterface=false
 dependency1.from=Scene
 target15.type=ClassTarget
+class.Joe.superclass=Figure
 mainWindow.y=71
 editor.swing.0.y=23
 mainWindow.x=40
@@ -93,6 +94,7 @@ target14.y=190
 target15.width=80
 target14.x=100
 editor.swing.0.width=0
+class.Joe.image=Joe98_stance1_f01.gif
 target6.name=Lucy
 target9.height=50
 target16.width=80
@@ -146,12 +148,12 @@ target9.showInterface=false
 target7.name=Scene
 package.numDependencies=1
 package.numTargets=9
->>>>>>>=4b482217589db6f74f324b4d8977b8b3ebc55041
 target12.name=BruceLee
+>>>>>>>=4b482217589db6f74f324b4d8977b8b3ebc55041
 dependency1.type=UsesDependency
 target4.type=ClassTarget
-target8.width=80
 target12.showInterface=false
+target8.width=80
 target13.height=50
 target16.name=Floor3
 target9.width=80
@@ -169,18 +171,18 @@ target3.width=80
 target4.width=80
 target8.typeParameters=
 target17.y=370
-target5.width=80
 target17.x=10
+target5.width=80
 target15.y=250
-target4.name=Weapon1
 target15.x=10
-class.Fighter.superclass=
+target4.name=Weapon1
 readme.y=10
+class.Fighter.superclass=
 readme.x=10
 target4.height=50
-readme.height=58
 target12.typeParameters=
-target1.width=80
+readme.height=58
 target13.y=130
-=\=\=\=\=\=\=
+target1.width=80
 target13.x=10
+=\=\=\=\=\=\=
