@@ -14,7 +14,8 @@ public class Scene extends World
     private int activeAreaY2 = 500;
     private int level = 1;
     private BruceLee bruce;
-    private Joe joe;
+    private boss boss;
+    
     /**
      * 
      */
@@ -36,6 +37,8 @@ public class Scene extends World
         {
             joe = new Joe();
             addObject(joe, 700, 300);
+            boss = new boss();
+            addObject(boss, 500, 300);
         }
     }
 }
