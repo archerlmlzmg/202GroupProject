@@ -18,43 +18,57 @@ public class boss extends Figure
         fallSet = new GreenfootImage[4];
         for(int i=0; i<fallSet.length;i++){
             int m = i+ 1;
-            fallSet[i] = new GreenfootImage("boss_fall_" + m +".gif");
+            GreenfootImage img = new GreenfootImage("boss_fall_" + m +".gif");
+            img.scale(img.getWidth() - 50,img.getHeight() - 70);
+            fallSet[i] = img;
         }
         //initialize being hit
         hitSet = new GreenfootImage[6];
         for(int i=0; i<hitSet.length;i++){
             int m = i+ 1;
-            hitSet[i] = new GreenfootImage("boss_hit_" + m +".gif");
+            GreenfootImage img = new GreenfootImage("boss_hit_" + m +".gif");
+            img.scale(img.getWidth() - 50,img.getHeight() - 70);
+            hitSet[i] = img;
         }
         //initialize being crushed
         crushSet = new GreenfootImage[4];
         for(int i=0; i<crushSet.length;i++){
             int m = i+ 1;
-            crushSet[i] = new GreenfootImage("boss_crush_" + m +".gif");
+            GreenfootImage img = new GreenfootImage("boss_crush_" + m +".gif");
+            img.scale(img.getWidth() - 50,img.getHeight() - 70);
+            crushSet[i] = img;
         }
         //initialize highkick
         highkickSet = new GreenfootImage[8];
         for(int i=0; i<highkickSet.length;i++){
             int m = i+ 1;
-            highkickSet[i] = new GreenfootImage("boss_highkick_" + m +".gif");
+            GreenfootImage img = new GreenfootImage("boss_highkick_" + m +".gif");
+            img.scale(img.getWidth() - 50,img.getHeight() - 70);
+            highkickSet[i] = img;
         }
         //initialize jump
         jumpSet = new GreenfootImage[18];
         for(int i=0; i<jumpSet.length;i++){
             int m = i+ 1;
-            jumpSet[i] = new GreenfootImage("boss_jump_" + m +".gif");
+            GreenfootImage img = new GreenfootImage("boss_jump_" + m +".gif");
+            img.scale(img.getWidth() - 50,img.getHeight() - 70);
+            jumpSet[i] = img;
         }
         //initialize run
         runSet = new GreenfootImage[8];
         for(int i=0; i<runSet.length;i++){
             int m = i+ 1;
-            runSet[i] = new GreenfootImage("boss_run_" + m +".gif");
+            GreenfootImage img = new GreenfootImage("boss_run_" + m +".gif");
+            img.scale(img.getWidth() - 50,img.getHeight() - 70);
+            runSet[i] = img;
         }
         //initialize spinkick
         spinkickSet = new GreenfootImage[13];
         for(int i=0; i<spinkickSet.length;i++){
             int m = i+ 1;
-            spinkickSet[i] = new GreenfootImage("boss_spinkick_" + m +".gif");
+            GreenfootImage img = new GreenfootImage("boss_spinkick_" + m +".gif");
+            img.scale(img.getWidth() - 50,img.getHeight() - 70);
+            spinkickSet[i] = img;
         }
         
         this.currentMotionSet = fallSet;
