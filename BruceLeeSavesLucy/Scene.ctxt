@@ -1,14 +1,14 @@
 #BlueJ class context
 comment0.target=Scene
-comment0.text=\r\n\ \r\n
+comment0.text=\n\ \n
 comment1.params=
 comment1.target=Scene()
-comment1.text=\r\n\ \r\n
+comment1.text=\n\ \n
 comment2.params=
 comment2.target=void\ act()
 comment3.params=currentLevel
 comment3.target=void\ checkLevel(int)
 comment4.params=
 comment4.target=int\ getWorldWidth()
-comment4.text=\r\n\ \r\n\ This\ method\ getWorldWidth,\ This\ returns\ the\ world\ width.\r\n
+comment4.text=\n\ \n\ This\ method\ getWorldWidth,\ This\ returns\ the\ world\ width.\n
 numComments=5
