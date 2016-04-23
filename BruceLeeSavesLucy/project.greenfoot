@@ -1,5 +1,9 @@
 #Greenfoot properties
+<<<<<<< HEAD
 #Sat Apr 23 01:40:49 PDT 2016
+=======
+#Fri Apr 22 19:11:28 EDT 2016
+>>>>>>> origin/master
 editor.fx.0.height=700
 target2.width=80
 target8.name=Lucy
@@ -150,17 +154,17 @@ target3.name=boss
 target6.showInterface=false
 class.BruceLee.superclass=Figure
 target3.typeParameters=
-target9.showInterface=false
 dependency3.to=boss
+target9.showInterface=false
 target7.name=BruceLee
 package.numDependencies=2
 package.numTargets=11
->>>>>>>=Stashed changes
 target12.name=BruceLee
+>>>>>>>=Stashed changes
 dependency1.type=UsesDependency
 target4.type=ClassTarget
-target8.width=80
 target12.showInterface=false
+target8.width=80
 target13.height=50
 target16.name=Floor3
 target9.width=80
@@ -179,18 +183,18 @@ target3.width=80
 target4.width=80
 target8.typeParameters=
 target17.y=370
-target5.width=80
 target17.x=10
+target5.width=80
 target15.y=250
-target4.name=Weapon3
 target15.x=10
-class.Fighter.superclass=
+target4.name=Weapon3
 readme.y=10
+class.Fighter.superclass=
 readme.x=10
 target4.height=50
-readme.height=58
 target12.typeParameters=
-target1.width=80
+readme.height=58
 target13.y=130
-=\=\=\=\=\=\=
+target1.width=80
 target13.x=10
+=\=\=\=\=\=\=
