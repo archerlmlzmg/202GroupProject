@@ -1,11 +1,13 @@
 #BlueJ class context
 comment0.target=BruceLee
-comment0.text=\n\ Write\ a\ description\ of\ class\ BruceLee\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ BruceLee\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=BruceLee()
+comment10.params=power
+comment10.target=void\ beAttacked(int)
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\n\ Act\ -\ do\ whatever\ the\ BruceLee\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ BruceLee\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 comment3.params=
 comment3.target=void\ setStand2Right()
 comment4.params=
@@ -20,4 +22,4 @@ comment8.params=
 comment8.target=void\ printState()
 comment9.params=
 comment9.target=void\ checkKeypress()
-numComments=10
+numComments=11

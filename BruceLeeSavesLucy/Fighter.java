@@ -13,4 +13,8 @@ public interface Fighter
      * when this method is being used, the damage will be weakened
      */
     public int defend();
+    /*
+     * when a figure is attected by someone, this method will be called, and given the 
+     */
+    public void beAttacked(int power);
 }

@@ -109,7 +109,7 @@ public class BruceLee extends Figure
         System.out.println("current motion index:"+this.current_motion_index);
         System.out.println("current Pose:"+this.getCurrentPose()+"\n");
     }
-    public void checkKeypress()
+    private void checkKeypress()
    {
         if(Greenfoot.isKeyDown("right")) 
         {
@@ -146,5 +146,7 @@ public class BruceLee extends Figure
             gForce = true;
             counterWeight();
         }*/
+    }
+    public void beAttacked(int power){
     }
 }
