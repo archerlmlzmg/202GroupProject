@@ -38,6 +38,7 @@ public class BruceLee extends Figure
         }
         this.currentMotionSet = stand2RightSet;
         this.setCurrentPose(Figure.POSE_STAND);
+		this.setDirection(Figure.DIRECTION_RIGHT);
     }
     /**
      * Act - do whatever the BruceLee wants to do. This method is called whenever
