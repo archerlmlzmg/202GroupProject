@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=Goro
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Goro\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=Goro()
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Goro\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment3.params=
+comment3.target=void\ move()
+comment3.text=\r\n\ This\ method\ move,\ It\ is\ for\ walking\ or\ attack\ motion\ to\ punch\ in\ the\ direction\ it's\ facing.\r\n
+comment4.params=
+comment4.target=void\ moveLeft()
+comment4.text=\r\n\ This\ method\ moveLeft,\ It\ checks\ for\ wall\ collision\ and\ to\ see\ if\ out\ of\ bounds.\r\n
+comment5.params=
+comment5.target=void\ moveRight()
+comment5.text=\r\n\ This\ method\ moveRight,\ It\ checks\ for\ wall\ collision\ and\ to\ see\ if\ out\ of\ bounds.\r\n
+comment6.params=
+comment6.target=boolean\ wall()
+comment6.text=\r\n\ This\ method\ wall,\ It\ checks\ for\ the\ wall.\r\n
+numComments=7
