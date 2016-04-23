@@ -38,7 +38,7 @@ public class BruceLee extends Figure
         }
         this.currentMotionSet = stand2RightSet;
         this.setCurrentPose(Figure.POSE_STAND);
-		this.setDirection(Figure.DIRECTION_RIGHT);
+        this.setDirection(Figure.DIRECTION_RIGHT);
     }
     /**
      * Act - do whatever the BruceLee wants to do. This method is called whenever
@@ -61,6 +61,13 @@ public class BruceLee extends Figure
         this.setCurrentMotionSet(stand2RightSet);
     }
     public void setWalk2Right(){
+        this.setDirection(Figure.DIRECTION_RIGHT);
+        this.setCurrentPose(Figure.POSE_WALK);
+        if(current_motion_index>=walk2RightSet.length){
+            current_motion_index = 0;
+        }
+        setImage(walk2RightSet[current_motion_index]);
+        current_motion_index++;
         /*
          * this condition means this stroke continues previous motion
          */
@@ -85,6 +92,10 @@ public class BruceLee extends Figure
         this.setCurrentMotionSet(walk2LeftSet);
     }
     private void traverseMotionSet(){
+        if(this.getCurrentPose() != Figure.POSE_STAND){
+            this.setCurrentPose(Figure.POSE_STAND);
+            return;
+        }
         //slow donw the motion
         if(moveVariable < moveSpeed){
             moveVariable++;
@@ -102,6 +113,7 @@ public class BruceLee extends Figure
         }else{
             current_motion_index++;
         }
+
     }
     public void printState(){
         System.out.println("currentMotionSet:"+this.getCurrentMotionSet().toString());
@@ -147,6 +159,7 @@ public class BruceLee extends Figure
             counterWeight();
         }*/
     }
+ 
     public void beAttacked(int power){
     }
 }
