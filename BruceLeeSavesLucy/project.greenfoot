@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 #Greenfoot project file
 =\=\=\=\=\=\=
 <<<<<<<=Updated\ upstream
@@ -9,6 +10,15 @@ class.BruceLee.superclass=Figure
 class.Enemy1.image=person.png
 class.Enemy1.superclass=Figure
 class.Fighter.superclass=
+=======
+#Greenfoot properties
+#Sat Apr 23 13:26:42 PDT 2016
+editor.fx.0.height=700
+target2.width=80
+target8.name=Lucy
+target11.y=10
+target11.x=160
+>>>>>>> Stashed changes
 class.Figure.image=man01.png
 class.Figure.superclass=greenfoot.Actor
 <<<<<<< Updated upstream
@@ -20,6 +30,7 @@ class.Joe.image=Joe98_stance1_f02.gif
 class.Joe.superclass=Figure
 class.Lucy.image=girl1.png
 class.Lucy.superclass=Figure
+<<<<<<< Updated upstream
 class.Scene.image=floor2_long.jpg
 class.Scene.superclass=greenfoot.World
 <<<<<<< Updated upstream
@@ -27,14 +38,61 @@ class.Wall.image=brick.jpg
 class.Wall.superclass=greenfoot.Actor
 =======
 >>>>>>> Stashed changes
+=======
+target7.showInterface=false
+target1.type=InterfaceTarget
+mainWindow.height=683
+target6.typeParameters=
+target1.height=50
+target17.height=50
+target13.name=Lucy
+target8.y=130
+target8.x=10
+dependency2.type=UsesDependency
+target5.type=ClassTarget
+target6.y=310
+target6.x=100
+>>>>>>> Stashed changes
 class.Weapon.image=anchor.png
 class.Weapon.superclass=greenfoot.Actor
 class.Weapon1.superclass=Weapon
 class.Weapon2.superclass=Weapon
+<<<<<<< Updated upstream
 class.Weapon3.superclass=Weapon
 class.boss.image=boss.gif
 class.boss.superclass=Figure
 dependency1.from=Scene
+=======
+target9.type=ClassTarget
+target4.showInterface=false
+target2.y=190
+target14.height=50
+target2.x=10
+target10.type=ClassTarget
+target8.height=50
+target14.type=ClassTarget
+class.Figure.superclass=greenfoot.Actor
+target11.height=50
+target10.typeParameters=
+class.Boss.image=boss.gif
+target17.typeParameters=
+target1.name=Fighter
+target10.showInterface=false
+target13.showInterface=false
+class.Lucy.image=girl1.png
+target4.typeParameters=
+target5.name=Weapon2
+world.lastInstantiated=Scene
+target16.showInterface=false
+mainWindow.width=1006
+readme.width=47
+target9.name=Scene
+target5.height=50
+target10.name=Weapon
+target15.typeParameters=
+target2.type=ClassTarget
+target14.name=Floor1
+>>>>>>> Stashed changes
 dependency1.to=BruceLee
 dependency1.type=UsesDependency
 dependency2.from=Scene
@@ -43,6 +101,7 @@ dependency2.type=UsesDependency
 dependency3.from=Scene
 dependency3.to=boss
 dependency3.type=UsesDependency
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 dependency4.from=Goro
 dependency4.to=Scene
@@ -54,6 +113,19 @@ dependency5.type=UsesDependency
 >>>>>>> Stashed changes
 editor.fx.0.height=700
 editor.fx.0.width=700
+=======
+target6.type=ClassTarget
+target2.height=50
+target2.typeParameters=
+editor.swing.0.height=728
+class.Scene.image=floor2_long.jpg
+target9.typeParameters=
+class.boss.superclass=Figure
+class.boss.image=boss.gif
+target11.type=ClassTarget
+version=2.8.0
+editor.fx.0.y=0
+>>>>>>> Stashed changes
 editor.fx.0.x=0
 editor.fx.0.y=0
 <<<<<<< Updated upstream
@@ -72,6 +144,7 @@ editor.swing.0.height=700
 editor.swing.0.width=1154
 editor.swing.0.x=0
 editor.swing.0.y=23
+<<<<<<< Updated upstream
 mainWindow.height=683
 mainWindow.width=1006
 mainWindow.x=160
@@ -109,13 +182,58 @@ target10.y=310
 target11.height=50
 target11.name=Weapon1
 =======
+=======
+target5.showInterface=false
+mainWindow.x=160
+editor.swing.0.x=0
+target17.width=80
+target8.showInterface=false
+class.Weapon.superclass=greenfoot.Actor
+target7.typeParameters=
+target2.name=Joe
+target16.y=190
+target16.x=10
+readme.name=@README
+class.Enemy1.superclass=Figure
+target14.width=80
+class.Enemy1.image=person.png
+target13.typeParameters=
+target14.y=190
+target15.width=80
+target14.x=100
+editor.swing.0.width=1280
+target6.name=Weapon1
+class.Joe.image=Joe98_stance1_f02.gif
+target9.height=50
+target16.width=80
+class.Weapon3.superclass=Weapon
+target12.y=130
+target12.x=100
+editor.fx.0.width=700
+target11.showInterface=false
+target10.y=70
+>>>>>>> Stashed changes
 target10.x=70
 target10.y=70
 target11.height=50
 target11.name=Figure
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes
 target11.showInterface=false
 target11.type=ClassTarget
+=======
+target12.height=50
+target13.width=80
+target9.y=10
+target9.x=70
+target17.showInterface=false
+target6.height=50
+target3.type=ClassTarget
+class.Boss.superclass=greenfoot.Actor
+target7.y=130
+target7.x=100
+target15.name=enemy1
+>>>>>>> Stashed changes
 target11.typeParameters=
 target11.width=80
 <<<<<<< Updated upstream
@@ -186,6 +304,7 @@ target3.name=boss
 target3.showInterface=false
 target3.type=ClassTarget
 target3.typeParameters=
+<<<<<<< Updated upstream
 target3.width=80
 target3.x=190
 target3.y=130
@@ -227,6 +346,26 @@ target6.name=Weapon1
 target6.showInterface=false
 target6.type=ClassTarget
 target6.typeParameters=
+=======
+target9.showInterface=false
+dependency3.to=boss
+target7.name=BruceLee
+package.numDependencies=2
+package.numTargets=11
+>>>>>>>=Stashed changes
+target12.name=BruceLee
+dependency1.type=UsesDependency
+target4.type=ClassTarget
+target8.width=80
+target12.showInterface=false
+target13.height=50
+target16.name=Floor3
+simulation.speed=24
+target9.width=80
+target7.height=50
+target15.showInterface=false
+target8.type=ClassTarget
+>>>>>>> Stashed changes
 target6.width=80
 <<<<<<< Updated upstream
 target6.x=70
@@ -257,6 +396,7 @@ target8.name=Lucy
 target8.showInterface=false
 target8.type=ClassTarget
 target8.typeParameters=
+<<<<<<< Updated upstream
 target8.width=80
 <<<<<<< Updated upstream
 target8.x=160
@@ -282,3 +422,21 @@ target9.y=10
 >>>>>>> Stashed changes
 version=2.8.0
 world.lastInstantiated=Scene
+=======
+target17.y=370
+target5.width=80
+target17.x=10
+target15.y=250
+target4.name=Weapon3
+target15.x=10
+class.Fighter.superclass=
+readme.y=10
+readme.x=10
+target4.height=50
+readme.height=58
+target12.typeParameters=
+target1.width=80
+target13.y=130
+=\=\=\=\=\=\=
+target13.x=10
+>>>>>>> Stashed changes
