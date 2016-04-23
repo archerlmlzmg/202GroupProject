@@ -8,6 +8,9 @@ import java.awt.Color;
  */
 public class Scene extends World
 {
+    private static final int worldWidth = 800;
+    private static final int worldHeight = 500;
+    
     private int activeAreaX1 = 10;
     private int activeAreaX2 = 700;
     private int activeAreaY1 = 10;
@@ -21,7 +24,7 @@ public class Scene extends World
      */
     public Scene()
     {
-        super(800, 500, 1);
+        super(worldWidth, worldHeight, 1);
         bruce = new BruceLee();
         addObject(bruce,100,350);
         checkLevel(level);
@@ -41,5 +44,14 @@ public class Scene extends World
             addObject(boss, 500, 300);
             addObject(joe, 700, 350);
         }
+    }
+    
+    /**
+    * 
+    * This method getWorldWidth, This returns the world width.
+    */
+    public int getWorldWidth()
+    {
+        return worldWidth;
     }
 }
