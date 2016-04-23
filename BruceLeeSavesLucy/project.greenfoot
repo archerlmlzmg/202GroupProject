@@ -11,16 +11,22 @@ class.Enemy1.superclass=Figure
 class.Fighter.superclass=
 class.Figure.image=man01.png
 class.Figure.superclass=greenfoot.Actor
+<<<<<<< Updated upstream
 class.Goro.image=Gororun_2.gif
 class.Goro.superclass=Figure
+=======
+>>>>>>> Stashed changes
 class.Joe.image=Joe98_stance1_f02.gif
 class.Joe.superclass=Figure
 class.Lucy.image=girl1.png
 class.Lucy.superclass=Figure
 class.Scene.image=floor2_long.jpg
 class.Scene.superclass=greenfoot.World
+<<<<<<< Updated upstream
 class.Wall.image=brick.jpg
 class.Wall.superclass=greenfoot.Actor
+=======
+>>>>>>> Stashed changes
 class.Weapon.image=anchor.png
 class.Weapon.superclass=greenfoot.Actor
 class.Weapon1.superclass=Weapon
@@ -37,16 +43,20 @@ dependency2.type=UsesDependency
 dependency3.from=Scene
 dependency3.to=boss
 dependency3.type=UsesDependency
+<<<<<<< Updated upstream
 dependency4.from=Goro
 dependency4.to=Scene
 dependency4.type=UsesDependency
 dependency5.from=Goro
 dependency5.to=BruceLee
 dependency5.type=UsesDependency
+=======
+>>>>>>> Stashed changes
 editor.fx.0.height=700
 editor.fx.0.width=700
 editor.fx.0.x=0
 editor.fx.0.y=0
+<<<<<<< Updated upstream
 editor.swing.0.height=876
 editor.swing.0.width=1616
 editor.swing.0.x=-8
@@ -57,6 +67,18 @@ mainWindow.x=-8
 mainWindow.y=-8
 package.numDependencies=5
 package.numTargets=13
+=======
+editor.swing.0.height=700
+editor.swing.0.width=1154
+editor.swing.0.x=0
+editor.swing.0.y=23
+mainWindow.height=683
+mainWindow.width=1006
+mainWindow.x=160
+mainWindow.y=49
+package.numDependencies=2
+package.numTargets=11
+>>>>>>> Stashed changes
 project.charset=UTF-8
 readme.height=58
 readme.name=@README
@@ -72,21 +94,37 @@ target1.width=80
 target1.x=160
 target1.y=70
 target10.height=50
+<<<<<<< Updated upstream
 target10.name=Weapon2
+=======
+target10.name=Weapon
+>>>>>>> Stashed changes
 target10.showInterface=false
 target10.type=ClassTarget
 target10.typeParameters=
 target10.width=80
+<<<<<<< Updated upstream
 target10.x=10
 target10.y=310
 target11.height=50
 target11.name=Weapon1
+=======
+target10.x=70
+target10.y=70
+target11.height=50
+target11.name=Figure
+>>>>>>> Stashed changes
 target11.showInterface=false
 target11.type=ClassTarget
 target11.typeParameters=
 target11.width=80
+<<<<<<< Updated upstream
 target11.x=100
 target11.y=310
+=======
+target11.x=160
+target11.y=10
+>>>>>>> Stashed changes
 target12.height=50
 target12.name=BruceLee
 target12.showInterface=false
@@ -152,52 +190,95 @@ target3.width=80
 target3.x=190
 target3.y=130
 target4.height=50
+<<<<<<< Updated upstream
 target4.name=Wall
+=======
+target4.name=Weapon3
+>>>>>>> Stashed changes
 target4.showInterface=false
 target4.type=ClassTarget
 target4.typeParameters=
 target4.width=80
 target4.x=190
+<<<<<<< Updated upstream
 target4.y=190
 target5.height=50
 target5.name=Goro
+=======
+target4.y=310
+target5.height=50
+target5.name=Weapon2
+>>>>>>> Stashed changes
 target5.showInterface=false
 target5.type=ClassTarget
 target5.typeParameters=
 target5.width=80
+<<<<<<< Updated upstream
 target5.x=100
 target5.y=190
 target6.height=50
 target6.name=Scene
+=======
+target5.x=10
+target5.y=310
+target6.height=50
+target6.name=Weapon1
+>>>>>>> Stashed changes
 target6.showInterface=false
 target6.type=ClassTarget
 target6.typeParameters=
 target6.width=80
+<<<<<<< Updated upstream
 target6.x=70
 target6.y=10
 target7.height=50
 target7.name=Weapon
+=======
+target6.x=100
+target6.y=310
+target7.height=50
+target7.name=BruceLee
+>>>>>>> Stashed changes
 target7.showInterface=false
 target7.type=ClassTarget
 target7.typeParameters=
 target7.width=80
+<<<<<<< Updated upstream
 target7.x=70
 target7.y=70
 target8.height=50
 target8.name=Figure
+=======
+target7.x=100
+target7.y=130
+target8.height=50
+target8.name=Lucy
+>>>>>>> Stashed changes
 target8.showInterface=false
 target8.type=ClassTarget
 target8.typeParameters=
 target8.width=80
+<<<<<<< Updated upstream
 target8.x=160
 target8.y=10
 target9.height=50
 target9.name=Weapon3
+=======
+target8.x=10
+target8.y=130
+target9.height=50
+target9.name=Scene
+>>>>>>> Stashed changes
 target9.showInterface=false
 target9.type=ClassTarget
 target9.typeParameters=
 target9.width=80
+<<<<<<< Updated upstream
 target9.x=190
 target9.y=310
+=======
+target9.x=70
+target9.y=10
+>>>>>>> Stashed changes
 version=2.8.0
 world.lastInstantiated=Scene
