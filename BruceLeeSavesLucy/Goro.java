@@ -63,10 +63,10 @@ public class Goro extends Figure
      
         for(int i = 0; i < 6; i++)
         {
-            Left[i] = new GreenfootImage("Gororun_" + i +".gif");
+            Left[i] = new GreenfootImage("goroRunLeft_" + i +".gif");
             Right[i] = new GreenfootImage("Gororun_" + i +".gif");
-            PRight[i] = new GreenfootImage("goropunch_" + i +".gif");
-            PLeft[i] = new GreenfootImage("goropunch_" + i +".gif"); 
+            PRight[i] = new GreenfootImage("goroPunchToRight_" + i +".gif");
+            PLeft[i] = new GreenfootImage("goroPunchToLeft_" + i +".gif"); 
         /*    DRight[i] = new GreenfootImage("beingrighthit" + i +".png");
             DLeft[i] = new GreenfootImage("beinglefthit" + i +".png"); */
         }
@@ -175,7 +175,7 @@ public class Goro extends Figure
         { 
             if(lee != null)
                 dir = 0;                            
-            //    punch(dir);  
+                punch(dir);  
                 
             if(leejab != null)                    
                 dir = 1;
@@ -232,6 +232,64 @@ public class Goro extends Figure
             
         }
         
+    }
+    
+    /**
+    * This method punch, It controls the punch motion in the direction it's facing.
+    */
+    public void punch(int direct)
+    {
+        if(direct == 0)
+        {
+            switch(PLDirection)                 
+            {
+                case 0 :
+                case 1 :
+                case 2 :
+                case 3 :
+                case 4 :
+                case 5 :
+                case 6 :
+                case 7 :
+                case 8 :
+                    setImage(PLeft[PLDirection]);
+                    PLDirection++;
+                break;
+                case 9 :
+               //     Greenfoot.playSound("punch2.mp3");
+                    setImage(PLeft[PLDirection]);
+                    PLDirection = 0;
+                break;
+            }
+        
+        }
+        
+        if(direct == 1)
+        {
+            switch(PRDirection)           
+            {
+                case 0 :
+                case 1 :
+                case 2 :
+                case 3 :
+                case 4 :
+                case 5 :
+                case 6 :
+                case 7 :
+                case 8 :
+                    setImage(PRight[PRDirection]);
+                    PRDirection++;
+                break;
+                case 9 :
+               //     Greenfoot.playSound("punch2.mp3");
+                    setImage(PRight[PRDirection]);
+                    PRDirection = 0;
+                break;
+            }
+            
+        }
+        singlePunch = false;
+         
     }
     
    /**
