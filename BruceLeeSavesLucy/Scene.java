@@ -15,10 +15,16 @@ public class Scene extends World
     private int activeAreaX2 = 700;
     private int activeAreaY1 = 10;
     private int activeAreaY2 = 500;
+    
     private int level = 2;
+    //private int level = 1;
+    
     private BruceLee bruce;
     private boss boss;
     private Joe joe;
+    
+    //public HealthBar healthBar = new HealthBar(100, 100);
+    
     /**
      * 
      */
@@ -27,6 +33,7 @@ public class Scene extends World
         super(worldWidth, worldHeight, 1);
         bruce = new BruceLee();
         addObject(bruce,100,350);
+        //addObject(healthBar, 100, 40);
         checkLevel(level);
     }
     

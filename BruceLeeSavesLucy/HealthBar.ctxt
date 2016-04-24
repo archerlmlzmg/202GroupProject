@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=HealthBar
+comment0.text=\n\ Write\ a\ description\ of\ class\ HealthBar\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=initValue\ maximumValue
+comment1.target=HealthBar(int,\ int)
+comment2.params=number
+comment2.target=void\ add(int)
+comment3.params=
+comment3.target=void\ barImage()
+comment4.params=
+comment4.target=int\ getValue()
+comment5.params=
+comment5.target=void\ act()
+comment5.text=\n\ Act\ -\ do\ whatever\ the\ HealthBar\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+numComments=6
