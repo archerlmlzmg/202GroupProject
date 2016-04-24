@@ -12,11 +12,28 @@ public class Joe extends Figure
     int moveSpeed = 3;
     int moveVariable = 0;
     int moveStepLength = 10;
+    public GreenfootImage[] stand2LeftSet, openingSet;
     
     public Joe()
     {
+        openingSet = new GreenfootImage[30];
+        for (int i = 0; i < openingSet.length; i++)
+        {
+            int m = i + 1;
+            if (m < 10)
+            {
+                GreenfootImage img = new GreenfootImage("JoeOpening_f0" + m +".gif");
+                openingSet[i] = img;
+            }
+            else
+            {
+                GreenfootImage img = new GreenfootImage("JoeOpening_f" + m +".gif");
+                openingSet[i] = img;
+            }
+        }
+
         stand2LeftSet = new GreenfootImage[12];
-        for(int i=0; i<stand2LeftSet.length;i++)
+        for (int i = 0; i < stand2LeftSet.length; i++)
         {
             int m = i+ 1;
             if (m < 10)
