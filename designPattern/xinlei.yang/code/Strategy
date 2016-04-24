@@ -1,0 +1,35 @@
+abstract class Strategy
+    {
+       
+        public abstract void AlgorithmInterface();
+    }
+  
+   
+  class ConcreteStrategyA : Strategy
+    {
+        
+        public override void AlgorithmInterface()
+        {
+            Console.WriteLine("Algorithm:A");
+        }
+    }
+ 
+
+class ConcreteStrategyB : Strategy
+    {
+        
+        public override void AlgorithmInterface()
+        {
+            Console.WriteLine("Algorithm:B");
+        }
+    }
+  
+   
+  class ConcreteStrategyC : Strategy
+    {
+   
+        public override void AlgorithmInterface()
+        {
+            Console.WriteLine("Algorithm:C");
+        }
+    }
