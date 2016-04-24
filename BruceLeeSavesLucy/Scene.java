@@ -15,7 +15,7 @@ public class Scene extends World
     private int activeAreaX2 = 700;
     private int activeAreaY1 = 10;
     private int activeAreaY2 = 500;
-    private int level = 1;
+    private int level = 2;
     private BruceLee bruce;
     private boss boss;
     private Joe joe;
@@ -43,6 +43,11 @@ public class Scene extends World
             boss = new boss();
             addObject(boss, 500, 300);
             addObject(joe, 700, 350);
+        }
+        else if(currentLevel == 2)
+        {
+            addObject(new BruceLee(),100, 350);
+            addObject(new Goro(), 500, 300);
         }
     }
     
