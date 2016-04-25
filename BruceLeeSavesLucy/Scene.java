@@ -15,10 +15,17 @@ public class Scene extends World
     private int activeAreaX2 = 700;
     private int activeAreaY1 = 10;
     private int activeAreaY2 = 500;
+    
+    //private int level = 2;
     private int level = 1;
+    private int timer = 60;
+    
     private BruceLee bruce;
     private boss boss;
     private Joe joe;
+    
+    public HealthBar healthBar = new HealthBar("Bruce Lee: ", "", 100, 100);
+    
     /**
      * 
      */
@@ -27,11 +34,16 @@ public class Scene extends World
         super(worldWidth, worldHeight, 1);
         bruce = new BruceLee();
         addObject(bruce,100,350);
-        checkLevel(level);
+        addObject(healthBar, 150, 50);
     }
     
     public void act(){
         //System.out.println("testing");
+        if (timer>0)
+        {
+            timer--;
+            if(timer == 0) checkLevel(level);
+        }
     }
     
     public void checkLevel(int currentLevel)
@@ -39,10 +51,17 @@ public class Scene extends World
         if (currentLevel == 1)
         {
             joe = new Joe();
-            addObject(joe, 700, 350);
+            
+            addObject(joe, 700, 300);
+            
             boss = new boss();
             addObject(boss, 500, 300);
-            addObject(joe, 700, 350);
+        }
+        
+        if(currentLevel == 2)
+        {
+            addObject(new BruceLee(),100, 350);
+            addObject(new Goro(), 500, 300);
         }
     }
     
@@ -53,5 +72,13 @@ public class Scene extends World
     public int getWorldWidth()
     {
         return worldWidth;
+    }
+    
+    /**
+     * This method getWorldHeight. This returns the world height.
+     */
+    public int getWorldHeight()
+    {
+        return worldHeight;
     }
 }

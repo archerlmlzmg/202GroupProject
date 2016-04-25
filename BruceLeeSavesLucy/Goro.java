@@ -8,7 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Goro extends Figure
 {
-    private int hSpeed = 6;    
+    int moveSpeed = 5;
+    int moveVariable = 0;
+    
+    private int hSpeed = 4;    
     private int vSpeed = 0;    
     private int aSpeed = 2;     
     
@@ -58,16 +61,28 @@ public class Goro extends Figure
             Blood[i] = new GreenfootImage("rightblood" + i +".png");
         }
      
-        for(int i = 0; i < 4; i++)
+        for(int i = 0; i < 6; i++)
         {
-            Left[i] = new GreenfootImage("Gororun_" + i +".gif");
+            Left[i] = new GreenfootImage("goroRunLeft_" + i +".gif");
             Right[i] = new GreenfootImage("Gororun_" + i +".gif");
-            PRight[i] = new GreenfootImage("goropunch_" + i +".gif");
-            PLeft[i] = new GreenfootImage("goropunch_" + i +".gif"); 
+            PRight[i] = new GreenfootImage("goroPunchToRight_" + i +".gif");
+            PLeft[i] = new GreenfootImage("goroPunchToLeft_" + i +".gif"); 
         /*    DRight[i] = new GreenfootImage("beingrighthit" + i +".png");
             DLeft[i] = new GreenfootImage("beinglefthit" + i +".png"); */
         }
     
+    }
+    
+    /**
+    * This method addedToWorld, Assigns the level and returns the x and y positions
+    *                           to the world and sets the feet parameter.
+    */
+    public void addedToWorld(World world)
+    {
+        level = (Scene) world;                
+        xPlayer = getX();                        
+        yPlayer = getY();                         
+        feet = getImage().getHeight() / 2;
     }
     
     /**
@@ -88,7 +103,13 @@ public class Goro extends Figure
     {
         if(pacing > 0)   
         {
-            direction = 0;                             
+            direction = 0;
+            if(moveVariable < moveSpeed){
+                moveVariable++;
+                return;
+            }else{
+                moveVariable = 0;
+            }
             switch(LDirection)              
             {
                 case 0:
@@ -101,7 +122,7 @@ public class Goro extends Figure
                     pacing--;
                 break;
                 case 5 :
-                    Greenfoot.playSound("gorowalking.mp3");
+                //    Greenfoot.playSound("gorowalking.mp3");
                     setImage(Left[LDirection]);
                     LDirection = 0;
                     pacing--;
@@ -116,7 +137,13 @@ public class Goro extends Figure
         
         if(pacing <= 0)  
         {
-            direction = 1;              
+            direction = 1; 
+            if(moveVariable < moveSpeed){
+                moveVariable++;
+                return;
+            }else{
+                moveVariable = 0;
+            }
             switch(RDirection)         
             {
                 case 0:
@@ -129,7 +156,7 @@ public class Goro extends Figure
                     pacing++;
                 break;
                 case 5 :
-                    Greenfoot.playSound("gorowalking.mp3");
+                //    Greenfoot.playSound("gorowalking.mp3");
                     setImage(Right[RDirection]);
                     RDirection = 0;
                     pacing++;
@@ -148,7 +175,7 @@ public class Goro extends Figure
         { 
             if(lee != null)
                 dir = 0;                            
-            //    punch(dir);  
+                punch(dir);  
                 
             if(leejab != null)                    
                 dir = 1;
@@ -164,7 +191,7 @@ public class Goro extends Figure
     */
     public void moveLeft()
     {
-        if(wall())
+   //     if(wall())
         {
             xPlayer -= hSpeed;
             if(yPlayer >= 400)       
@@ -189,7 +216,7 @@ public class Goro extends Figure
     */
     public void moveRight()
     {
-        if(wall())
+   //     if(wall())
         {
             xPlayer += hSpeed;
             if(yPlayer >= 400)        
@@ -208,6 +235,64 @@ public class Goro extends Figure
     }
     
     /**
+    * This method punch, It controls the punch motion in the direction it's facing.
+    */
+    public void punch(int direct)
+    {
+        if(direct == 0)
+        {
+            switch(PLDirection)                 
+            {
+                case 0 :
+                case 1 :
+                case 2 :
+                case 3 :
+                case 4 :
+                case 5 :
+                case 6 :
+                case 7 :
+                case 8 :
+                    setImage(PLeft[PLDirection]);
+                    PLDirection++;
+                break;
+                case 9 :
+               //     Greenfoot.playSound("punch2.mp3");
+                    setImage(PLeft[PLDirection]);
+                    PLDirection = 0;
+                break;
+            }
+        
+        }
+        
+        if(direct == 1)
+        {
+            switch(PRDirection)           
+            {
+                case 0 :
+                case 1 :
+                case 2 :
+                case 3 :
+                case 4 :
+                case 5 :
+                case 6 :
+                case 7 :
+                case 8 :
+                    setImage(PRight[PRDirection]);
+                    PRDirection++;
+                break;
+                case 9 :
+               //     Greenfoot.playSound("punch2.mp3");
+                    setImage(PRight[PRDirection]);
+                    PRDirection = 0;
+                break;
+            }
+            
+        }
+        singlePunch = false;
+         
+    }
+    
+   /**
     * This method wall, It checks for the wall.
     */
     public boolean wall()
@@ -217,5 +302,5 @@ public class Goro extends Figure
             return true;
         
             return false;
-    }
+    } 
 }
