@@ -18,6 +18,7 @@ public class Scene extends World
     
     //private int level = 2;
     private int level = 1;
+    private int timer = 60;
     
     private BruceLee bruce;
     private boss boss;
@@ -33,12 +34,16 @@ public class Scene extends World
         super(worldWidth, worldHeight, 1);
         bruce = new BruceLee();
         addObject(bruce,100,350);
-        //addObject(healthBar, 100, 40);
-        checkLevel(level);
+        addObject(healthBar, 150, 50);
     }
     
     public void act(){
         //System.out.println("testing");
+        if (timer>0)
+        {
+            timer--;
+            if(timer == 0) checkLevel(level);
+        }
     }
     
     public void checkLevel(int currentLevel)
@@ -46,12 +51,11 @@ public class Scene extends World
         if (currentLevel == 1)
         {
             joe = new Joe();
+            
             addObject(joe, 700, 300);
-     
+            
             boss = new boss();
             addObject(boss, 500, 300);
-            
-            addObject(healthBar, 150, 50);
         }
         
         if(currentLevel == 2)
