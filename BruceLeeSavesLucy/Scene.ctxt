@@ -11,12 +11,18 @@ comment3.target=void\ checkLevel(int)
 comment4.params=
 comment4.target=int\ getWorldWidth()
 <<<<<<< HEAD
+<<<<<<< HEAD
 comment4.text=\r\n\ \r\n\ This\ method\ getWorldWidth,\ This\ returns\ the\ world\ width.\r\n
 numComments=5
 =======
+=======
+>>>>>>> origin/master
 comment4.text=\n\ \n\ This\ method\ getWorldWidth,\ This\ returns\ the\ world\ width.\n
 comment5.params=
 comment5.target=int\ getWorldHeight()
 comment5.text=\n\ This\ method\ getWorldHeight.\ This\ returns\ the\ world\ height.\n
 numComments=6
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
