@@ -160,6 +160,8 @@ public class BruceLee extends Figure
         }*/
     }
  
-    public void beAttacked(int power){
+    public void beAttacked(int power)
+    {
+        
     }
 }

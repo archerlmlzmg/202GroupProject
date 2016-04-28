@@ -65,6 +65,9 @@ public class Goro extends Figure
         {
             Left[i] = new GreenfootImage("goroRunLeft_" + i +".gif");
             Right[i] = new GreenfootImage("Gororun_" + i +".gif");
+        }
+        
+        for(int i = 0; i < 10; i++){
             PRight[i] = new GreenfootImage("goroPunchToRight_" + i +".gif");
             PLeft[i] = new GreenfootImage("goroPunchToLeft_" + i +".gif"); 
         /*    DRight[i] = new GreenfootImage("beingrighthit" + i +".png");
@@ -290,6 +293,105 @@ public class Goro extends Figure
         }
         singlePunch = false;
          
+    }
+    
+    /**
+    * This method hit, It checks if goro is attacked.
+    */   
+    public void hit(int direction)
+    {
+        if(direction == 1)
+            dir = 1;
+            
+        if(direction == 0)
+            dir = 0;
+            
+        if(dir == 1)    
+        {
+            for(int i = 0; i < 5; i++)
+            {
+                switch(Lhit)               
+                {
+                    case 0 :
+                        setImage(DLeft[Lhit]);
+                        Lhit++;
+                        Greenfoot.delay(2);
+                        Greenfoot.playSound("hit.mp3");
+                    break;
+                    case 1 :
+                        setImage(DLeft[Lhit]);
+                        Lhit++;
+                        Greenfoot.delay(2);  
+                        Greenfoot.playSound("hit.mp3");
+                    break;
+                    case 2 :
+                        setImage(DLeft[Lhit]);
+                        Lhit++;
+                        Greenfoot.delay(2);
+                        Greenfoot.playSound("die1.mp3");
+                    break;                    
+                    case 3 :
+                        setImage(DLeft[Lhit]);
+                        Lhit++;
+                        Greenfoot.delay(2);
+                        Greenfoot.playSound("hit.mp3");
+                    break;
+                    case 4 :
+                        setImage(DLeft[Lhit]);
+                        Lhit = 0;
+                        Greenfoot.delay(1);
+                        Greenfoot.playSound("hit.mp3");
+                    break;
+                }
+           
+            }
+        
+        }
+        
+        if(dir == 0)  
+        {
+            for(int i = 0; i < 5; i++)
+            {
+                switch(Rhit)            
+                {
+                    case 0 :
+                        setImage(DRight[Rhit]);
+                        Rhit++;
+                        Greenfoot.delay(2);
+                        Greenfoot.playSound("hit.wav");
+                    break;
+                    case 1 :
+                        setImage(DRight[Rhit]);
+                        Rhit++;
+                        Greenfoot.delay(2);
+                        Greenfoot.playSound("hit.wav");
+                    break;
+                    case 2 :
+                        setImage(DRight[Rhit]);
+                        Rhit++;
+                        Greenfoot.delay(2);
+                        Greenfoot.playSound("die1.wav");    
+                    break;
+                    case 3 :
+                        setImage(DRight[Rhit]);
+                        Rhit++;
+                        Greenfoot.delay(2);
+                        Greenfoot.playSound("hit.mp3");
+                    break;
+                    case 4 :
+                        setImage(DRight[Rhit]);
+                        Rhit++;
+                        Greenfoot.delay(2);
+                        Greenfoot.playSound("hit.mp3");
+                    break;
+                }
+                
+            } 
+        
+        }
+        damage++;
+        death(0);
+        
     }
     
    /**
