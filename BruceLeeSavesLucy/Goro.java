@@ -50,8 +50,8 @@ public class Goro extends Figure
     private GreenfootImage[] Right  = new GreenfootImage[6];          
     private GreenfootImage[] PLeft  = new GreenfootImage[10];          
     private GreenfootImage[] PRight = new GreenfootImage[10];        
-    //private GreenfootImage[] DLeft  = new GreenfootImage[5];         
-   // private GreenfootImage[] DRight = new GreenfootImage[5];        
+    private GreenfootImage[] DLeft  = new GreenfootImage[6];         
+    private GreenfootImage[] DRight = new GreenfootImage[6];        
     private GreenfootImage[] Blood  = new GreenfootImage[7];
     
     public Goro()
@@ -65,13 +65,13 @@ public class Goro extends Figure
         {
             Left[i] = new GreenfootImage("goroRunLeft_" + i +".gif");
             Right[i] = new GreenfootImage("Gororun_" + i +".gif");
+            DRight[i] = new GreenfootImage("Gororighthit_" + i +".png");
+            DLeft[i] = new GreenfootImage("Gororighthit_" + i +".png");
         }
         
         for(int i = 0; i < 10; i++){
             PRight[i] = new GreenfootImage("goroPunchToRight_" + i +".gif");
             PLeft[i] = new GreenfootImage("goroPunchToLeft_" + i +".gif"); 
-        /*    DRight[i] = new GreenfootImage("beingrighthit" + i +".png");
-            DLeft[i] = new GreenfootImage("beinglefthit" + i +".png"); */
         }
     
     }
@@ -123,7 +123,6 @@ public class Goro extends Figure
                     setImage(Left[LDirection]);
                     LDirection++;
                     pacing--;
-                break;
                 case 5 :
                 //    Greenfoot.playSound("gorowalking.mp3");
                     setImage(Left[LDirection]);
@@ -157,7 +156,6 @@ public class Goro extends Figure
                     setImage(Right[RDirection]);
                     RDirection++;
                     pacing++;
-                break;
                 case 5 :
                 //    Greenfoot.playSound("gorowalking.mp3");
                     setImage(Right[RDirection]);
@@ -257,7 +255,6 @@ public class Goro extends Figure
                 case 8 :
                     setImage(PLeft[PLDirection]);
                     PLDirection++;
-                break;
                 case 9 :
                //     Greenfoot.playSound("punch2.mp3");
                     setImage(PLeft[PLDirection]);
@@ -282,7 +279,6 @@ public class Goro extends Figure
                 case 8 :
                     setImage(PRight[PRDirection]);
                     PRDirection++;
-                break;
                 case 9 :
                //     Greenfoot.playSound("punch2.mp3");
                     setImage(PRight[PRDirection]);
@@ -312,31 +308,37 @@ public class Goro extends Figure
             {
                 switch(Lhit)               
                 {
-                    case 0 :
+                    case 0:
                         setImage(DLeft[Lhit]);
                         Lhit++;
                         Greenfoot.delay(2);
                         Greenfoot.playSound("hit.mp3");
                     break;
-                    case 1 :
-                        setImage(DLeft[Lhit]);
-                        Lhit++;
-                        Greenfoot.delay(2);  
-                        Greenfoot.playSound("hit.mp3");
-                    break;
-                    case 2 :
+                    case 1:
                         setImage(DLeft[Lhit]);
                         Lhit++;
                         Greenfoot.delay(2);
-                        Greenfoot.playSound("die1.mp3");
-                    break;                    
+                        Greenfoot.playSound("hit.mp3");
+                    break;
+                    case 2:
+                        setImage(DLeft[Lhit]);
+                        Lhit++;
+                        Greenfoot.delay(2);
+                        Greenfoot.playSound("hit.mp3");
+                    break;
                     case 3 :
                         setImage(DLeft[Lhit]);
                         Lhit++;
                         Greenfoot.delay(2);
                         Greenfoot.playSound("hit.mp3");
                     break;
-                    case 4 :
+                    case 4:
+                        setImage(DLeft[Lhit]);
+                        Lhit++;
+                        Greenfoot.delay(2);
+                        Greenfoot.playSound("hit.mp3");
+                    break;
+                    case 5 :
                         setImage(DLeft[Lhit]);
                         Lhit = 0;
                         Greenfoot.delay(1);
@@ -393,6 +395,81 @@ public class Goro extends Figure
         death(0);
         
     }
+    
+    
+     /**
+    * This method death, It checks to see if the damage to goro is
+    *                    above 6 hits, and calls to GoroExploding.
+    */
+    public void death(int b)
+    { 
+        if(damage >= 6 && b != 5)
+        {           
+            for(int i = 0; i < 7; i++)
+            {
+                switch(bloodNum)           
+                {
+                    case 0 :
+                        setImage(Blood[bloodNum]);
+                        bloodNum = 6;
+                        Greenfoot.delay(1);
+                        Greenfoot.playSound("stab1.mp3");
+                    break;
+                    case 1 :
+                        setImage(Blood[bloodNum]);
+                        bloodNum--;
+                        Greenfoot.delay(1);
+                        Greenfoot.playSound("stab1.mp3");
+                    break;
+                    case 2 :
+                        setImage(Blood[bloodNum]);
+                        bloodNum--;
+                        Greenfoot.delay(1);
+                        Greenfoot.playSound("stab1.mp3");
+                    break;
+                    case 3 :
+                        setImage(Blood[bloodNum]);
+                        bloodNum--;
+                        Greenfoot.delay(1);
+                        Greenfoot.playSound("finishhim.mp3");
+                        Greenfoot.playSound("stab1.mp3");
+                    break;
+                    case 4 :
+                        setImage(Blood[bloodNum]);
+                        bloodNum--;
+                        Greenfoot.delay(1);
+                        Greenfoot.playSound("stab1.mp3");
+                    break;
+                    case 5 :
+                        setImage(Blood[bloodNum]);
+                        bloodNum--;
+                        Greenfoot.delay(1);
+                        Greenfoot.playSound("stab.mp3");
+                    break;
+                    case 6 :
+                        setImage(Blood[bloodNum]);
+                        bloodNum--;
+                        Greenfoot.delay(1);
+                        Greenfoot.playSound("gororoar.mp3");
+                    break;
+                } 
+                Greenfoot.playSound("outstanding.mp3");
+                
+            }
+        //    level.singleNinjas(0);
+           level.removeObject(this);
+           return;
+            
+        }
+        
+        else if(b == 5)
+        {
+       //     level.singleNinjas(0);
+            level.removeObject(this);          
+        }
+        
+    }
+    
     
    /**
     * This method wall, It checks for the wall.
