@@ -12,6 +12,7 @@ public class Joe extends Figure
     int moveSpeed = 3;
     int moveVariable = 0;
     int moveStepLength = 10;
+    private boolean opening = true;
     public GreenfootImage[] stand2LeftSet, openingSet;
     
     public Joe()
@@ -49,8 +50,18 @@ public class Joe extends Figure
                 stand2LeftSet[i] = img;
             } 
         }
-        this.currentMotionSet = stand2LeftSet;
-        this.setCurrentPose(Figure.POSE_STAND);
+        
+        if (opening)
+        {
+            this.currentMotionSet = openingSet;
+            this.setCurrentPose(Figure.POSE_STAND);
+            opening = false;
+        }
+        else
+        {
+            this.currentMotionSet = stand2LeftSet;
+            this.setCurrentPose(Figure.POSE_WALK);
+        }
     }
     /**
      * Act - do whatever the Joe wants to do. This method is called whenever
