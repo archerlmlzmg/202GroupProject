@@ -8,7 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Goro extends Figure
 {
-    private int hSpeed = 6;    
+    int moveSpeed = 5;
+    int moveVariable = 0;
+    
+    private int hSpeed = 4;    
     private int vSpeed = 0;    
     private int aSpeed = 2;     
     
@@ -47,8 +50,8 @@ public class Goro extends Figure
     private GreenfootImage[] Right  = new GreenfootImage[6];          
     private GreenfootImage[] PLeft  = new GreenfootImage[10];          
     private GreenfootImage[] PRight = new GreenfootImage[10];        
-    //private GreenfootImage[] DLeft  = new GreenfootImage[5];         
-   // private GreenfootImage[] DRight = new GreenfootImage[5];        
+    private GreenfootImage[] DLeft  = new GreenfootImage[6];         
+    private GreenfootImage[] DRight = new GreenfootImage[6];        
     private GreenfootImage[] Blood  = new GreenfootImage[7];
     
     public Goro()
@@ -58,16 +61,31 @@ public class Goro extends Figure
             Blood[i] = new GreenfootImage("rightblood" + i +".png");
         }
      
-        for(int i = 0; i < 4; i++)
+        for(int i = 0; i < 6; i++)
         {
-            Left[i] = new GreenfootImage("Gororun_" + i +".gif");
+            Left[i] = new GreenfootImage("goroRunLeft_" + i +".gif");
             Right[i] = new GreenfootImage("Gororun_" + i +".gif");
-            PRight[i] = new GreenfootImage("goropunch_" + i +".gif");
-            PLeft[i] = new GreenfootImage("goropunch_" + i +".gif"); 
-        /*    DRight[i] = new GreenfootImage("beingrighthit" + i +".png");
-            DLeft[i] = new GreenfootImage("beinglefthit" + i +".png"); */
+            DRight[i] = new GreenfootImage("Gororighthit_" + i +".gif");
+            DLeft[i] = new GreenfootImage("Gororighthit_" + i +".gif");
+        }
+        
+        for(int i = 0; i < 10; i++){
+            PRight[i] = new GreenfootImage("goroPunchToRight_" + i +".gif");
+            PLeft[i] = new GreenfootImage("goroPunchToLeft_" + i +".gif"); 
         }
     
+    }
+    
+    /**
+    * This method addedToWorld, Assigns the level and returns the x and y positions
+    *                           to the world and sets the feet parameter.
+    */
+    public void addedToWorld(World world)
+    {
+        level = (Scene) world;                
+        xPlayer = getX();                        
+        yPlayer = getY();                         
+        feet = getImage().getHeight() / 2;
     }
     
     /**
@@ -77,8 +95,8 @@ public class Goro extends Figure
     public void act() 
     {
         move();
-    //    bruceLee();
-    //    death(die);
+        bruceLee();
+        death(die);
     }
     
     /**
@@ -88,20 +106,42 @@ public class Goro extends Figure
     {
         if(pacing > 0)   
         {
-            direction = 0;                             
+            direction = 0;
+            if(moveVariable < moveSpeed){
+                moveVariable++;
+                return;
+            }else{
+                moveVariable = 0;
+            }
             switch(LDirection)              
             {
                 case 0:
+                    setImage(Left[LDirection]);
+                    LDirection++;
+                    pacing--;
+                    break;
                 case 1:
+                    setImage(Left[LDirection]);
+                    LDirection++;
+                    pacing--;
+                    break;
                 case 2:
+                    setImage(Left[LDirection]);
+                    LDirection++;
+                    pacing--;
+                    break;
                 case 3:
+                    setImage(Left[LDirection]);
+                    LDirection++;
+                    pacing--;
+                    break;
                 case 4 :
                     setImage(Left[LDirection]);
                     LDirection++;
                     pacing--;
-                break;
+                    break;
                 case 5 :
-                    Greenfoot.playSound("gorowalking.mp3");
+                //    Greenfoot.playSound("gorowalking.mp3");
                     setImage(Left[LDirection]);
                     LDirection = 0;
                     pacing--;
@@ -116,20 +156,42 @@ public class Goro extends Figure
         
         if(pacing <= 0)  
         {
-            direction = 1;              
+            direction = 1; 
+            if(moveVariable < moveSpeed){
+                moveVariable++;
+                return;
+            }else{
+                moveVariable = 0;
+            }
             switch(RDirection)         
             {
                 case 0:
+                    setImage(Right[RDirection]);
+                    RDirection++;
+                    pacing++;
+                    break;
                 case 1:
+                    setImage(Right[RDirection]);
+                    RDirection++;
+                    pacing++;
+                    break;
                 case 2:
+                    setImage(Right[RDirection]);
+                    RDirection++;
+                    pacing++;
+                    break;
                 case 3:
+                    setImage(Right[RDirection]);
+                    RDirection++;
+                    pacing++;
+                    break;
                 case 4 :
                     setImage(Right[RDirection]);
                     RDirection++;
                     pacing++;
-                break;
+                    break;
                 case 5 :
-                    Greenfoot.playSound("gorowalking.mp3");
+                //    Greenfoot.playSound("gorowalking.mp3");
                     setImage(Right[RDirection]);
                     RDirection = 0;
                     pacing++;
@@ -142,17 +204,16 @@ public class Goro extends Figure
                 
         }
 
-        BruceLee lee = (BruceLee) getOneObjectAtOffset(10, 0, BruceLee.class);
-        BruceLee leejab = (BruceLee) getOneObjectAtOffset(-10, 0, BruceLee.class);
+        BruceLee lee = (BruceLee) getOneObjectAtOffset(20, 0, BruceLee.class);
+        BruceLee leejab = (BruceLee) getOneObjectAtOffset(-20, 0, BruceLee.class);
         if(lee != null || leejab != null)         
         { 
+            System.out.println("lee or leejab is not null");
             if(lee != null)
-                dir = 0;                            
-            //    punch(dir);  
-                
+                dir = 0;   
             if(leejab != null)                    
                 dir = 1;
-                 
+            punch(dir);       
         }
         
     }
@@ -164,7 +225,7 @@ public class Goro extends Figure
     */
     public void moveLeft()
     {
-        if(wall())
+   //     if(wall())
         {
             xPlayer -= hSpeed;
             if(yPlayer >= 400)       
@@ -189,7 +250,7 @@ public class Goro extends Figure
     */
     public void moveRight()
     {
-        if(wall())
+   //     if(wall())
         {
             xPlayer += hSpeed;
             if(yPlayer >= 400)        
@@ -208,6 +269,293 @@ public class Goro extends Figure
     }
     
     /**
+    * This method punch, It controls the punch motion in the direction it's facing.
+    */
+    public void punch(int direct)
+    {
+        System.out.println("Enter the punch founction");
+        if(direct == 0)
+        {
+            switch(PLDirection)                 
+            {
+                case 0 :
+                    setImage(PLeft[PLDirection]);
+                    PLDirection++;
+                    break;
+                case 1 :
+                    setImage(PLeft[PLDirection]);
+                    PLDirection++;
+                    break;
+                case 2 :
+                    setImage(PLeft[PLDirection]);
+                    PLDirection++;
+                    break;
+                case 3 :
+                    setImage(PLeft[PLDirection]);
+                    PLDirection++;
+                    break;
+                case 4 :
+                    setImage(PLeft[PLDirection]);
+                    PLDirection++;
+                    break;
+                case 5 :
+                    setImage(PLeft[PLDirection]);
+                    PLDirection++;
+                    break;
+                case 6 :
+                    setImage(PLeft[PLDirection]);
+                    PLDirection++;
+                    break;
+                case 7 :
+                    setImage(PLeft[PLDirection]);
+                    PLDirection++;
+                    break;
+                case 8 :
+                    setImage(PLeft[PLDirection]);
+                    PLDirection++;
+                    break;
+                case 9 :
+               //     Greenfoot.playSound("punch2.mp3");
+                    setImage(PLeft[PLDirection]);
+                    PLDirection = 0;
+                break;
+            }
+        
+        }
+        
+        if(direct == 1)
+        {
+            switch(PRDirection)           
+            {
+                case 0 :
+                    setImage(PRight[PRDirection]);
+                    PRDirection++;
+                    break;
+                case 1 :
+                    setImage(PRight[PRDirection]);
+                    PRDirection++;
+                    break;
+                case 2 :
+                    setImage(PRight[PRDirection]);
+                    PRDirection++;
+                    break;
+                case 3 :
+                    setImage(PRight[PRDirection]);
+                    PRDirection++;
+                    break;
+                case 4 :
+                    setImage(PRight[PRDirection]);
+                    PRDirection++;
+                    break;
+                case 5 :
+                    setImage(PRight[PRDirection]);
+                    PRDirection++;
+                    break;
+                case 6 :
+                    setImage(PRight[PRDirection]);
+                    PRDirection++;
+                    break;
+                case 7 :
+                    setImage(PRight[PRDirection]);
+                    PRDirection++;
+                    break;
+                case 8 :
+                    setImage(PRight[PRDirection]);
+                    PRDirection++;
+                    break;
+                case 9 :
+               //     Greenfoot.playSound("punch2.mp3");
+                    setImage(PRight[PRDirection]);
+                    PRDirection = 0;
+                break;
+            }
+            
+        }
+        singlePunch = false;
+         
+    }
+    
+    /**
+    * This method hit, It checks if goro is attacked.
+    */   
+    public void hit(int direction)
+    {
+        if(direction == 1)
+            dir = 1;
+            
+        if(direction == 0)
+            dir = 0;
+            
+        if(dir == 1)    
+        {
+            for(int i = 0; i < 5; i++)
+            {
+                switch(Lhit)               
+                {
+                    case 0:
+                        setImage(DLeft[Lhit]);
+                        Lhit++;
+                        Greenfoot.delay(2);
+                    //    Greenfoot.playSound("hit.mp3");
+                    break;
+                    case 1:
+                        setImage(DLeft[Lhit]);
+                        Lhit++;
+                        Greenfoot.delay(2);
+                   //     Greenfoot.playSound("hit.mp3");
+                    break;
+                    case 2:
+                        setImage(DLeft[Lhit]);
+                        Lhit++;
+                        Greenfoot.delay(2);
+                   //     Greenfoot.playSound("hit.mp3");
+                    break;
+                    case 3 :
+                        setImage(DLeft[Lhit]);
+                        Lhit++;
+                        Greenfoot.delay(2);
+                  //      Greenfoot.playSound("hit.mp3");
+                    break;
+                    case 4:
+                        setImage(DLeft[Lhit]);
+                        Lhit++;
+                        Greenfoot.delay(2);
+                  //      Greenfoot.playSound("hit.mp3");
+                    break;
+                    case 5 :
+                        setImage(DLeft[Lhit]);
+                        Lhit = 0;
+                        Greenfoot.delay(1);
+                  //      Greenfoot.playSound("hit.mp3");
+                    break;
+                }
+           
+            }
+        
+        }
+        
+        if(dir == 0)  
+        {
+            for(int i = 0; i < 5; i++)
+            {
+                switch(Rhit)            
+                {
+                    case 0 :
+                        setImage(DRight[Rhit]);
+                        Rhit++;
+                        Greenfoot.delay(2);
+                    //    Greenfoot.playSound("hit.mp3");
+                    break;
+                    case 1 :
+                        setImage(DRight[Rhit]);
+                        Rhit++;
+                        Greenfoot.delay(2);
+                    //    Greenfoot.playSound("hit.mp3");
+                    break;
+                    case 2 :
+                        setImage(DRight[Rhit]);
+                        Rhit++;
+                        Greenfoot.delay(2);
+                    //    Greenfoot.playSound("hit.mp3");    
+                    break;
+                    case 3 :
+                        setImage(DRight[Rhit]);
+                        Rhit++;
+                        Greenfoot.delay(2);
+                    //    Greenfoot.playSound("hit.mp3");
+                    break;
+                    case 4 :
+                        setImage(DRight[Rhit]);
+                        Rhit++;
+                        Greenfoot.delay(2);
+                    //    Greenfoot.playSound("hit.mp3");
+                    break;
+                }
+                
+            } 
+        
+        }
+        damage++;
+        death(0);
+        
+    }
+    
+    
+     /**
+    * This method death, It checks to see if the damage to goro is
+    *                    above 6 hits, and calls to GoroExploding.
+    */
+    public void death(int b)
+    { 
+        if(damage >= 6 && b != 5)
+        {           
+            for(int i = 0; i < 7; i++)
+            {
+                switch(bloodNum)           
+                {
+                    case 0 :
+                        setImage(Blood[bloodNum]);
+                        bloodNum = 6;
+                        Greenfoot.delay(1);
+                   //     Greenfoot.playSound("stab1.mp3");
+                    break;
+                    case 1 :
+                        setImage(Blood[bloodNum]);
+                        bloodNum--;
+                        Greenfoot.delay(1);
+                  //      Greenfoot.playSound("stab1.mp3");
+                    break;
+                    case 2 :
+                        setImage(Blood[bloodNum]);
+                        bloodNum--;
+                        Greenfoot.delay(1);
+                  //      Greenfoot.playSound("stab1.mp3");
+                    break;
+                    case 3 :
+                        setImage(Blood[bloodNum]);
+                        bloodNum--;
+                        Greenfoot.delay(1);
+                  //      Greenfoot.playSound("finishhim.mp3");
+                  //      Greenfoot.playSound("stab1.mp3");
+                    break;
+                    case 4 :
+                        setImage(Blood[bloodNum]);
+                        bloodNum--;
+                        Greenfoot.delay(1);
+                  //      Greenfoot.playSound("stab1.mp3");
+                    break;
+                    case 5 :
+                        setImage(Blood[bloodNum]);
+                        bloodNum--;
+                        Greenfoot.delay(1);
+                  //      Greenfoot.playSound("stab.mp3");
+                    break;
+                    case 6 :
+                        setImage(Blood[bloodNum]);
+                        bloodNum--;
+                        Greenfoot.delay(1);
+                  //      Greenfoot.playSound("gororoar.mp3");
+                    break;
+                } 
+                //Greenfoot.playSound("outstanding.mp3");
+                
+            }
+        //    level.singleNinjas(0);
+           level.removeObject(this);
+           return;
+            
+        }
+        
+        else if(b == 5)
+        {
+       //     level.singleNinjas(0);
+            level.removeObject(this);          
+        }
+        
+    }
+    
+    
+   /**
     * This method wall, It checks for the wall.
     */
     public boolean wall()
@@ -217,5 +565,14 @@ public class Goro extends Figure
             return true;
         
             return false;
+    }
+    
+    public void bruceLee()
+    {
+        BruceLee bruce = (BruceLee) getOneIntersectingObject(BruceLee.class);
+                   
+        if(bruce != null)           
+            hit(direction);
+            
     }
 }
