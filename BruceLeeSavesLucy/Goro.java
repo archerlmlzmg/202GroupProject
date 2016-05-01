@@ -65,8 +65,8 @@ public class Goro extends Figure
         {
             Left[i] = new GreenfootImage("goroRunLeft_" + i +".gif");
             Right[i] = new GreenfootImage("Gororun_" + i +".gif");
-            DRight[i] = new GreenfootImage("Gororighthit_" + i +".png");
-            DLeft[i] = new GreenfootImage("Gororighthit_" + i +".png");
+            DRight[i] = new GreenfootImage("Gororighthit_" + i +".gif");
+            DLeft[i] = new GreenfootImage("Gororighthit_" + i +".gif");
         }
         
         for(int i = 0; i < 10; i++){
@@ -95,8 +95,8 @@ public class Goro extends Figure
     public void act() 
     {
         move();
-    //    bruceLee();
-    //    death(die);
+        bruceLee();
+        death(die);
     }
     
     /**
@@ -116,13 +116,30 @@ public class Goro extends Figure
             switch(LDirection)              
             {
                 case 0:
+                    setImage(Left[LDirection]);
+                    LDirection++;
+                    pacing--;
+                    break;
                 case 1:
+                    setImage(Left[LDirection]);
+                    LDirection++;
+                    pacing--;
+                    break;
                 case 2:
+                    setImage(Left[LDirection]);
+                    LDirection++;
+                    pacing--;
+                    break;
                 case 3:
+                    setImage(Left[LDirection]);
+                    LDirection++;
+                    pacing--;
+                    break;
                 case 4 :
                     setImage(Left[LDirection]);
                     LDirection++;
                     pacing--;
+                    break;
                 case 5 :
                 //    Greenfoot.playSound("gorowalking.mp3");
                     setImage(Left[LDirection]);
@@ -149,13 +166,30 @@ public class Goro extends Figure
             switch(RDirection)         
             {
                 case 0:
+                    setImage(Right[RDirection]);
+                    RDirection++;
+                    pacing++;
+                    break;
                 case 1:
+                    setImage(Right[RDirection]);
+                    RDirection++;
+                    pacing++;
+                    break;
                 case 2:
+                    setImage(Right[RDirection]);
+                    RDirection++;
+                    pacing++;
+                    break;
                 case 3:
+                    setImage(Right[RDirection]);
+                    RDirection++;
+                    pacing++;
+                    break;
                 case 4 :
                     setImage(Right[RDirection]);
                     RDirection++;
                     pacing++;
+                    break;
                 case 5 :
                 //    Greenfoot.playSound("gorowalking.mp3");
                     setImage(Right[RDirection]);
@@ -170,17 +204,16 @@ public class Goro extends Figure
                 
         }
 
-        BruceLee lee = (BruceLee) getOneObjectAtOffset(10, 0, BruceLee.class);
-        BruceLee leejab = (BruceLee) getOneObjectAtOffset(-10, 0, BruceLee.class);
+        BruceLee lee = (BruceLee) getOneObjectAtOffset(20, 0, BruceLee.class);
+        BruceLee leejab = (BruceLee) getOneObjectAtOffset(-20, 0, BruceLee.class);
         if(lee != null || leejab != null)         
         { 
+            System.out.println("lee or leejab is not null");
             if(lee != null)
-                dir = 0;                            
-                punch(dir);  
-                
+                dir = 0;   
             if(leejab != null)                    
                 dir = 1;
-                 
+            punch(dir);       
         }
         
     }
@@ -240,21 +273,47 @@ public class Goro extends Figure
     */
     public void punch(int direct)
     {
+        System.out.println("Enter the punch founction");
         if(direct == 0)
         {
             switch(PLDirection)                 
             {
                 case 0 :
+                    setImage(PLeft[PLDirection]);
+                    PLDirection++;
+                    break;
                 case 1 :
+                    setImage(PLeft[PLDirection]);
+                    PLDirection++;
+                    break;
                 case 2 :
+                    setImage(PLeft[PLDirection]);
+                    PLDirection++;
+                    break;
                 case 3 :
+                    setImage(PLeft[PLDirection]);
+                    PLDirection++;
+                    break;
                 case 4 :
+                    setImage(PLeft[PLDirection]);
+                    PLDirection++;
+                    break;
                 case 5 :
+                    setImage(PLeft[PLDirection]);
+                    PLDirection++;
+                    break;
                 case 6 :
+                    setImage(PLeft[PLDirection]);
+                    PLDirection++;
+                    break;
                 case 7 :
+                    setImage(PLeft[PLDirection]);
+                    PLDirection++;
+                    break;
                 case 8 :
                     setImage(PLeft[PLDirection]);
                     PLDirection++;
+                    break;
                 case 9 :
                //     Greenfoot.playSound("punch2.mp3");
                     setImage(PLeft[PLDirection]);
@@ -269,16 +328,41 @@ public class Goro extends Figure
             switch(PRDirection)           
             {
                 case 0 :
+                    setImage(PRight[PRDirection]);
+                    PRDirection++;
+                    break;
                 case 1 :
+                    setImage(PRight[PRDirection]);
+                    PRDirection++;
+                    break;
                 case 2 :
+                    setImage(PRight[PRDirection]);
+                    PRDirection++;
+                    break;
                 case 3 :
+                    setImage(PRight[PRDirection]);
+                    PRDirection++;
+                    break;
                 case 4 :
+                    setImage(PRight[PRDirection]);
+                    PRDirection++;
+                    break;
                 case 5 :
+                    setImage(PRight[PRDirection]);
+                    PRDirection++;
+                    break;
                 case 6 :
+                    setImage(PRight[PRDirection]);
+                    PRDirection++;
+                    break;
                 case 7 :
+                    setImage(PRight[PRDirection]);
+                    PRDirection++;
+                    break;
                 case 8 :
                     setImage(PRight[PRDirection]);
                     PRDirection++;
+                    break;
                 case 9 :
                //     Greenfoot.playSound("punch2.mp3");
                     setImage(PRight[PRDirection]);
@@ -312,37 +396,37 @@ public class Goro extends Figure
                         setImage(DLeft[Lhit]);
                         Lhit++;
                         Greenfoot.delay(2);
-                        Greenfoot.playSound("hit.mp3");
+                    //    Greenfoot.playSound("hit.mp3");
                     break;
                     case 1:
                         setImage(DLeft[Lhit]);
                         Lhit++;
                         Greenfoot.delay(2);
-                        Greenfoot.playSound("hit.mp3");
+                   //     Greenfoot.playSound("hit.mp3");
                     break;
                     case 2:
                         setImage(DLeft[Lhit]);
                         Lhit++;
                         Greenfoot.delay(2);
-                        Greenfoot.playSound("hit.mp3");
+                   //     Greenfoot.playSound("hit.mp3");
                     break;
                     case 3 :
                         setImage(DLeft[Lhit]);
                         Lhit++;
                         Greenfoot.delay(2);
-                        Greenfoot.playSound("hit.mp3");
+                  //      Greenfoot.playSound("hit.mp3");
                     break;
                     case 4:
                         setImage(DLeft[Lhit]);
                         Lhit++;
                         Greenfoot.delay(2);
-                        Greenfoot.playSound("hit.mp3");
+                  //      Greenfoot.playSound("hit.mp3");
                     break;
                     case 5 :
                         setImage(DLeft[Lhit]);
                         Lhit = 0;
                         Greenfoot.delay(1);
-                        Greenfoot.playSound("hit.mp3");
+                  //      Greenfoot.playSound("hit.mp3");
                     break;
                 }
            
@@ -360,31 +444,31 @@ public class Goro extends Figure
                         setImage(DRight[Rhit]);
                         Rhit++;
                         Greenfoot.delay(2);
-                        Greenfoot.playSound("hit.wav");
+                    //    Greenfoot.playSound("hit.mp3");
                     break;
                     case 1 :
                         setImage(DRight[Rhit]);
                         Rhit++;
                         Greenfoot.delay(2);
-                        Greenfoot.playSound("hit.wav");
+                    //    Greenfoot.playSound("hit.mp3");
                     break;
                     case 2 :
                         setImage(DRight[Rhit]);
                         Rhit++;
                         Greenfoot.delay(2);
-                        Greenfoot.playSound("die1.wav");    
+                    //    Greenfoot.playSound("hit.mp3");    
                     break;
                     case 3 :
                         setImage(DRight[Rhit]);
                         Rhit++;
                         Greenfoot.delay(2);
-                        Greenfoot.playSound("hit.mp3");
+                    //    Greenfoot.playSound("hit.mp3");
                     break;
                     case 4 :
                         setImage(DRight[Rhit]);
                         Rhit++;
                         Greenfoot.delay(2);
-                        Greenfoot.playSound("hit.mp3");
+                    //    Greenfoot.playSound("hit.mp3");
                     break;
                 }
                 
@@ -413,47 +497,47 @@ public class Goro extends Figure
                         setImage(Blood[bloodNum]);
                         bloodNum = 6;
                         Greenfoot.delay(1);
-                        Greenfoot.playSound("stab1.mp3");
+                   //     Greenfoot.playSound("stab1.mp3");
                     break;
                     case 1 :
                         setImage(Blood[bloodNum]);
                         bloodNum--;
                         Greenfoot.delay(1);
-                        Greenfoot.playSound("stab1.mp3");
+                  //      Greenfoot.playSound("stab1.mp3");
                     break;
                     case 2 :
                         setImage(Blood[bloodNum]);
                         bloodNum--;
                         Greenfoot.delay(1);
-                        Greenfoot.playSound("stab1.mp3");
+                  //      Greenfoot.playSound("stab1.mp3");
                     break;
                     case 3 :
                         setImage(Blood[bloodNum]);
                         bloodNum--;
                         Greenfoot.delay(1);
-                        Greenfoot.playSound("finishhim.mp3");
-                        Greenfoot.playSound("stab1.mp3");
+                  //      Greenfoot.playSound("finishhim.mp3");
+                  //      Greenfoot.playSound("stab1.mp3");
                     break;
                     case 4 :
                         setImage(Blood[bloodNum]);
                         bloodNum--;
                         Greenfoot.delay(1);
-                        Greenfoot.playSound("stab1.mp3");
+                  //      Greenfoot.playSound("stab1.mp3");
                     break;
                     case 5 :
                         setImage(Blood[bloodNum]);
                         bloodNum--;
                         Greenfoot.delay(1);
-                        Greenfoot.playSound("stab.mp3");
+                  //      Greenfoot.playSound("stab.mp3");
                     break;
                     case 6 :
                         setImage(Blood[bloodNum]);
                         bloodNum--;
                         Greenfoot.delay(1);
-                        Greenfoot.playSound("gororoar.mp3");
+                  //      Greenfoot.playSound("gororoar.mp3");
                     break;
                 } 
-                Greenfoot.playSound("outstanding.mp3");
+                //Greenfoot.playSound("outstanding.mp3");
                 
             }
         //    level.singleNinjas(0);
@@ -481,5 +565,14 @@ public class Goro extends Figure
             return true;
         
             return false;
-    } 
+    }
+    
+    public void bruceLee()
+    {
+        BruceLee bruce = (BruceLee) getOneIntersectingObject(BruceLee.class);
+                   
+        if(bruce != null)           
+            hit(direction);
+            
+    }
 }

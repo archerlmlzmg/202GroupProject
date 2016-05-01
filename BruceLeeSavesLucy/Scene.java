@@ -16,8 +16,8 @@ public class Scene extends World
     private int activeAreaY1 = 10;
     private int activeAreaY2 = 500;
     
-    //private int level = 2;
-    private int level = 1;
+    private int level = 2;
+    //private int level = 1;
     private int timer = 60;
     
     private BruceLee bruce;
@@ -60,7 +60,6 @@ public class Scene extends World
         
         if(currentLevel == 2)
         {
-            addObject(new BruceLee(),100, 350);
             addObject(new Goro(), 500, 300);
         }
     }
