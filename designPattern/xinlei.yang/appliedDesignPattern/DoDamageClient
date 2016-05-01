@@ -1,0 +1,12 @@
+public class DoDamageClient {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Context context;
+		context = new Context(new RageDamageStrategy());
+		context.action();
+		context = new Context(new NormalDamageStrategy());
+		context.action();
+	}
+
+}
