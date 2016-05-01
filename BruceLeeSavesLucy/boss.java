@@ -90,6 +90,7 @@ public class boss extends Figure
         if(current_motion_index == motionSet.length - 1){
             current_motion_index = 0;
         }else{
+            Greenfoot.delay(30);
             current_motion_index++;
         }
     }

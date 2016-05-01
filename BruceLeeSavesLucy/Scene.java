@@ -26,9 +26,8 @@ public class Scene extends World
 
     private Lucy lucy = new Lucy();
 
-    
     public HealthBar healthBar = new HealthBar("Bruce Lee: ", "", 100, 100);
-    
+  
 
     /**
      * 
@@ -58,17 +57,18 @@ public class Scene extends World
             
             addObject(joe, 700, 300);
             
-            boss = new boss();
-            addObject(boss, 500, 300);
+            
 
-            addObject(lucy, 700, 200);
+           
 
         }
         
         if(currentLevel == 2)
         {
             addObject(new Goro(), 500, 300);
-
+            boss = new boss();
+            addObject(boss, 700, 300);
+            addObject(lucy, 750, 400);
         }
     }
     
