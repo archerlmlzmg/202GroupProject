@@ -19,6 +19,7 @@ public class Scene extends World
     private BruceLee bruce;
     private boss boss;
     private Joe joe;
+    private Lucy lucy = new Lucy();
     /**
      * 
      */
@@ -43,6 +44,7 @@ public class Scene extends World
             boss = new boss();
             addObject(boss, 500, 300);
             addObject(joe, 700, 350);
+            addObject(lucy, 700, 200);
         }
     }
     

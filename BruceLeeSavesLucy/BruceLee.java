@@ -22,10 +22,22 @@ public class BruceLee extends Figure
             stand2RightSet[i] = new GreenfootImage("bruce_" + m +".gif");
         }
         walk2RightSet = new GreenfootImage[2];
-        for(int i=0; i<walk2RightSet.length; i++){
+        walk2RightSet[0] = new GreenfootImage("bruce_walk_1.gif");
+        walk2RightSet[1] = new GreenfootImage("bruce_walk_2.gif");
+        //walk2RightSet[2] = new GreenfootImage("bruce_3.gif");
+        //walk2RightSet[3] = new GreenfootImage("bruce_4.gif");
+        //walk2RightSet[4] = new GreenfootImage("bruce_5.gif");
+        //walk2RightSet[5] = new GreenfootImage("bruce_6.gif");
+        //walk2RightSet[6] = new GreenfootImage("bruce_7.gif");
+        //walk2RightSet[7] = new GreenfootImage("bruce_8.gif");
+        for(int i=3; i<walk2RightSet.length;i++){
+           int m = i+ 1;
+            walk2RightSet[i] = new GreenfootImage("boss_jump_"+m+".gif");
+        }
+        /*for(int i=0; i<walk2RightSet.length; i++){
             int m = i+ 1;
             stand2RightSet[i] = new GreenfootImage("bruce_walk_" + m +".gif");
-        }
+        }*/
         stand2LeftSet = new GreenfootImage[2];
         for(int i=0; i<stand2LeftSet.length;i++){
             int m = i+ 1;
@@ -36,7 +48,7 @@ public class BruceLee extends Figure
             int m = i+ 1;
             walk2LeftSet[i] = new GreenfootImage("bruce_walk_" + m +".gif");
         }
-        this.currentMotionSet = stand2RightSet;
+        this.currentMotionSet = walk2RightSet;//stand2RightSet;
         this.setCurrentPose(Figure.POSE_STAND);
         this.setDirection(Figure.DIRECTION_RIGHT);
     }
@@ -66,7 +78,9 @@ public class BruceLee extends Figure
         if(current_motion_index>=walk2RightSet.length){
             current_motion_index = 0;
         }
-        setImage(walk2RightSet[current_motion_index]);
+        setImage(walk2RightSet[0]);
+        //setImage(new GreenfootImage("bruce_walk_1.gif"));
+        
         current_motion_index++;
         /*
          * this condition means this stroke continues previous motion
