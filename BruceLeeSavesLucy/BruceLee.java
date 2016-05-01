@@ -14,6 +14,39 @@ public class BruceLee extends Figure
     int moveVariable = 0;
     int moveStepLength = 10;
     
+    private int dead = 0;              
+    private int damage = 0;    
+    private int Lhit = 0;
+    private int Rhit = 0;
+    
+    private int xPlayer;
+    private int yPlayer;
+    private int feet;
+    
+    private Scene level;
+    
+   private GreenfootImage[] DRight = {
+                                          new GreenfootImage("rightblood0.png"),
+                                          new GreenfootImage("rightblood1.png"),
+                                          new GreenfootImage("rightblood2.png"),
+                                          new GreenfootImage("rightblood3.png"),
+                                          new GreenfootImage("rightblood4.png"),
+                                          new GreenfootImage("rightblood5.png"),
+                                          new GreenfootImage("rightblood6.png"),
+                                          new GreenfootImage("rightblood7.png")
+                                      };
+                                                                                                                    
+    private GreenfootImage[] DLeft = {
+                                         new GreenfootImage("rightblood0.png"),
+                                         new GreenfootImage("rightblood1.png"),
+                                         new GreenfootImage("rightblood2.png"),
+                                         new GreenfootImage("rightblood3.png"),
+                                         new GreenfootImage("rightblood4.png"),
+                                         new GreenfootImage("rightblood5.png"),
+                                         new GreenfootImage("rightblood6.png"),
+                                         new GreenfootImage("rightblood7.png")
+                                     };
+    
     public BruceLee(){
         //initialte walking
         stand2RightSet = new GreenfootImage[18];
@@ -24,7 +57,7 @@ public class BruceLee extends Figure
         walk2RightSet = new GreenfootImage[2];
         for(int i=0; i<walk2RightSet.length; i++){
             int m = i+ 1;
-            stand2RightSet[i] = new GreenfootImage("bruce_walk_" + m +".gif");
+            walk2RightSet[i] = new GreenfootImage("bruce_walk_" + m +".gif");
         }
         stand2LeftSet = new GreenfootImage[2];
         for(int i=0; i<stand2LeftSet.length;i++){
@@ -40,6 +73,19 @@ public class BruceLee extends Figure
         this.setCurrentPose(Figure.POSE_STAND);
         this.setDirection(Figure.DIRECTION_RIGHT);
     }
+    
+     /**
+    * This method addedToWorld, Assigns the level and returns the x and y positions
+    *                           to the world and sets the feet parameter.
+    */
+    public void addedToWorld(World world)
+    {
+        level = (Scene) world;                
+        xPlayer = getX();                        
+        yPlayer = getY();                       
+        feet = getImage().getHeight() / 1;
+    }
+    
     /**
      * Act - do whatever the BruceLee wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -160,8 +206,163 @@ public class BruceLee extends Figure
         }*/
     }
  
+    
     public void beAttacked(int power)
     {
+        for(int i = 0; i < 13; i++)
+        {
+            if(direction == 0)    
+            {
+                switch(Lhit)               
+                {
+                    case 0 :
+                        setImage(DLeft[Lhit]);
+                        Lhit++;
+                        Greenfoot.delay(1);
+                    break;
+                    case 1 :
+                        setImage(DLeft[Lhit]);
+                        Lhit++;
+                        Greenfoot.delay(2);
+                    break;
+                    case 2 :
+                        setImage(DLeft[Lhit]);
+                        Lhit++;
+                        Greenfoot.delay(3);
+                    break;
+                    case 3 :
+                        setImage(DLeft[Lhit]);
+                        Lhit++;
+                        Greenfoot.delay(1);
+                    break;
+                    case 4 :
+                        setImage(DLeft[Lhit]);
+                        Lhit++;
+                        Greenfoot.delay(2);
+                    break;
+                    case 5 :
+                        setImage(DLeft[Lhit]);
+                        Lhit++;
+                        Greenfoot.delay(3);
+                    break;
+                    case 6 :
+                        setImage(DLeft[Lhit]);
+                        Lhit++;
+                   //     Greenfoot.playSound("ahhhuuuh.mp3");
+                        Greenfoot.delay(1);
+                    break;
+                    case 7 :
+                        setImage(DLeft[Lhit]);
+                        Lhit++;
+                        Greenfoot.delay(2);
+                    break;
+                    case 8 :
+                        setImage(walk2LeftSet[0]);
+                        Lhit = 0;
+                    //    Greenfoot.playSound("stab1.mp3");
+                    //    Greenfoot.playSound("die1.mp3");
+                        Greenfoot.delay(0);
+                    break;                
+                }
+                
+            }
+            
+        }
         
+        if(direction == 1) 
+        {
+            for(int i = 0; i < 13; i++)
+            {
+                switch(Rhit)           
+                {
+                    case 0 :
+                        setImage(DRight[Rhit]);
+                        Rhit++;
+                        Greenfoot.delay(1);
+                    break;
+                    case 1 :
+                        setImage(DRight[Rhit]);
+                        Rhit++;
+                        Greenfoot.delay(2);
+                    break;
+                    case 2 :
+                        setImage(DRight[Rhit]);
+                        Rhit++;
+                        Greenfoot.delay(1);
+                    break;
+                    case 3 :
+                        setImage(DRight[Rhit]);
+                        Rhit++;
+                        Greenfoot.delay(2);
+                    break;
+                    case 4 :
+                        setImage(DRight[Rhit]);
+                        Rhit++;
+                        Greenfoot.delay(1);
+                    break;
+                    case 5 :
+                        setImage(DRight[Rhit]);
+                        Rhit++;
+                        Greenfoot.delay(2);
+                    break;
+                    case 6 :
+                        setImage(DRight[Rhit]);
+                        Rhit++;
+                        Greenfoot.playSound("ahhhuuuh.mp3");
+                        Greenfoot.delay(1);
+                    break;
+                    case 7 :
+                        setImage(DRight[Rhit]);
+                        Rhit++;
+                        Greenfoot.delay(2);
+                    break;
+                    case 8 :
+                        setImage(walk2RightSet[0]);
+                        Rhit = 0;
+                        Greenfoot.delay(0);
+                   //     Greenfoot.playSound("stab1.mp3");
+                   //     Greenfoot.playSound("die1.mp3");
+                        break;            
+                }
+                    
+            }   
+                
+        }
+        damage++; 
+        death();
+    }
+    
+       /**
+    * This method death, It checks to see if liu is above 3 hits,
+    *                    then it moves the liu out of harms way.
+    */
+    public void death()
+    {
+    //    LiuExploding();
+    //    int currentPosition = (int)level.getScrollPosition();
+        if(damage >= 3)
+        {
+            Greenfoot.playSound("ahhhuuuh.mp3");
+            xPlayer = 40;
+            yPlayer = 270;
+    //        vSpeed = 0;
+            direction = 1;
+            damage = 0;
+    /*        if((currentPosition + 310) <=0)
+            {
+                level.setScrollPosition(-310);
+                setLocation(xPlayer, yPlayer);
+            }
+              
+            else
+            {
+                xPlayer = 40;                
+                level.setScrollPosition(currentPosition);    
+                setLocation(xPlayer, yPlayer);
+            }
+            */
+          setLocation(xPlayer, yPlayer); 
+        }
+            
     }
 }
