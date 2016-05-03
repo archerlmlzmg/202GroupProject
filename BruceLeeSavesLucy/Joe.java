@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Joe extends Figure
+public class Joe extends Figure implements Fighter, Gangster
 {
     int current_motion_index = 0;
     int moveSpeed = 3;
@@ -16,7 +16,7 @@ public class Joe extends Figure
     public GreenfootImage[] stand2LeftSet, openingSet;
     private BruceLee bruce;
     
-    public Joe()
+    public Joe ()
     {
         openingSet = new GreenfootImage[30];
         for (int i = 0; i < openingSet.length; i++)
@@ -72,7 +72,7 @@ public class Joe extends Figure
     {
         // Add your action code here.
         move();
-        lookForBruceLee();
+        lookForMainCharacter();
     }    
     
     public void move()
@@ -94,7 +94,7 @@ public class Joe extends Figure
             current_motion_index++;
         }
     }
-    private void lookForBruceLee(){
+    public void lookForMainCharacter(){
         if(moveVariable < moveSpeed){
             moveVariable++;
             return;
@@ -110,5 +110,19 @@ public class Joe extends Figure
         }
         
         System.out.println(bruce.toString());
+    }
+    public void onAttacked(int damage){
+    
+    }
+    public int punch(){
+        return 0;
+    }
+    public int kick(){
+        return 0;
+    }
+    public int defend(){
+        return 0;
+    }
+    public void die(){
     }
 }
