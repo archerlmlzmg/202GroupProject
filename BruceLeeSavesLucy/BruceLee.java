@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class BruceLee extends Figure
+public class BruceLee extends Figure implements Fighter
 {
 
     int current_motion_index = 0;
@@ -246,11 +246,13 @@ public class BruceLee extends Figure
         }
         if(Greenfoot.isKeyDown("s"))
         {
-            this.setKick2Right();
+            this.kick();
         }
         if(Greenfoot.isKeyDown("a"))
         {
-            this.setPunch2Right();
+            this.punch();
+            
+            
         }
         /*if(!Greenfoot.isKeyDown("up"))
         {
@@ -260,7 +262,7 @@ public class BruceLee extends Figure
     }
  
     
-    public void beAttacked(int power)
+    public void onAttacked(int damage)
     {
         for(int i = 0; i < 13; i++)
         {
@@ -385,7 +387,31 @@ public class BruceLee extends Figure
         death();
     }
     
-       /**
+    public int punch(){
+        if(this.getDirection()==Figure.DIRECTION_RIGHT){
+            this.setPunch2Right();
+        }
+        return 0;
+    }
+    
+    public int kick(){
+        if(this.getDirection() == Figure.DIRECTION_RIGHT){
+            this.setKick2Right();
+        }else{
+        
+        }
+     
+        return 0;
+    }  
+    
+    public int defend(){
+        return 0;
+    }
+    
+    public void die(){
+    }
+    
+    /**
     * This method death, It checks to see if liu is above 3 hits,
     *                    then it moves the liu out of harms way.
     */
@@ -401,19 +427,7 @@ public class BruceLee extends Figure
     //        vSpeed = 0;
             direction = 1;
             damage = 0;
-    /*        if((currentPosition + 310) <=0)
-            {
-                level.setScrollPosition(-310);
-                setLocation(xPlayer, yPlayer);
-            }
-              
-            else
-            {
-                xPlayer = 40;                
-                level.setScrollPosition(currentPosition);    
-                setLocation(xPlayer, yPlayer);
-            }
-            */
+
           setLocation(xPlayer, yPlayer); 
         }
             
