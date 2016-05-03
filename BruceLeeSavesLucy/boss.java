@@ -136,56 +136,21 @@ public class boss extends Figure
         //lookForBruceLee();
         setLocation(this.getX(),10);
         bossShowup();
-        
         //spinkickBruceLee();
     }
     private void lookForBruceLee(){
         //slow down the motion
         setLocation(this.getX(),340);
         if(bruce == null){
-               bruce= this.getWorld().getObjects(BruceLee.class).get(0);
+           bruce= this.getWorld().getObjects(BruceLee.class).get(0);
         }
-           if(this.getX() > bruce.getX()){
-            if(moveVariable < moveSpeed){
-                moveVariable++;
-                return;
-            }else{
-                moveVariable = 0;
-            }
-            //step to next motion
-            this.currentMotionSet = runSet;
-            //GreenfootImage[] motionSet = this.currentMotionSet;
-            if(current_motion_index >= currentMotionSet.length)
-                current_motion_index = 0;
-            setImage(currentMotionSet[current_motion_index]);
-            if(current_motion_index == currentMotionSet.length - 1){
-                current_motion_index = 0;
-            }else{
-                current_motion_index++;
-                setLocation(this.getX()-moveStepLength,this.getY());
-            }
+        if(this.getX() > bruce.getX()){
+           runToBruceLee(); 
         }else{
-            if(moveVariable < moveSpeed){
-                moveVariable++;
-                return;
-            }else{
-                moveVariable = 0;
-            }
-            //step to next motion
-            this.currentMotionSet = spinkickSet;
-            //GreenfootImage[] motionSet = this.currentMotionSet;
-            if(current_motion_index >= currentMotionSet.length)
-                current_motion_index = 0;
-            setImage(currentMotionSet[current_motion_index]);
-            if(current_motion_index == currentMotionSet.length - 1){
-                current_motion_index = 0;
-            }else{
-                current_motion_index++;
-                //setLocation(this.getX()-moveStepLength,this.getY());
-            }
+           highkickBruceLee();
         }
     }
-    private void spinkickBruceLee(){
+    private void runToBruceLee(){
        //slow donw the motion
         if(moveVariable < moveSpeed){
             moveVariable++;
@@ -194,7 +159,7 @@ public class boss extends Figure
             moveVariable = 0;
         }
         //step to next motion
-        this.currentMotionSet = spinkickSet;
+        this.currentMotionSet = runSet;
         if(current_motion_index >= currentMotionSet.length)
             current_motion_index = 0;
         setImage(currentMotionSet[current_motion_index]);
@@ -202,7 +167,7 @@ public class boss extends Figure
             current_motion_index = 0;
         }else{
             current_motion_index++;
-            setLocation(this.getX(),this.getY());
+            setLocation(this.getX()-moveStepLength,this.getY());
         }
     }
     private void highkickBruceLee(){
@@ -214,9 +179,27 @@ public class boss extends Figure
             moveVariable = 0;
         }
         //step to next motion
-        //this.currentMotionSet = spinkickSet;
-        //
         this.currentMotionSet = highkickSet;
+        if(current_motion_index >= currentMotionSet.length)
+            current_motion_index = 0;
+        setImage(currentMotionSet[current_motion_index]);
+        if(current_motion_index == currentMotionSet.length - 1){
+            current_motion_index = 0;
+        }else{
+            current_motion_index++;
+            setLocation(this.getX(),this.getY());
+        }
+    }
+    private void spinkickBruceLee(){
+        //slow donw the motion
+        if(moveVariable < moveSpeed){
+            moveVariable++;
+            return;
+        }else{
+            moveVariable = 0;
+        }
+        //step to next motion
+        this.currentMotionSet = spinkickSet;
         if(current_motion_index >= currentMotionSet.length)
             current_motion_index = 0;
         setImage(currentMotionSet[current_motion_index]);
