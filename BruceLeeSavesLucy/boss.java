@@ -3,7 +3,7 @@ import java.lang.*;
 /**
  * Write a description of class boss here.
  * 
- * @author (your name) 
+ * @author (Minglu Liu) 
  * @version (a version number or a date)
  */
 public class boss extends Figure
@@ -15,6 +15,7 @@ public class boss extends Figure
     private BruceLee bruce;
     boolean onGround = false;
     public GreenfootImage[] fallSet, hitSet, crushSet, highkickSet, jumpSet, runSet, spinkickSet, currentMotionSet;
+    
     public boss(){
         //initialize falling
         fallSet = new GreenfootImage[4];
@@ -73,7 +74,7 @@ public class boss extends Figure
             spinkickSet[i] = img;
         }
         
-        this.currentMotionSet = runSet;
+        this.currentMotionSet = fallSet;
         this.setCurrentPose(Figure.POSE_STAND);
     }
     private void bossShowup(){
@@ -119,32 +120,12 @@ public class boss extends Figure
         if(current_motion_index == motionSet.length - 1){
             current_motion_index = 0;
         }else{
-            Greenfoot.delay(5);
-            current_motion_index++;
-            //setLocation(this.getX()-moveStepLength,this.getY());
-        }
-    }
-    private void runToBruceLee(){
-        //slow donw the motion
-        if(moveVariable < moveSpeed){
-            moveVariable++;
-            return;
-        }else{
-            moveVariable = 0;
-        }
-        //step to next motion
-        GreenfootImage[] motionSet = this.currentMotionSet;
-        if(current_motion_index >= motionSet.length)
-            current_motion_index = 0;
-        setImage(motionSet[current_motion_index]);
-        if(current_motion_index == motionSet.length - 1){
-            current_motion_index = 0;
-        }else{
-            Greenfoot.delay(5);
+            //Greenfoot.delay(5);
             current_motion_index++;
             setLocation(this.getX()-moveStepLength,this.getY());
         }
     }
+    
     /**
      * Act - do whatever the BruceLee wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -152,7 +133,6 @@ public class boss extends Figure
     public void act() 
     {
         //traverseMotionSet();
-<<<<<<< HEAD
         //lookForBruceLee();
         setLocation(this.getX(),10);
         bossShowup();
@@ -208,47 +188,43 @@ public class boss extends Figure
     private void spinkickBruceLee(){
        //slow donw the motion
         if(moveVariable < moveSpeed){
-=======
-        lookForBruceLee();
-        runToBruceLee();
-        //spinkickBruceLee();
-    }
-    private void lookForBruceLee(){
-       if(moveVariable < moveSpeed){
->>>>>>> origin/master
             moveVariable++;
             return;
-       }else{
+        }else{
             moveVariable = 0;
-       }
-       if(bruce == null){
-           bruce= this.getWorld().getObjects(BruceLee.class).get(0);
-       }
-   
-       if(this.getX()>bruce.getX()){
-            //setLocation(this.getX()-moveStepLength,this.getY());
-            //Greenfoot.delay(1);
-            //traverseMotionSet();
-            runToBruceLee();
-       }
-       
-       System.out.println(bruce.toString());
+        }
+        //step to next motion
+        this.currentMotionSet = spinkickSet;
+        if(current_motion_index >= currentMotionSet.length)
+            current_motion_index = 0;
+        setImage(currentMotionSet[current_motion_index]);
+        if(current_motion_index == currentMotionSet.length - 1){
+            current_motion_index = 0;
+        }else{
+            current_motion_index++;
+            setLocation(this.getX(),this.getY());
+        }
     }
-    private void spinkickBruceLee(){
+    private void highkickBruceLee(){
+        //slow donw the motion
         if(moveVariable < moveSpeed){
             moveVariable++;
             return;
-       }else{
+        }else{
             moveVariable = 0;
-       }
-       if(bruce == null){
-           bruce= this.getWorld().getObjects(BruceLee.class).get(0);
-       }
-       if(Math.abs(this.getX()-bruce.getX())<10){
-           this.currentMotionSet = spinkickSet;
-       }
-    }
-    private void highkickBruceLee(){
-        
+        }
+        //step to next motion
+        //this.currentMotionSet = spinkickSet;
+        //
+        this.currentMotionSet = highkickSet;
+        if(current_motion_index >= currentMotionSet.length)
+            current_motion_index = 0;
+        setImage(currentMotionSet[current_motion_index]);
+        if(current_motion_index == currentMotionSet.length - 1){
+            current_motion_index = 0;
+        }else{
+            current_motion_index++;
+            setLocation(this.getX(),this.getY());
+        }
     }
 }

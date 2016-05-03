@@ -24,12 +24,12 @@ public class Joe extends Figure implements Fighter, Gangster
             int m = i + 1;
             if (m < 10)
             {
-                GreenfootImage img = new GreenfootImage("s0" + m + "_" + m + ".gif");
+                GreenfootImage img = new GreenfootImage("JoeOpening_f0" + m +".gif");
                 openingSet[i] = img;
             }
             else
             {
-                GreenfootImage img = new GreenfootImage("s" + m + "_" + m + ".gif");
+                GreenfootImage img = new GreenfootImage("JoeOpening_f" + m +".gif");
                 openingSet[i] = img;
             }
         }
@@ -51,10 +51,18 @@ public class Joe extends Figure implements Fighter, Gangster
                 stand2LeftSet[i] = img;
             } 
         }
-
-        this.currentMotionSet = openingSet;
-        this.setCurrentPose(Figure.POSE_STAND);
-        opening = false;
+        
+        if (opening)
+        {
+            this.currentMotionSet = openingSet;
+            this.setCurrentPose(Figure.POSE_STAND);
+            opening = false;
+        }
+        else
+        {
+            this.currentMotionSet = stand2LeftSet;
+            this.setCurrentPose(Figure.POSE_WALK);
+        }
     }
     /**
      * Act - do whatever the Joe wants to do. This method is called whenever
@@ -100,7 +108,7 @@ public class Joe extends Figure implements Fighter, Gangster
         if(this.getX()>bruce.getX()){
             setLocation(this.getX()-moveStepLength,this.getY());
         }
-        //System.out.println(bruce.toString());
+        System.out.println(bruce.toString());
     }
     public void onAttacked(int damage){
     
