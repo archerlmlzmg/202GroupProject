@@ -71,11 +71,11 @@ public class Joe extends Figure implements Fighter, Gangster
     public void act() 
     {
         // Add your action code here.
-        move();
         lookForMainCharacter();
+        runToMainCharacter();
     }    
     
-    public void move()
+    public void runToMainCharacter()
     {
         if(moveVariable < moveSpeed){
             moveVariable++;
@@ -91,38 +91,47 @@ public class Joe extends Figure implements Fighter, Gangster
         if(current_motion_index == motionSet.length - 1){
             current_motion_index = 0;
         }else{
+            Greenfoot.delay(5);
             current_motion_index++;
+            setLocation(this.getX()-moveStepLength,this.getY());
         }
     }
-    public void lookForMainCharacter(){
+    
+    public void lookForMainCharacter(){        
+        if(bruce == null){
+           bruce= this.getWorld().getObjects(BruceLee.class).get(0);
+        }
+        
         if(moveVariable < moveSpeed){
             moveVariable++;
             return;
         }else{
             moveVariable = 0;
         }
-       if(bruce == null){
-           bruce= this.getWorld().getObjects(BruceLee.class).get(0);
-        }
-   
+        
         if(this.getX()>bruce.getX()){
-            setLocation(this.getX()-moveStepLength,this.getY());
+            runToMainCharacter();
         }
         
         System.out.println(bruce.toString());
     }
+    
     public void onAttacked(int damage){
     
     }
+    
     public int punch(){
         return 0;
     }
+    
     public int kick(){
         return 0;
     }
+    
     public int defend(){
         return 0;
     }
+    
     public void die(){
     }
 }
