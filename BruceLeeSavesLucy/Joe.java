@@ -71,7 +71,7 @@ public class Joe extends Figure implements Fighter, Gangster
     public void act() 
     {
         // Add your action code here.
-        move();
+        //move();
         lookForMainCharacter();
     }    
     
@@ -108,7 +108,6 @@ public class Joe extends Figure implements Fighter, Gangster
         if(this.getX()>bruce.getX()){
             setLocation(this.getX()-moveStepLength,this.getY());
         }
-        
         System.out.println(bruce.toString());
     }
     public void onAttacked(int damage){

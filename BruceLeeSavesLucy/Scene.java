@@ -42,7 +42,7 @@ public class Scene extends World
             
         addObject(joe, 700, 300);
         boss = new boss();
-        addObject(boss, 700, 300);
+        addObject(boss, 700, 340);
     }
     
     public void act(){
@@ -62,7 +62,7 @@ public class Scene extends World
             
             addObject(joe, 700, 300);
             boss = new boss();
-            addObject(boss, 700, 300);
+            addObject(boss, 700, 100);
             
 
            
@@ -73,7 +73,7 @@ public class Scene extends World
         {
             addObject(new Goro(), 500, 300);
             boss = new boss();
-            addObject(boss, 700, 300);
+            addObject(boss, 700, 100);
             //addObject(lucy, 750, 400);
         }
     }

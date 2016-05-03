@@ -1,19 +1,17 @@
 #BlueJ class context
 comment0.target=boss
-comment0.text=\n\ Write\ a\ description\ of\ class\ boss\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ boss\ here.\n\ \n\ @author\ (Minglu\ Liu)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=boss()
 comment2.params=
 comment2.target=void\ traverseMotionSet()
 comment3.params=
-comment3.target=void\ runToBruceLee()
+comment3.target=void\ act()
+comment3.text=\n\ Act\ -\ do\ whatever\ the\ BruceLee\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
 comment4.params=
-comment4.target=void\ act()
-comment4.text=\n\ Act\ -\ do\ whatever\ the\ BruceLee\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment4.target=void\ lookForBruceLee()
 comment5.params=
-comment5.target=void\ lookForBruceLee()
+comment5.target=void\ spinkickBruceLee()
 comment6.params=
-comment6.target=void\ spinkickBruceLee()
-comment7.params=
-comment7.target=void\ highkickBruceLee()
-numComments=8
+comment6.target=void\ highkickBruceLee()
+numComments=7

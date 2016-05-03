@@ -12,10 +12,6 @@ comment12.target=void\ checkKeypress()
 comment13.params=damage
 comment13.target=void\ onAttacked(int)
 comment14.params=
-<<<<<<< HEAD
-comment14.target=void\ death()
-comment14.text=\n\ This\ method\ death,\ It\ checks\ to\ see\ if\ liu\ is\ above\ 3\ hits,\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ then\ it\ moves\ the\ liu\ out\ of\ harms\ way.\n
-=======
 comment14.target=int\ punch()
 comment15.params=
 comment15.target=int\ kick()
@@ -25,8 +21,7 @@ comment17.params=
 comment17.target=void\ die()
 comment18.params=
 comment18.target=void\ death()
-comment18.text=\r\n\ This\ method\ death,\ It\ checks\ to\ see\ if\ liu\ is\ above\ 3\ hits,\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ then\ it\ moves\ the\ liu\ out\ of\ harms\ way.\r\n
->>>>>>> origin/master
+comment18.text=\n\ This\ method\ death,\ It\ checks\ to\ see\ if\ liu\ is\ above\ 3\ hits,\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ then\ it\ moves\ the\ liu\ out\ of\ harms\ way.\n
 comment2.params=world
 comment2.target=void\ addedToWorld(greenfoot.World)
 comment2.text=\n\ This\ method\ addedToWorld,\ Assigns\ the\ level\ and\ returns\ the\ x\ and\ y\ positions\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ to\ the\ world\ and\ sets\ the\ feet\ parameter.\n
