@@ -16,7 +16,7 @@ public class Scene extends World
     private int activeAreaY1 = 10;
     private int activeAreaY2 = 500;
     
-    private int level = 2;
+    private int level = 1;
     //private int level = 1;
     private int timer = 60;
     
@@ -38,6 +38,9 @@ public class Scene extends World
         bruce = new BruceLee();
         addObject(bruce,100,350);
         addObject(healthBar, 150, 50);
+        joe = new Joe();
+            
+            addObject(joe, 700, 300);
     }
     
     public void act(){
@@ -45,7 +48,7 @@ public class Scene extends World
         if (timer>0)
         {
             timer--;
-            if(timer == 0) checkLevel(level);
+           // if(timer == 0) checkLevel(level);
         }
     }
     
@@ -55,7 +58,7 @@ public class Scene extends World
         {
             joe = new Joe();
             
-            //addObject(joe, 700, 300);
+            addObject(joe, 700, 300);
             
             
 

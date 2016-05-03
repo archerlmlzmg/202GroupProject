@@ -11,9 +11,10 @@ public class Joe extends Figure
     int current_motion_index = 0;
     int moveSpeed = 3;
     int moveVariable = 0;
-    int moveStepLength = 10;
+    int moveStepLength = 1;
     private boolean opening = true;
     public GreenfootImage[] stand2LeftSet, openingSet;
+    private BruceLee bruce;
     
     public Joe()
     {
@@ -71,6 +72,7 @@ public class Joe extends Figure
     {
         // Add your action code here.
         move();
+        lookForBruceLee();
     }    
     
     public void move()
@@ -91,5 +93,22 @@ public class Joe extends Figure
         }else{
             current_motion_index++;
         }
+    }
+    private void lookForBruceLee(){
+        if(moveVariable < moveSpeed){
+            moveVariable++;
+            return;
+        }else{
+            moveVariable = 0;
+        }
+       if(bruce == null){
+           bruce= this.getWorld().getObjects(BruceLee.class).get(0);
+        }
+   
+        if(this.getX()>bruce.getX()){
+            setLocation(this.getX()-moveStepLength,this.getY());
+        }
+        
+        System.out.println(bruce.toString());
     }
 }
