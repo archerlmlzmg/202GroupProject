@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Tue May 03 15:12:40 PDT 2016
+#Tue May 03 15:56:17 PDT 2016
 target2.width=80
 editor.fx.0.height=700
 class.Scenario.superclass=
@@ -113,7 +113,7 @@ target13.typeParameters=
 target14.y=310
 target15.width=80
 target14.x=100
-editor.swing.0.width=853
+editor.swing.0.width=852
 target6.name=Gangster
 class.Joe.image=Joe98_stance1_f02.gif
 target9.height=50
@@ -188,7 +188,7 @@ target12.showInterface=false
 target13.height=50
 target16.name=Lucy
 dependency8.to=HealthBar
-simulation.speed=50
+simulation.speed=63
 target9.width=80
 target7.height=50
 target15.showInterface=false

@@ -13,6 +13,7 @@ public class boss extends Figure
     int moveVariable = 0;
     int moveStepLength = 10;
     private BruceLee bruce;
+    boolean onGround = false;
     public GreenfootImage[] fallSet, hitSet, crushSet, highkickSet, jumpSet, runSet, spinkickSet, currentMotionSet;
     
     public boss(){
@@ -76,6 +77,33 @@ public class boss extends Figure
         this.currentMotionSet = fallSet;
         this.setCurrentPose(Figure.POSE_STAND);
     }
+    private void bossShowup(){
+       
+       if(onGround){
+           lookForBruceLee();
+       }else{   
+           bossInitialization();
+       }
+    }
+    private void bossInitialization(){
+        for(int i=30; i<150; i++){
+                if(current_motion_index >= currentMotionSet.length)
+                    current_motion_index = 0;
+                setImage(currentMotionSet[current_motion_index]); 
+                if(current_motion_index == currentMotionSet.length - 1){
+                    current_motion_index = 0;
+                }else{
+                    current_motion_index++;
+                    Greenfoot.delay(5);
+                    setLocation(this.getX(),i*3);
+                }
+                if(this.getY()>340){
+                    onGround = true;
+                    break;
+                }
+        } 
+       
+    }
     private void traverseMotionSet(){
         //slow donw the motion
         if(moveVariable < moveSpeed){
@@ -106,11 +134,14 @@ public class boss extends Figure
     {
         //traverseMotionSet();
         //lookForBruceLee();
-        lookForBruceLee();
+        setLocation(this.getX(),10);
+        bossShowup();
+        
         //spinkickBruceLee();
     }
     private void lookForBruceLee(){
         //slow down the motion
+        setLocation(this.getX(),340);
         if(bruce == null){
                bruce= this.getWorld().getObjects(BruceLee.class).get(0);
         }
@@ -150,7 +181,7 @@ public class boss extends Figure
                 current_motion_index = 0;
             }else{
                 current_motion_index++;
-                setLocation(this.getX()-moveStepLength,this.getY());
+                //setLocation(this.getX()-moveStepLength,this.getY());
             }
         }
     }
