@@ -13,6 +13,7 @@ public class Figure extends Actor
     private String name;
     /* the denfence ability indicates the point that can be deducted from every attack*/
     private int walkingSpeed = 5;
+    /* ever attack a figure gets should be deducted by this attribute */
     private int basicDenfence = 10;
     private int currentPose = 0;
     public final static int POSE_STAND = 0, POSE_WALK = 1, WALK = 2;

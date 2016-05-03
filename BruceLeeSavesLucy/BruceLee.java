@@ -13,7 +13,7 @@ public class BruceLee extends Figure
     int moveSpeed = 3;
     int moveVariable = 0;
     int moveStepLength = 10;
-    
+    // state of death
     private int dead = 0;              
     private int damage = 0;    
     private int Lhit = 0;

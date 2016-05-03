@@ -14,7 +14,8 @@ public interface Fighter
      */
     public int defend();
     /*
-     * when a figure is attected by someone, this method will be called, and given the 
+     * when a figure is attected by someone, this method will be called, and given the certain damage every
+     * time when this figure is attacked.
      */
     public void beAttacked(int power);
 }

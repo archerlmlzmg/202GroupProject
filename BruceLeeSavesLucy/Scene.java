@@ -4,7 +4,7 @@ import greenfoot.*;
 import java.awt.Color;
 
 /**
- * 
+ * this backgroud is supposed to change after every time bruce lee pass a floor
  */
 public class Scene extends World
 {
