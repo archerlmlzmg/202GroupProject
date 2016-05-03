@@ -205,20 +205,19 @@ public class boss extends Figure
             }
         }
     }
-            private void spinkickBruceLee(){
-               //slow donw the motion
-                if(moveVariable < moveSpeed){
-        
-                lookForBruceLee();
-                runToBruceLee();
-                //spinkickBruceLee();
-            }
-            
-            private void lookForBruceLee(){
-               if(moveVariable < moveSpeed){
-        >>>>>>> origin/master
-                    moveVariable++;
-                    return;
+    private void spinkickBruceLee(){
+       //slow donw the motion
+        if(moveVariable < moveSpeed){
+=======
+        lookForBruceLee();
+        runToBruceLee();
+        //spinkickBruceLee();
+    }
+    private void lookForBruceLee(){
+       if(moveVariable < moveSpeed){
+>>>>>>> origin/master
+            moveVariable++;
+            return;
        }else{
             moveVariable = 0;
        }
