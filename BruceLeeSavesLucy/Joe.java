@@ -71,10 +71,6 @@ public class Joe extends Figure implements Fighter, Gangster
     public void act() 
     {
         // Add your action code here.
-<<<<<<< HEAD
-=======
-        //move();
->>>>>>> origin/master
         lookForMainCharacter();
         runToMainCharacter();
     }    
