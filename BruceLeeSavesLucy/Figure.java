@@ -16,9 +16,14 @@ public class Figure extends Actor
     /* ever attack a figure gets should be deducted by this attribute */
     private int basicDenfence = 10;
     private int currentPose = 0;
-    public final static int POSE_STAND = 0, POSE_WALK = 1, WALK = 2;
+    public final static int POSE_STAND = 0, POSE_WALK = 1, POSE_PUNCH = 2, POSE_KICK=3;
     public final static int DIRECTION_RIGHT = 0, DIRECTION_LEFT = 1;
-    public GreenfootImage[] stand2RightSet, stand2LeftSet,walk2LeftSet,walk2RightSet,
+    public GreenfootImage[] stand2RightSet,
+    stand2LeftSet,
+    walk2LeftSet,
+    walk2RightSet,
+    kick2RightSet,
+    punch2RightSet,
     currentMotionSet;
     public int direction = 0;
     /**

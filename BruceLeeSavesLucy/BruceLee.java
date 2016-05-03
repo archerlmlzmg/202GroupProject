@@ -12,7 +12,7 @@ public class BruceLee extends Figure
     int current_motion_index = 0;
     int moveSpeed = 3;
     int moveVariable = 0;
-    int moveStepLength = 10;
+    int moveStepLength = 10, kickMoveLength = 1;
     // state of death
     private int dead = 0;              
     private int damage = 0;    
@@ -46,7 +46,7 @@ public class BruceLee extends Figure
                                          new GreenfootImage("rightblood6.png"),
                                          new GreenfootImage("rightblood7.png")
                                      };
-    
+    //Ming is workin on this part
     public BruceLee(){
         //initialte walking
         stand2RightSet = new GreenfootImage[18];
@@ -63,10 +63,10 @@ public class BruceLee extends Figure
         //walk2RightSet[5] = new GreenfootImage("bruce_6.gif");
         //walk2RightSet[6] = new GreenfootImage("bruce_7.gif");
         //walk2RightSet[7] = new GreenfootImage("bruce_8.gif");
-        for(int i=3; i<walk2RightSet.length;i++){
+        /*for(int i=2; i<10;i++){
            int m = i+ 1;
             walk2RightSet[i] = new GreenfootImage("boss_jump_"+m+".gif");
-        }
+        }*/
         /*for(int i=0; i<walk2RightSet.length; i++){
             int m = i+ 1;
             stand2RightSet[i] = new GreenfootImage("bruce_walk_" + m +".gif");
@@ -82,7 +82,31 @@ public class BruceLee extends Figure
             int m = i+ 1;
             walk2LeftSet[i] = new GreenfootImage("bruce_walk_" + m +".gif");
         }
-        this.currentMotionSet = walk2RightSet;//stand2RightSet;
+        //kick
+        kick2RightSet = new GreenfootImage[8];
+        kick2RightSet[0]=new GreenfootImage("bruce_kick_1.gif");
+        kick2RightSet[1]=new GreenfootImage("bruce_kick_2.gif");
+        kick2RightSet[2]=new GreenfootImage("bruce_kick_2.gif");
+        kick2RightSet[3]=new GreenfootImage("bruce_kick_2.gif");
+        kick2RightSet[4]=new GreenfootImage("bruce_kick_3.gif");
+        kick2RightSet[5]=new GreenfootImage("bruce_kick_3.gif");
+        kick2RightSet[6]=new GreenfootImage("bruce_kick_3.gif");
+        kick2RightSet[7]=new GreenfootImage("bruce_kick_3.gif");
+        
+        punch2RightSet = new GreenfootImage[8];
+        punch2RightSet[0]=new GreenfootImage("bruce_punch_1.gif");
+        punch2RightSet[1]=new GreenfootImage("bruce_punch_2.gif");
+        punch2RightSet[2]=new GreenfootImage("bruce_punch_2.gif");
+        punch2RightSet[3]=new GreenfootImage("bruce_punch_2.gif");
+        punch2RightSet[4]=new GreenfootImage("bruce_punch_3.gif");
+        punch2RightSet[5]=new GreenfootImage("bruce_punch_3.gif");
+        punch2RightSet[6]=new GreenfootImage("bruce_punch_3.gif");
+        punch2RightSet[7]=new GreenfootImage("bruce_punch_3.gif");
+        /*for(int i=0; i<kick2RightSet.length; i++){
+            int m = i+ 1;
+            kick2RightSet[i]=new GreenfootImage("bruce_kick_" + m +".gif");
+        }*/
+        this.currentMotionSet = stand2RightSet;
         this.setCurrentPose(Figure.POSE_STAND);
         this.setDirection(Figure.DIRECTION_RIGHT);
     }
@@ -125,27 +149,32 @@ public class BruceLee extends Figure
         if(current_motion_index>=walk2RightSet.length){
             current_motion_index = 0;
         }
-        setImage(walk2RightSet[0]);
-        //setImage(new GreenfootImage("bruce_walk_1.gif"));
-        
+        this.setCurrentMotionSet(walk2RightSet);        
         current_motion_index++;
-        /*
-         * this condition means this stroke continues previous motion
-         */
-        /*if(this.getCurrentPose() == Figure.POSE_WALK &&
-        this.currentMotionSet.equals(walk2RightSet)&&
-        this.getDirection()== Figure.DIRECTION_RIGHT){
-            System.out.println("the same movement, one more step.");
-            //this.current_motion_index++;
-        }else{//this is a new stroke(command)
-            System.out.println("the new movement, first step.");
-            this.setDirection(Figure.DIRECTION_RIGHT);
-            this.setCurrentMotionSet(walk2RightSet);
-            this.setCurrentPose(Figure.POSE_WALK);
-            this.current_motion_index=0;
-        }*/
         setLocation(getX()+moveStepLength,getY());
-        
+    }
+    
+    public void setKick2Right(){
+        this.setDirection(Figure.DIRECTION_RIGHT);
+        this.setCurrentPose(Figure.POSE_KICK);
+        if(current_motion_index>=kick2RightSet.length){
+            current_motion_index = 0;
+        }
+        this.setCurrentMotionSet(kick2RightSet);        
+        current_motion_index++;
+        setLocation(getX()+kickMoveLength,getY());
+        Greenfoot.playSound("bruce_punch_2.mp3");
+    }
+    public void setPunch2Right(){
+        this.setDirection(Figure.DIRECTION_RIGHT);
+        this.setCurrentPose(Figure.POSE_PUNCH);
+        if(current_motion_index>=punch2RightSet.length){
+            current_motion_index = 0;
+        }
+        this.setCurrentMotionSet(punch2RightSet);        
+        current_motion_index++;
+        setLocation(getX()+kickMoveLength,getY());
+        Greenfoot.playSound("bruce_punch_2.mp3");
     }
     public void setWalk2Left(){
         setLocation(getX()+moveStepLength,getY());
@@ -171,6 +200,7 @@ public class BruceLee extends Figure
         setImage(motionSet[current_motion_index]);
         if(current_motion_index == motionSet.length - 1){
             current_motion_index = 0;
+            this.setCurrentMotionSet(stand2RightSet);
         }else{
             current_motion_index++;
         }
@@ -213,6 +243,14 @@ public class BruceLee extends Figure
         if(!Greenfoot.isKeyDown("down")&&!Greenfoot.isKeyDown("x")&&direction==2&&!Greenfoot.isKeyDown("left"))
         {
             //setImage("standflip.gif");
+        }
+        if(Greenfoot.isKeyDown("s"))
+        {
+            this.setKick2Right();
+        }
+        if(Greenfoot.isKeyDown("a"))
+        {
+            this.setPunch2Right();
         }
         /*if(!Greenfoot.isKeyDown("up"))
         {
