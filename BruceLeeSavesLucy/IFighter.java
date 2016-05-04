@@ -5,7 +5,7 @@
  * @author (Ming Tang) 
  * @version (a version number or a date)
  */
-public interface Fighter  
+public interface IFighter  
 {
     public int punch();
     public int kick();

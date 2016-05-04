@@ -11,5 +11,5 @@ public interface IKeyCommandReceiver
     public boolean executeUpKey();
     public boolean executeDownKey();
     public boolean executeAKey();
-    public boolean executeBKey();
+    public boolean executeSKey();
 }

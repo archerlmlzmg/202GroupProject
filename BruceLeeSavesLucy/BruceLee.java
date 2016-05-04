@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class BruceLee extends Figure implements Fighter
+public class BruceLee extends Figure implements IFighter
 {
 
     int current_motion_index = 0;

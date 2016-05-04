@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=IKeyCommand
+comment0.text=\r\n\ Command\ in\ command\ parttern.\r\n\ \r\n\ @author\ (Ming\ Tang)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=void\ execute()
+numComments=2

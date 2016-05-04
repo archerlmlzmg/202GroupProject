@@ -5,5 +5,5 @@ comment1.params=
 comment1.target=GangsterFactory()
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ GangsterFactory\r\n
 comment2.params=name
-comment2.target=Fighter\ generate(java.lang.String)
+comment2.target=IFighter\ generate(java.lang.String)
 numComments=3

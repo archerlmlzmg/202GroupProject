@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Joe extends Figure implements Fighter, Gangster
+public class Joe extends Figure implements IFighter, IGangster
 {
     int current_motion_index = 0;
     int moveSpeed = 3;
@@ -24,12 +24,12 @@ public class Joe extends Figure implements Fighter, Gangster
             int m = i + 1;
             if (m < 10)
             {
-                GreenfootImage img = new GreenfootImage("s0" + m + "_" + m + ".gif");
+                GreenfootImage img = new GreenfootImage("JoeOpening_f0" + m +".gif");
                 openingSet[i] = img;
             }
             else
             {
-                GreenfootImage img = new GreenfootImage("s" + m + "_" + m + ".gif");
+                GreenfootImage img = new GreenfootImage("JoeOpening_f" + m +".gif");
                 openingSet[i] = img;
             }
         }
@@ -52,11 +52,18 @@ public class Joe extends Figure implements Fighter, Gangster
             } 
         }
         
-        this.currentMotionSet = openingSet;
-        this.setCurrentPose(Figure.POSE_STAND);
-        opening = false;
+        if (opening)
+        {
+            this.currentMotionSet = openingSet;
+            this.setCurrentPose(Figure.POSE_STAND);
+            opening = false;
+        }
+        else
+        {
+            this.currentMotionSet = stand2LeftSet;
+            this.setCurrentPose(Figure.POSE_WALK);
+        }
     }
-    
     /**
      * Act - do whatever the Joe wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -64,7 +71,7 @@ public class Joe extends Figure implements Fighter, Gangster
     public void act() 
     {
         // Add your action code here.
-        //move();
+        move();
         lookForMainCharacter();
     }    
     
@@ -87,7 +94,6 @@ public class Joe extends Figure implements Fighter, Gangster
             current_motion_index++;
         }
     }
-    
     public void lookForMainCharacter(){
         if(moveVariable < moveSpeed){
             moveVariable++;
@@ -95,32 +101,28 @@ public class Joe extends Figure implements Fighter, Gangster
         }else{
             moveVariable = 0;
         }
-        if(bruce == null){
+       if(bruce == null){
            bruce= this.getWorld().getObjects(BruceLee.class).get(0);
         }
    
         if(this.getX()>bruce.getX()){
             setLocation(this.getX()-moveStepLength,this.getY());
         }
+        
         System.out.println(bruce.toString());
     }
-    
     public void onAttacked(int damage){
     
     }
-    
     public int punch(){
         return 0;
     }
-    
     public int kick(){
         return 0;
     }
-    
     public int defend(){
         return 0;
     }
-    
     public void die(){
     }
 }

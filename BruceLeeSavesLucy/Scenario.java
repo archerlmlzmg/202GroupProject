@@ -6,27 +6,29 @@
  */
 public abstract class Scenario implements IKeyCommandReceiver  
 {
-    // instance variables - replace the example below with your own
     String backgroundPath;
-    Fighter[] enemies;
-    Fighter mainCharacter;
+    IFighter[] gangsters;
+    IFighter mainCharacter;
     int gameTime;
     String scenarioName;
-    IKeyCommandReceiver commandSuccessor;
+    private IKeyCommandReceiver commandSuccessor;
     public IKeyCommandReceiver getCommandSuccessor(){
         return this.commandSuccessor;
+    }
+    public void setCommandSuccessor(IKeyCommandReceiver r){
+        this.commandSuccessor = r;
     }
     /**
      * Constructor for objects of class Floor
      */
     public Scenario(){
-        
+       
     }
     public void init(){
         
     }
-    public Fighter[] getEnemies(){
-        return this.enemies;
+    public IFighter[] getGangsters(){
+        return this.gangsters;
     }
     
     public boolean executeLeftKey(){
@@ -49,7 +51,7 @@ public abstract class Scenario implements IKeyCommandReceiver
     
         return true;
     }
-    public boolean executeBKey(){
+    public boolean executeSKey(){
     
         return true;
     }

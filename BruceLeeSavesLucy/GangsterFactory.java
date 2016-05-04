@@ -12,7 +12,7 @@ public class GangsterFactory
     public GangsterFactory()
     {
     }
-    public Fighter generate(String name){
+    public IFighter generate(String name){
         if(name.equals("Joe"))
             return new Joe();
         return null;

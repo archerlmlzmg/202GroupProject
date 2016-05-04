@@ -21,7 +21,7 @@ public class Scene extends World
     private int timer = 60;
     
     private BruceLee bruce;
-    private boss boss;
+    private Boss boss;
     private Joe joe;
 
     private Lucy lucy = new Lucy();
@@ -43,7 +43,7 @@ public class Scene extends World
         joe = new Joe();
         addObject(healthBarBoss, 650, 50);   
         addObject(joe, 700, 300);
-        boss = new boss();
+        boss = new Boss();
         addObject(boss, 700, 340);
     }
     
@@ -63,7 +63,7 @@ public class Scene extends World
             joe = new Joe();
             
             addObject(joe, 700, 300);
-            boss = new boss();
+            boss = new Boss();
             addObject(boss, 700, 100);
             
 
@@ -74,7 +74,7 @@ public class Scene extends World
         if(currentLevel == 2)
         {
             addObject(new Goro(), 500, 300);
-            boss = new boss();
+            boss = new Boss();
             addObject(boss, 700, 300);
             //addObject(lucy, 750, 400);
         }
