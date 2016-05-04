@@ -42,7 +42,7 @@ public class Scene extends World
         addObject(healthBar, 150, 50);
         joe = new Joe();
         addObject(healthBarBoss, 650, 50);   
-        addObject(joe, 700, 300);
+        addObject(joe, 700, 340);
         boss = new boss();
         addObject(boss, 700, 340);
     }
