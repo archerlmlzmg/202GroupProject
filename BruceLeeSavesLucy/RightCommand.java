@@ -10,6 +10,7 @@ public class RightCommand extends BaseCommand
         super(r);
     }
     public void execute(){
+        super.execute();
         if(!this.receiver.executeRightKey()){
             IKeyCommandReceiver r = receiver.getKeyCommandReceiverSuccessor();
             if(r!=null)

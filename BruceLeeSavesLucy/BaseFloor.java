@@ -16,7 +16,7 @@ public class BaseFloor extends World implements IKeyCommandReceiver
     String scenarioName;
     private IKeyCommandReceiver commandSuccessor;
     boolean hasTakenOverKeyCommand = false;
-    HashMap<Object,int[]> objectsLocationMap = new HashMap<Object,int[]>();
+    HashMap<Actor,int[]> objectsLocationMap = new HashMap<Actor,int[]>();
     World world;
     GangsterFactory gangsterFactory  = new GangsterFactory();
     static final int horizonLine = 350;
@@ -26,6 +26,8 @@ public class BaseFloor extends World implements IKeyCommandReceiver
     static final int activeAreaYBottom = 500;
     static final int worldWidth = 800;
     static final int worldHeight = 500;
+    boolean isInitiated = false,
+    isGameStarted = false;
     KeyCommandInvoker keyCommandInvoker = new KeyCommandInvoker();
     /**
      * Constructor for objects of class BaseFloor.
@@ -35,22 +37,28 @@ public class BaseFloor extends World implements IKeyCommandReceiver
     {    
         super(worldWidth, worldHeight, 1); 
         this.mainCharacter = mainCharacter;
+        keyCommandInvoker.setCommandReceiver(this);
+        this.addKeyCommandReceiverSuccessor((IKeyCommandReceiver)mainCharacter);
     }
     public void act(){
+        if(!isInitiated){
+            initElementsToWorld();
+        }
         keyCommandInvoker.checkKeyPress();
-    }
-    public void initElementsToWorld(){
         
     }
-    private void checkKeyPress(){
-    
+    public void initElementsToWorld(){
+        System.out.println("This floor has ["+this.objectsLocationMap.size()+"] actors");
+        for(Actor o : this.objectsLocationMap.keySet()){
+            int[] location = objectsLocationMap.get(o);
+            System.out.println("add an object x:"+location[0]+", "+location[1]);
+            this.addObject(o,location[0],location[1]);
+        }
+        this.isInitiated = true;
+        this.isGameStarted = true;
     }
-    public IKeyCommandReceiver getCommandSuccessor(){
-        return this.commandSuccessor;
-    }
-    public void setCommandSuccessor(IKeyCommandReceiver r){
-        this.commandSuccessor = r;
-    }
+
+ 
     public ArrayList<IFighter> getGangsters(){
         return this.gangsters;
     }
@@ -92,15 +100,26 @@ public class BaseFloor extends World implements IKeyCommandReceiver
             //handle command
             return true;
         }else{
+            System.out.println("pass key A");
             return false;
         }
     }
     public boolean executeSKey(){
         if(hasTakenOverKeyCommand){
             //handle command
+            System.out.println("pass key B");
             return true;
         }else{
             return false;
         }
     }
+    public IKeyCommandReceiver getKeyCommandReceiverSuccessor(){
+        return this.commandSuccessor;
+    };
+    public void addKeyCommandReceiverSuccessor(IKeyCommandReceiver rec){
+        this.commandSuccessor = rec;
+    };
+    public void removeKeyCommandReceiverSuccessor(){
+        this.commandSuccessor = null;
+    };
 }

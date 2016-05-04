@@ -12,6 +12,9 @@ public class BaseCommand implements IKeyCommand
         this.receiver = r;
     }
     
-    public void execute(){          
+    public void execute(){
+        if(true){
+            System.out.println(this.getClass().getName()+" executing...");
+        }
     }
 }

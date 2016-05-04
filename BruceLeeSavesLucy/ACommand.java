@@ -10,6 +10,7 @@ public class ACommand extends BaseCommand
         super(r);
     }
     public void execute(){
+        super.execute();
         if(!this.receiver.executeAKey()){
             IKeyCommandReceiver r = receiver.getKeyCommandReceiverSuccessor();
             if(r!=null)

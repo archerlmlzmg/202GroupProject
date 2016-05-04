@@ -4,14 +4,17 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class SCommand implements IKeyCommand
+public class SCommand extends BaseCommand
 {
-    private Scenario receiver;
-    public SCommand(Scenario r){
-        this.receiver = r;
+    public SCommand(IKeyCommandReceiver r){
+        super(r);
     }
     public void execute(){
-        if(!receiver.executeSKey())
-            receiver.getCommandSuccessor().executeSKey();
+        super.execute();
+        if(!this.receiver.executeSKey()){
+            IKeyCommandReceiver r = receiver.getKeyCommandReceiverSuccessor();
+            if(r!=null)
+                r.executeSKey();
+        }
     }
 }

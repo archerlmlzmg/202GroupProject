@@ -6,11 +6,11 @@
  */
 public class UpCommand extends BaseCommand
 {
-    private Scenario receiver;
     public UpCommand(IKeyCommandReceiver r){
         super(r);
     }
     public void execute(){
+        super.execute();
         if(!this.receiver.executeUpKey()){
             IKeyCommandReceiver r = receiver.getKeyCommandReceiverSuccessor();
             if(r!=null)

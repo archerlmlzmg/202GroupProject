@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class BruceLee extends Figure implements IFighter
+public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
 {
 
     int current_motion_index = 0;
@@ -57,20 +57,6 @@ public class BruceLee extends Figure implements IFighter
         walk2RightSet = new GreenfootImage[2];
         walk2RightSet[0] = new GreenfootImage("bruce_walk_1.gif");
         walk2RightSet[1] = new GreenfootImage("bruce_walk_2.gif");
-        //walk2RightSet[2] = new GreenfootImage("bruce_3.gif");
-        //walk2RightSet[3] = new GreenfootImage("bruce_4.gif");
-        //walk2RightSet[4] = new GreenfootImage("bruce_5.gif");
-        //walk2RightSet[5] = new GreenfootImage("bruce_6.gif");
-        //walk2RightSet[6] = new GreenfootImage("bruce_7.gif");
-        //walk2RightSet[7] = new GreenfootImage("bruce_8.gif");
-        /*for(int i=2; i<10;i++){
-           int m = i+ 1;
-            walk2RightSet[i] = new GreenfootImage("boss_jump_"+m+".gif");
-        }*/
-        /*for(int i=0; i<walk2RightSet.length; i++){
-            int m = i+ 1;
-            stand2RightSet[i] = new GreenfootImage("bruce_walk_" + m +".gif");
-        }*/
 
         stand2LeftSet = new GreenfootImage[2];
         for(int i=0; i<stand2LeftSet.length;i++){
@@ -117,10 +103,11 @@ public class BruceLee extends Figure implements IFighter
     */
     public void addedToWorld(World world)
     {
-        level = (Scene) world;                
+        /*level = (Scene) world;                
         xPlayer = getX();                        
         yPlayer = getY();                       
         feet = getImage().getHeight() / 1;
+        */
     }
     
     /**
@@ -129,7 +116,6 @@ public class BruceLee extends Figure implements IFighter
      */
     public void act() 
     {
-        checkKeypress();
         traverseMotionSet();
         
     }
@@ -212,54 +198,7 @@ public class BruceLee extends Figure implements IFighter
         System.out.println("current motion index:"+this.current_motion_index);
         System.out.println("current Pose:"+this.getCurrentPose()+"\n");
     }
-    private void checkKeypress()
-   {
-        if(Greenfoot.isKeyDown("right")) 
-        {
-            //setImage("walk.gif");
-            System.out.println("---------printing starts-----------");
-            printState();
-            setWalk2Right();
-            System.out.println("---------after setting-----------");
-            printState();
-            System.out.println("---------printing ends-----------");
-        }
-        else if(Greenfoot.isKeyDown("left"))
-        {
-            //setImage("standflip.gif");
-            setLocation(getX()-moveStepLength,getY());
-            direction = 2;
-        }
-        if(Greenfoot.isKeyDown("down")){
-            System.out.println("x:"+getX()+", y:"+getY());
-        }
-            
-         //else //setImage("stand.gif");
-        if(!Greenfoot.isKeyDown("down")&&!Greenfoot.isKeyDown("x")&&direction==1&&!Greenfoot.isKeyDown("right"))
-        {
-            //setImage("stand.gif");
-            
-        }
-        if(!Greenfoot.isKeyDown("down")&&!Greenfoot.isKeyDown("x")&&direction==2&&!Greenfoot.isKeyDown("left"))
-        {
-            //setImage("standflip.gif");
-        }
-        if(Greenfoot.isKeyDown("s"))
-        {
-            this.kick();
-        }
-        if(Greenfoot.isKeyDown("a"))
-        {
-            this.punch();
-            
-            
-        }
-        /*if(!Greenfoot.isKeyDown("up"))
-        {
-            gForce = true;
-            counterWeight();
-        }*/
-    }
+    
  
     
     public void onAttacked(int damage)
@@ -431,5 +370,37 @@ public class BruceLee extends Figure implements IFighter
           setLocation(xPlayer, yPlayer); 
         }
             
+    }
+    public boolean executeLeftKey(){
+        setLocation(getX()-moveStepLength,getY());
+        direction = 2;
+        return true;
+    }
+    public boolean executeRightKey(){
+        this.setDirection(Figure.DIRECTION_RIGHT);
+        setWalk2Right();
+        return true;
+    }
+    public boolean executeUpKey(){
+        return true;
+    }
+    public boolean executeDownKey(){
+        return true;
+    }
+    public boolean executeAKey(){
+        this.punch();
+        return true;
+    }
+    public boolean executeSKey(){
+        this.kick();
+        return true;
+    }
+    //composite pattern
+    public IKeyCommandReceiver getKeyCommandReceiverSuccessor(){
+        return null;
+    }
+    public void addKeyCommandReceiverSuccessor(IKeyCommandReceiver rec){
+    }
+    public void removeKeyCommandReceiverSuccessor(){
     }
 }

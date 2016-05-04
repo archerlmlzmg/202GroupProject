@@ -12,7 +12,15 @@ public class KeyCommandInvoker
     /**
      * Act - do whatever the KeyCommandInvoker wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
-     */   
+     */ 
+    public void setCommandReceiver(IKeyCommandReceiver r){
+        leftCommand = new LeftCommand(r);
+        rightCommand = new RightCommand(r);
+        upCommand = new UpCommand(r);
+        downCommand = new DownCommand(r);
+        aCommand = new ACommand(r);
+        sCommand = new SCommand(r);
+    }
     public void checkKeyPress(){
         if(Greenfoot.isKeyDown("right")){
             rightCommand.execute();
