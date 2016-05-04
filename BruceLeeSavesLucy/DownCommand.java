@@ -4,14 +4,16 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class DownCommand implements IKeyCommand
+public class DownCommand extends BaseCommand
 {
-    private Scenario receiver;
-    public DownCommand(Scenario r){
-        this.receiver = r;
+    public DownCommand(IKeyCommandReceiver r){
+        super(r);
     }
     public void execute(){
-        if(!receiver.executeDownKey())
-            receiver.getCommandSuccessor().executeDownKey();
+        if(!this.receiver.executeDownKey()){
+            IKeyCommandReceiver r = receiver.getKeyCommandReceiverSuccessor();
+            if(r!=null)
+                r.executeDownKey();
+        }
     }
 }

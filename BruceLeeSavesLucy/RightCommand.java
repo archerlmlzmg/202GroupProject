@@ -4,14 +4,16 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class RightCommand implements IKeyCommand
+public class RightCommand extends BaseCommand
 {
-    private Scenario receiver;
-    public RightCommand(Scenario r){
-        this.receiver = r;
+    public RightCommand(IKeyCommandReceiver r){
+        super(r);
     }
     public void execute(){
-        if(!receiver.executeRightKey())
-            receiver.getCommandSuccessor().executeRightKey();
+        if(!this.receiver.executeRightKey()){
+            IKeyCommandReceiver r = receiver.getKeyCommandReceiverSuccessor();
+            if(r!=null)
+                r.executeRightKey();
+        }
     }
 }

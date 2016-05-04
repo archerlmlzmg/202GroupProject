@@ -3,14 +3,13 @@ import java.util.ArrayList;
 import java.util.HashMap; 
 import java.util.Collections;
 /**
- * Write a description of class Scenario here.
+ * Write a description of class BaseFloor here.
  * 
  * @author (Ming Tang) 
  * @version (a version number or a date)
  */
-public abstract class Scenario extends Actor implements IKeyCommandReceiver  
+public class BaseFloor extends World implements IKeyCommandReceiver
 {
-    String backgroundPath;
     ArrayList<IFighter> gangsters = new ArrayList<>();;
     IFighter mainCharacter;
     int gameTime;
@@ -20,20 +19,31 @@ public abstract class Scenario extends Actor implements IKeyCommandReceiver
     HashMap<Object,int[]> objectsLocationMap = new HashMap<Object,int[]>();
     World world;
     GangsterFactory gangsterFactory  = new GangsterFactory();
-    int horizonLine = 350;
-    int activeAreaXLeft = 10;
-    int activeAreaXRight = 700;
-    int activeAreaYTop = 10;
-    int activeAreaYBottom = 500;
+    static final int horizonLine = 350;
+    static final int activeAreaXLeft = 10;
+    static final int activeAreaXRight = 700;
+    static final int activeAreaYTop = 10;
+    static final int activeAreaYBottom = 500;
+    static final int worldWidth = 800;
+    static final int worldHeight = 500;
+    KeyCommandInvoker keyCommandInvoker = new KeyCommandInvoker();
     /**
-     * Constructor for objects of class Floor
+     * Constructor for objects of class BaseFloor.
+     * 
      */
-    public Scenario(World world, IFighter mainCharacter){
-        this.world = world;
+    public BaseFloor(IFighter mainCharacter)
+    {    
+        super(worldWidth, worldHeight, 1); 
         this.mainCharacter = mainCharacter;
+    }
+    public void act(){
+        keyCommandInvoker.checkKeyPress();
     }
     public void initElementsToWorld(){
         
+    }
+    private void checkKeyPress(){
+    
     }
     public IKeyCommandReceiver getCommandSuccessor(){
         return this.commandSuccessor;

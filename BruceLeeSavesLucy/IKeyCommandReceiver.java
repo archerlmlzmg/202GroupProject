@@ -1,7 +1,7 @@
 /**
  * Write a description of class IKeyCommandReceiver here.
  * 
- * @author (your name) 
+ * @author (Ming Tang) 
  * @version (a version number or a date)
  */
 public interface IKeyCommandReceiver  
@@ -12,4 +12,8 @@ public interface IKeyCommandReceiver
     public boolean executeDownKey();
     public boolean executeAKey();
     public boolean executeSKey();
+    //composite pattern
+    public IKeyCommandReceiver getKeyCommandReceiverSuccessor();
+    public void addKeyCommandReceiverSuccessor(IKeyCommandReceiver rec);
+    public void removeKeyCommandReceiverSuccessor();
 }

@@ -2,7 +2,7 @@
 comment0.target=RightCommand
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ RightCommand\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=r
-comment1.target=RightCommand(Scenario)
+comment1.target=RightCommand(IKeyCommandReceiver)
 comment2.params=
 comment2.target=void\ execute()
 numComments=3
