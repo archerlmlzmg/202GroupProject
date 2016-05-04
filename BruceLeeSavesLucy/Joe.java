@@ -13,7 +13,7 @@ public class Joe extends Figure implements Fighter, Gangster
     int moveVariable = 0;
     int moveStepLength = 1;
     private boolean opening = true;
-    public GreenfootImage[] stand2LeftSet, openingSet;
+    public GreenfootImage[] moveSet, openingSet, punchSet;
     private BruceLee bruce;
     
     public Joe ()
@@ -34,27 +34,44 @@ public class Joe extends Figure implements Fighter, Gangster
             }
         }
 
-        stand2LeftSet = new GreenfootImage[12];
-        for (int i = 0; i < stand2LeftSet.length; i++)
+        moveSet = new GreenfootImage[12];
+        for (int i = 0; i < moveSet.length; i++)
         {
             int m = i+ 1;
             if (m < 10)
             {
                 GreenfootImage img = new GreenfootImage("Joe98_stance1_f0" + m +".gif");
-                img.scale(img.getWidth() - 50,img.getHeight() - 70);
-                stand2LeftSet[i] = img;
+                img.scale(img.getWidth() - 60,img.getHeight() - 100);
+                moveSet[i] = img;
             }
             else
             {
                 GreenfootImage img = new GreenfootImage("Joe98_stance1_f" + m +".gif");
-                img.scale(img.getWidth() - 50,img.getHeight() - 70);
-                stand2LeftSet[i] = img;
+                img.scale(img.getWidth() - 60,img.getHeight() - 100);
+                moveSet[i] = img;
+            } 
+        }
+        
+        punchSet = new GreenfootImage[29];
+        for (int i = 0; i < punchSet.length; i++)
+        {
+            int m = i+ 1;
+            if (m < 10)
+            {
+                GreenfootImage img = new GreenfootImage("JoePunch_f0" + m +".gif");
+                //img.scale(img.getWidth() - 60,img.getHeight() - 100);
+                punchSet[i] = img;
+            }
+            else
+            {
+                GreenfootImage img = new GreenfootImage("JoePunch_f" + m +".gif");
+                //img.scale(img.getWidth() - 60,img.getHeight() - 100);
+                punchSet[i] = img;
             } 
         }
         
         this.currentMotionSet = openingSet;
         this.setCurrentPose(Figure.POSE_STAND);
-        opening = false;
     }
     
     /**
@@ -64,12 +81,41 @@ public class Joe extends Figure implements Fighter, Gangster
     public void act() 
     {
         // Add your action code here.
-        //move();
-        lookForMainCharacter();
+        joeShowup();
     }    
     
-    public void move()
+    private void joeShowup(){
+       if (opening)
+       {
+           //joeInit();
+           lookForMainCharacter();
+       }
+       else
+       {
+           lookForMainCharacter();
+       }
+    }
+    
+    public void joeInit()
     {
+        for(int i=650; i>500; i--){
+            if(current_motion_index >= currentMotionSet.length) {
+                current_motion_index = 0;
+            }
+                setImage(currentMotionSet[current_motion_index]); 
+            if(current_motion_index == currentMotionSet.length - 1){
+                current_motion_index = 0;
+            }else{
+                current_motion_index++;
+            }
+            if(this.getX()<500){
+               opening = false;
+               break;
+            }
+        } 
+    }
+    
+    public void runToMainCharacter(){
         if(moveVariable < moveSpeed){
             moveVariable++;
             return;
@@ -77,42 +123,57 @@ public class Joe extends Figure implements Fighter, Gangster
             moveVariable = 0;
         }
         //step to next motion
-        GreenfootImage[] motionSet = this.currentMotionSet;
-        if(current_motion_index >= motionSet.length)
+        this.currentMotionSet = moveSet;
+        if(current_motion_index >= currentMotionSet.length)
             current_motion_index = 0;
-        setImage(motionSet[current_motion_index]);
-        if(current_motion_index == motionSet.length - 1){
+        setImage(currentMotionSet[current_motion_index]);
+        if(current_motion_index == currentMotionSet.length - 1){
             current_motion_index = 0;
         }else{
             current_motion_index++;
+            setLocation(this.getX()-moveStepLength,this.getY());
         }
     }
     
     public void lookForMainCharacter(){
-        if(moveVariable < moveSpeed){
-            moveVariable++;
-            return;
-        }else{
-            moveVariable = 0;
-        }
+        setLocation(this.getX(),340);
         if(bruce == null){
            bruce= this.getWorld().getObjects(BruceLee.class).get(0);
         }
-   
-        if(this.getX()>bruce.getX()){
-            setLocation(this.getX()-moveStepLength,this.getY());
+        if(this.getX() > bruce.getX()){
+           runToMainCharacter(); 
+        }else{
+           hit();
         }
-        System.out.println(bruce.toString());
     }
     
     public void onAttacked(int damage){
     
     }
     
+    public void hit(){
+        if(moveVariable < moveSpeed){
+            moveVariable++;
+            return;
+        }else{
+            moveVariable = 0;
+        }
+        //step to next motion
+        this.currentMotionSet = punchSet;
+        if(current_motion_index >= currentMotionSet.length)
+            current_motion_index = 0;
+        setImage(currentMotionSet[current_motion_index]);
+        if(current_motion_index == currentMotionSet.length - 1){
+            current_motion_index = 0;
+        }else{
+            current_motion_index++;
+            setLocation(this.getX(),this.getY());
+        }
+    }
+    
     public int punch(){
         return 0;
     }
-    
     public int kick(){
         return 0;
     }
