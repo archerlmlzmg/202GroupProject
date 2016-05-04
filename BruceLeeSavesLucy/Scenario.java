@@ -24,10 +24,10 @@ public abstract class Scenario extends Actor implements IKeyCommandReceiver
     /**
      * Constructor for objects of class Floor
      */
-    public Scenario(){
+    public Scenario(World world, IFighter mainCharacter){
        
     }
-    public void init(World world, IFighter mainCharacter){
+    public void init(){
         
     }
     public IFighter[] getGangsters(){
