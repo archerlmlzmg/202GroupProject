@@ -6,7 +6,7 @@ import java.lang.*;
  * @author (Minglu Liu) 
  * @version (a version number or a date)
  */
-public class Boss extends Figure implements IFighter
+public class boss extends Figure implements IFighter
 {
     int current_motion_index = 0;
     int moveSpeed = 3;
@@ -15,7 +15,7 @@ public class Boss extends Figure implements IFighter
     private BruceLee bruce;
     boolean onGround = false;
     public GreenfootImage[] fallSet, hitSet, crushSet, highkickSet, jumpSet, runSet, spinkickSet, currentMotionSet;
-    public Boss(){
+    public boss(){
         //initialize falling
         fallSet = new GreenfootImage[4];
         for(int i=0; i<fallSet.length;i++){
