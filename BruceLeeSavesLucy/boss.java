@@ -14,6 +14,7 @@ public class boss extends Figure
     int moveStepLength = 10;
     private BruceLee bruce;
     boolean onGround = false;
+    
     public GreenfootImage[] fallSet, hitSet, crushSet, highkickSet, jumpSet, runSet, spinkickSet, currentMotionSet;
     
     public boss(){
@@ -86,7 +87,7 @@ public class boss extends Figure
        }
     }
     private void bossInitialization(){
-        for(int i=30; i<150; i++){
+        for(int i=30; i<145; i++){
                 if(current_motion_index >= currentMotionSet.length)
                     current_motion_index = 0;
                 setImage(currentMotionSet[current_motion_index]); 
@@ -95,9 +96,9 @@ public class boss extends Figure
                 }else{
                     current_motion_index++;
                     Greenfoot.delay(5);
-                    setLocation(this.getX(),i*3);
+                    setLocation(this.getX(),i*4);
                 }
-                if(this.getY()>340){
+                if(this.getY()>330){
                     onGround = true;
                     break;
                 }
@@ -144,10 +145,10 @@ public class boss extends Figure
         if(bruce == null){
            bruce= this.getWorld().getObjects(BruceLee.class).get(0);
         }
-        if(this.getX() > bruce.getX()){
+        if(this.getX() > bruce.getX()+70){
            runToBruceLee(); 
         }else{
-           highkickBruceLee();
+           spinkickBruceLee();
         }
     }
     private void runToBruceLee(){
