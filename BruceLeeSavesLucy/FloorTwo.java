@@ -8,6 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class FloorTwo extends Scenario
 {
+    public FloorTwo(World world, IFighter mainCharacter){
+        super(world, mainCharacter);
+    }
     /**
      * Act - do whatever the FloorTwo wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

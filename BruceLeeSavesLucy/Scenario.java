@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.ArrayList;
 /**
  * Write a description of class Scenario here.
  * 
@@ -9,28 +9,37 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public abstract class Scenario extends Actor implements IKeyCommandReceiver  
 {
     String backgroundPath;
-    IFighter[] gangsters;
+    ArrayList<IFighter> gangsters = new ArrayList<>();;
     IFighter mainCharacter;
     int gameTime;
     String scenarioName;
     private IKeyCommandReceiver commandSuccessor;
-    private boolean hasTakenOverKeyCommand = false;
+    boolean hasTakenOverKeyCommand = false;
+    Map<Object,int[2]> objectsLocationMap = new HashMap<Object,int[2]>();
+    World world;
+    GangsterFactory gangsterFactory  = new GangsterFactory();
+    int horizonLine = 350;
+    int activeAreaXLeft = 10;
+    int activeAreaXRight = 700;
+    int activeAreaYTop = 10;
+    int activeAreaYBottom = 500;
+    /**
+     * Constructor for objects of class Floor
+     */
+    public Scenario(World world, IFighter mainCharacter){
+        this.world = world;
+        this.mainCharacter = mainCharacter;
+    }
+    public void initElementsToWorld(){
+        
+    }
     public IKeyCommandReceiver getCommandSuccessor(){
         return this.commandSuccessor;
     }
     public void setCommandSuccessor(IKeyCommandReceiver r){
         this.commandSuccessor = r;
     }
-    /**
-     * Constructor for objects of class Floor
-     */
-    public Scenario(World world, IFighter mainCharacter){
-       
-    }
-    public void init(){
-        
-    }
-    public IFighter[] getGangsters(){
+    public ArrayList<IFighter> getGangsters(){
         return this.gangsters;
     }
     

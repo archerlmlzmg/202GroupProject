@@ -13,8 +13,13 @@ public class GangsterFactory
     {
     }
     public IFighter generate(String name){
-        if(name.equals("Joe"))
+        if(name.equals("Joe")){
             return new Joe();
+        }else if(name.equals("boss")){
+            return new boss();
+        }else if(name.equals("Goro")){
+            return new boss();
+        }
         return null;
     }
 }
