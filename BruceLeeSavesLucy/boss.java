@@ -74,12 +74,10 @@ public class boss extends Figure
             img.scale(img.getWidth() - 50,img.getHeight() - 70);
             spinkickSet[i] = img;
         }
-        
         this.currentMotionSet = fallSet;
         this.setCurrentPose(Figure.POSE_STAND);
     }
     private void bossShowup(){
-       
        if(onGround){
            lookForBruceLee();
        }else{   
