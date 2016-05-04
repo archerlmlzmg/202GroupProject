@@ -27,8 +27,9 @@ public class Scene extends World
     private Lucy lucy = new Lucy();
 
     public HealthBar healthBar = new HealthBar("Bruce Lee: ", "", 100, 100);
-  
-
+    public HealthBar healthBarBoss = new HealthBar("Boss: ", "",100, 100);
+    
+    
     /**
      * 
      */
@@ -37,10 +38,13 @@ public class Scene extends World
         super(worldWidth, worldHeight, 1);
         bruce = new BruceLee();
         addObject(bruce,100,350);
+        
         addObject(healthBar, 150, 50);
         joe = new Joe();
-            
-            addObject(joe, 700, 300);
+        addObject(healthBarBoss, 650, 50);   
+        addObject(joe, 700, 300);
+        boss = new boss();
+        addObject(boss, 700, 340);
     }
     
     public void act(){
@@ -59,7 +63,8 @@ public class Scene extends World
             joe = new Joe();
             
             addObject(joe, 700, 300);
-            
+            boss = new boss();
+            addObject(boss, 700, 100);
             
 
            
@@ -70,7 +75,7 @@ public class Scene extends World
         {
             addObject(new Goro(), 500, 300);
             boss = new boss();
-            //addObject(boss, 700, 300);
+            addObject(boss, 700, 300);
             //addObject(lucy, 750, 400);
         }
     }
