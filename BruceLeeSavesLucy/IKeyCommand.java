@@ -4,7 +4,7 @@
  * @author (Ming Tang) 
  * @version (a version number or a date)
  */
-public interface KeyCommand  
+public interface IKeyCommand  
 {
   void execute();
 }
