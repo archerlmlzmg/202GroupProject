@@ -6,7 +6,7 @@ import java.lang.*;
  * @author (Minglu Liu) 
  * @version (a version number or a date)
  */
-public class Boss extends Figure implements IFighter
+public class boss extends Figure implements IFighter
 {
     int current_motion_index = 0;
     int moveSpeed = 3;
@@ -15,7 +15,7 @@ public class Boss extends Figure implements IFighter
     private BruceLee bruce;
     boolean onGround = false;
     public GreenfootImage[] fallSet, hitSet, crushSet, highkickSet, jumpSet, runSet, spinkickSet, currentMotionSet;
-    public Boss(){
+    public boss(){
         //initialize falling
         fallSet = new GreenfootImage[4];
         for(int i=0; i<fallSet.length;i++){
@@ -99,36 +99,15 @@ public class Boss extends Figure implements IFighter
                     break;
                 }
         } 
-       
     }
 
-    private void traverseMotionSet(){
-        //slow donw the motion
-        if(moveVariable < moveSpeed){
-            moveVariable++;
-            return;
-        }else{
-            moveVariable = 0;
-        }
-        //step to next motion
-        GreenfootImage[] motionSet = this.currentMotionSet;
-        if(current_motion_index >= motionSet.length)
-            current_motion_index = 0;
-        setImage(motionSet[current_motion_index]);
-        if(current_motion_index == motionSet.length - 1){
-            current_motion_index = 0;
-        }else{
-            Greenfoot.delay(30);
-            current_motion_index++;
-        }
-    }
     /**
      * Act - do whatever the BruceLee wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
-        traverseMotionSet();
+        bossShowup();
     }
     private void lookForBruceLee(){
         //slow down the motion
