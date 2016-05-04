@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Joe extends Figure implements IFighter, IGangster
 {
     int current_motion_index = 0;
-    int moveSpeed = 3;
+    int moveSpeed = 1;
     int moveVariable = 0;
     int moveStepLength = 1;
     private boolean opening = true;
@@ -70,17 +70,7 @@ public class Joe extends Figure implements IFighter, IGangster
             } 
         }
         
-        if (opening)
-        {
-            this.currentMotionSet = openingSet;
-            this.setCurrentPose(Figure.POSE_STAND);
-            opening = false;
-        }
-        else
-        {
-            this.currentMotionSet = stand2LeftSet;
-            this.setCurrentPose(Figure.POSE_WALK);
-        }
+        
 
         this.currentMotionSet = openingSet;
         this.setCurrentPose(Figure.POSE_STAND);
@@ -94,41 +84,44 @@ public class Joe extends Figure implements IFighter, IGangster
         // Add your action code here.
 
         //move();
-        lookForMainCharacter();
+        //lookForMainCharacter();
         joeShowup();
 
     }    
     
     private void joeShowup(){
        if (opening)
-       {
-           //joeInit();
-           lookForMainCharacter();
-       }
-       else
-       {
-           lookForMainCharacter();
-       }
+        {
+            joeInit();
+        }
+        else
+        {
+            runToMainCharacter();
+        }
     }
     
     public void joeInit()
     {
-        for(int i=650; i>500; i--){
+        Greenfoot.delay(5);
+        for(int i=0; i<30; i++){
+            
             if(current_motion_index >= currentMotionSet.length) {
-                current_motion_index = 0;
+                    current_motion_index = 0;
             }
-                setImage(currentMotionSet[current_motion_index]); 
+                    setImage(currentMotionSet[current_motion_index]); 
             if(current_motion_index == currentMotionSet.length - 1){
-                current_motion_index = 0;
+                    current_motion_index = 0;
             }else{
-                current_motion_index++;
+                    current_motion_index++;
+                    Greenfoot.delay(5);
             }
-            if(this.getX()<500){
-               opening = false;
-               break;
+            if(current_motion_index>=29){
+                opening = false;  
+                break;
             }
-        } 
-    }
+        }
+    } 
+    
     
     public void runToMainCharacter(){
         if(moveVariable < moveSpeed){

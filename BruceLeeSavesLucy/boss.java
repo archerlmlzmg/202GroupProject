@@ -99,7 +99,6 @@ public class boss extends Figure implements IFighter
                     break;
                 }
         } 
-       
     }
 
     /**
