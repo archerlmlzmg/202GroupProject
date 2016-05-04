@@ -12,6 +12,6 @@ public class LeftCommand implements IKeyCommand
     }
     public void execute(){
         if(!receiver.executeLeftKey())
-            receiver.getCommandSuccessor().executeLeftKeyPress();
+            receiver.getCommandSuccessor().executeLeftKey();
     }
 }
