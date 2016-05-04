@@ -22,14 +22,14 @@ public class Joe extends Figure implements IFighter, IGangster
         for (int i = 0; i < openingSet.length; i++)
         {
             int m = i + 1;
-            if (m < 10)
+            if (m <= 9)
             {
-                GreenfootImage img = new GreenfootImage("JoeOpening_f0" + m +".gif");
+                GreenfootImage img = new GreenfootImage("s0" + m + "_" + m + ".gif");
                 openingSet[i] = img;
             }
             else
             {
-                GreenfootImage img = new GreenfootImage("JoeOpening_f" + m +".gif");
+                GreenfootImage img = new GreenfootImage("s" + m + "_" + m + ".gif");
                 openingSet[i] = img;
             }
         }
