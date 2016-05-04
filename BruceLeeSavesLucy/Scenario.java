@@ -1,10 +1,12 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
 /**
  * Write a description of class Scenario here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public abstract class Scenario implements IKeyCommandReceiver  
+public abstract class Scenario extends Actor implements IKeyCommandReceiver  
 {
     String backgroundPath;
     IFighter[] gangsters;
@@ -12,6 +14,7 @@ public abstract class Scenario implements IKeyCommandReceiver
     int gameTime;
     String scenarioName;
     private IKeyCommandReceiver commandSuccessor;
+    private boolean hasTakenOverKeyCommand = false;
     public IKeyCommandReceiver getCommandSuccessor(){
         return this.commandSuccessor;
     }
@@ -24,7 +27,7 @@ public abstract class Scenario implements IKeyCommandReceiver
     public Scenario(){
        
     }
-    public void init(){
+    public void init(World world, IFighter mainCharacter){
         
     }
     public IFighter[] getGangsters(){
@@ -32,27 +35,51 @@ public abstract class Scenario implements IKeyCommandReceiver
     }
     
     public boolean executeLeftKey(){
-    
-        return true;
+        if(hasTakenOverKeyCommand){
+            //handle command
+            return true;
+        }else{
+            return false;
+        }
     }
     public boolean executeRightKey(){
-    
-        return true;
+        if(hasTakenOverKeyCommand){
+            //handle command
+            return true;
+        }else{
+            return false;
+        }
     }
     public boolean executeUpKey(){
-    
-        return true;
+        if(hasTakenOverKeyCommand){
+            //handle command
+            return true;
+        }else{
+            return false;
+        }
     }
     public boolean executeDownKey(){
-    
-        return true;
+        if(hasTakenOverKeyCommand){
+            //handle command
+            return true;
+        }else{
+            return false;
+        }
     }
     public boolean executeAKey(){
-    
-        return true;
+        if(hasTakenOverKeyCommand){
+            //handle command
+            return true;
+        }else{
+            return false;
+        }
     }
     public boolean executeSKey(){
-    
-        return true;
+        if(hasTakenOverKeyCommand){
+            //handle command
+            return true;
+        }else{
+            return false;
+        }
     }
 }
