@@ -1,13 +1,13 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Joe here.
+ * Write a description of class Kim here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Joe extends Figure implements IFighter, IGangster
-{
+public class Kim extends Figure implements IFighter, IGangster
+{    
     int current_motion_index = 0;
     int moveSpeed = 1;
     int moveVariable = 0;
@@ -16,55 +16,21 @@ public class Joe extends Figure implements IFighter, IGangster
     public GreenfootImage[] moveSet, openingSet, punchSet;
     private BruceLee bruce;
     
-    public Joe ()
+    public Kim ()
     {
-        openingSet = new GreenfootImage[30];
-        for (int i = 0; i < openingSet.length; i++)
-        {
-            int m = i + 1;
-            if (m <= 9)
-            {
-                GreenfootImage img = new GreenfootImage("s0" + m + "_" + m + ".gif");
-                openingSet[i] = img;
-            }
-            else
-            {
-                GreenfootImage img = new GreenfootImage("s" + m + "_" + m + ".gif");
-                openingSet[i] = img;
-            }
-        }
-
-        moveSet = new GreenfootImage[12];
-        for (int i = 0; i < moveSet.length; i++)
-        {
-            int m = i+ 1;
-            if (m < 10)
-            {
-                GreenfootImage img = new GreenfootImage("Joe98_stance1_f0" + m +".gif");
-                img.scale(img.getWidth() - 60,img.getHeight() - 100);
-                moveSet[i] = img;
-            }
-            else
-            {
-                GreenfootImage img = new GreenfootImage("Joe98_stance1_f" + m +".gif");
-                img.scale(img.getWidth() - 60,img.getHeight() - 100);
-                moveSet[i] = img;
-            } 
-        }
-        
-        punchSet = new GreenfootImage[29];
+        punchSet = new GreenfootImage[46];
         for (int i = 0; i < punchSet.length; i++)
         {
             int m = i+ 1;
             if (m < 10)
             {
-                GreenfootImage img = new GreenfootImage("JoePunch_f0" + m +".gif");
+                GreenfootImage img = new GreenfootImage("KimPunch_f0" + m +".gif");
                 //img.scale(img.getWidth() - 60,img.getHeight() - 100);
                 punchSet[i] = img;
             }
             else
             {
-                GreenfootImage img = new GreenfootImage("JoePunch_f" + m +".gif");
+                GreenfootImage img = new GreenfootImage("KimPunch_f" + m +".gif");
                 //img.scale(img.getWidth() - 60,img.getHeight() - 100);
                 punchSet[i] = img;
             } 
@@ -74,19 +40,19 @@ public class Joe extends Figure implements IFighter, IGangster
         this.setCurrentPose(Figure.POSE_STAND);
     }
     /**
-     * Act - do whatever the Joe wants to do. This method is called whenever
+     * Act - do whatever the kim wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
         // Add your action code here.
-        joeShowup();
+        kimShowup();
     }    
     
-    private void joeShowup(){
+    private void kimShowup(){
        if (opening)
         {
-            joeInit();
+            kimInit();
         }
         else
         {
@@ -94,7 +60,7 @@ public class Joe extends Figure implements IFighter, IGangster
         }
     }
     
-    public void joeInit()
+    public void kimInit()
     {
         Greenfoot.delay(5);
         for(int i=0; i<30; i++){
@@ -185,4 +151,5 @@ public class Joe extends Figure implements IFighter, IGangster
     }
     public void die(){
     }
+    
 }
