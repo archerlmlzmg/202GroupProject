@@ -18,7 +18,7 @@ public class GangsterFactory
         }else if(name.equals("boss")){
             return new boss();
         }else if(name.equals("Goro")){
-            return new boss();
+            return new Goro();
         }
         return null;
     }
