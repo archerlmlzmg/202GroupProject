@@ -13,10 +13,10 @@ public class Kim extends Figure implements IFighter, IGangster
     int moveVariable = 0;
     int moveStepLength = 3;
     private boolean opening = true;
-    public GreenfootImage[] moveSet, openingSet, punchSet;
+    public GreenfootImage[] punchSet;
     private BruceLee bruce;
     
-    public Kim ()
+    public Kim()
     {
         punchSet = new GreenfootImage[46];
         for (int i = 0; i < punchSet.length; i++)
@@ -24,19 +24,19 @@ public class Kim extends Figure implements IFighter, IGangster
             int m = i+ 1;
             if (m < 10)
             {
-                GreenfootImage img = new GreenfootImage("KimPunch_f0" + m +".gif");
+                GreenfootImage img = new GreenfootImage("kimPunch_f0" + m +".gif");
                 //img.scale(img.getWidth() - 60,img.getHeight() - 100);
                 punchSet[i] = img;
             }
             else
             {
-                GreenfootImage img = new GreenfootImage("KimPunch_f" + m +".gif");
+                GreenfootImage img = new GreenfootImage("kimPunch_f" + m +".gif");
                 //img.scale(img.getWidth() - 60,img.getHeight() - 100);
                 punchSet[i] = img;
             } 
         }
         
-        this.currentMotionSet = openingSet;
+        this.currentMotionSet = punchSet;
         this.setCurrentPose(Figure.POSE_STAND);
     }
     /**
@@ -90,7 +90,7 @@ public class Kim extends Figure implements IFighter, IGangster
             moveVariable = 0;
         }
         //step to next motion
-        this.currentMotionSet = moveSet;
+        this.currentMotionSet = punchSet;
         if(current_motion_index >= currentMotionSet.length)
             current_motion_index = 0;
         setImage(currentMotionSet[current_motion_index]);
@@ -111,33 +111,12 @@ public class Kim extends Figure implements IFighter, IGangster
         if(this.getX() > bruce.getX()+70){
            runToMainCharacter(); 
         }else{
-           hit();
+           runToMainCharacter();
         }
     }
     
     public void onAttacked(int damage){
         
-    }
-    
-    public void hit(){
-        if(moveVariable < moveSpeed){
-            moveVariable++;
-            return;
-        }else{
-            moveVariable = 0;
-        }
-        //step to next motion
-        this.currentMotionSet = punchSet;
-        if(current_motion_index >= currentMotionSet.length)
-            current_motion_index = 0;
-        setImage(currentMotionSet[current_motion_index]);
-        if(current_motion_index == currentMotionSet.length - 1){
-            current_motion_index = 0;
-        }else{
-            current_motion_index++;
-            Greenfoot.delay(5);
-            setLocation(this.getX(),this.getY());
-        }
     }
     
     public int punch(){

@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Joe extends Figure implements IFighter, IGangster
 {
     int current_motion_index = 0;
-    int moveSpeed = 1;
+    int moveSpeed = 10;
     int moveVariable = 0;
     int moveStepLength = 3;
     private boolean opening = true;

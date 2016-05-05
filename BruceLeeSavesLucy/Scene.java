@@ -23,6 +23,7 @@ public class Scene extends World
     private BruceLee bruce;
     private boss boss;
     private Joe joe;
+    private Kim kim;
 
     private Lucy lucy = new Lucy();
 
@@ -45,6 +46,9 @@ public class Scene extends World
         addObject(joe, 700, 340);
         boss = new boss();
         addObject(boss, 700, 340);
+        
+        kim = new Kim();
+        addObject(kim, 340, 340);
     }
     
     public void act(){
