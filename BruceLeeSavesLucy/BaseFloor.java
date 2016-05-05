@@ -10,7 +10,7 @@ import java.util.Collections;
  */
 public class BaseFloor extends World implements IKeyCommandReceiver,ISecnarioTemplate
 {
-    ArrayList<IFighter> gangsters = new ArrayList<>();;
+    ArrayList<IFighter> gangsters = new ArrayList<>();
     IFighter mainCharacter;
     int gameTime;
     String scenarioName;
@@ -28,7 +28,15 @@ public class BaseFloor extends World implements IKeyCommandReceiver,ISecnarioTem
     static final int worldHeight = 500;
     boolean isInitiated = false,
     isGameStarted = false;
+    boolean isPaused = false;
     KeyCommandInvoker keyCommandInvoker = new KeyCommandInvoker();
+    Window window = new Window();
+    ResumeButton resumeBtn = new ResumeButton();
+    ExitButton exitBtn = new ExitButton();
+    Pointer pointer = new Pointer();
+    int[] pointerPos1 = new int[]{340,250},
+        pointerPos2 = new int[]{340,322};
+    int menuIndex = 1;
     /**
      * Constructor for objects of class BaseFloor.
      * 
@@ -82,6 +90,10 @@ public class BaseFloor extends World implements IKeyCommandReceiver,ISecnarioTem
     public boolean executeUpKey(){
         if(hasTakenOverKeyCommand){
             //handle command
+            if(isPaused){
+                pointer.setLocation(pointerPos1[0],pointerPos1[1]);
+                menuIndex = 1;
+            }
             return true;
         }else{
             return false;
@@ -90,6 +102,10 @@ public class BaseFloor extends World implements IKeyCommandReceiver,ISecnarioTem
     public boolean executeDownKey(){
         if(hasTakenOverKeyCommand){
             //handle command
+            if(isPaused){
+                pointer.setLocation(pointerPos2[0],pointerPos2[1]);
+                menuIndex = 2;
+            }
             return true;
         }else{
             return false;
@@ -113,6 +129,21 @@ public class BaseFloor extends World implements IKeyCommandReceiver,ISecnarioTem
             return false;
         }
     }
+    // always takes over this key event 
+    public boolean executeEnterKey(){
+            if(isGameStarted &&!isPaused){
+             onPause();
+            }else if(isPaused && hasTakenOverKeyCommand){
+                if(menuIndex == 1){ // resume
+                    hasTakenOverKeyCommand = false;
+                    isPaused = false;
+                    closePauseWindow();
+                }else{
+                    Greenfoot.setWorld(new Menu());
+                }
+            }
+            return true;
+    }    
     public IKeyCommandReceiver getKeyCommandReceiverSuccessor(){
         return this.commandSuccessor;
     };
@@ -132,8 +163,35 @@ public class BaseFloor extends World implements IKeyCommandReceiver,ISecnarioTem
     }
     public void onAct(){
         keyCommandInvoker.checkKeyPress();
+        checkMouseClick();
     }
     public void onPause(){
+        isPaused = true;
+        hasTakenOverKeyCommand = true;
+        //add window and buttons
+        showPauseWindow();
+    }
+    private void checkMouseClick(){
+        if(Greenfoot.mouseClicked(resumeBtn)){
+            executeUpKey();
+            executeEnterKey();
+            
+        }else if (Greenfoot.mouseClicked(exitBtn)){
+            executeDownKey();
+            executeEnterKey();
+        }
+    }
+    private void showPauseWindow(){
+        addObject(window,402,276);
+        addObject(resumeBtn,450,250);
+        addObject(exitBtn,415,322);
+        addObject(pointer,pointerPos1[0],pointerPos1[1]);
+    }
+    private void closePauseWindow(){
+        removeObject(window);
+        removeObject(resumeBtn);
+        removeObject(exitBtn);
+        removeObject(pointer);
     }
     public void onEnd(){
     }

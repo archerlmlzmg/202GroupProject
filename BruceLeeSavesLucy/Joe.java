@@ -9,9 +9,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Joe extends Figure implements IFighter, IGangster
 {
     int current_motion_index = 0;
-    int moveSpeed = 1;
+    int moveSpeed = 10;
     int moveVariable = 0;
-    int moveStepLength = 1;
+    int moveStepLength = 3;
     private boolean opening = true;
     public GreenfootImage[] moveSet, openingSet, punchSet;
     private BruceLee bruce;
@@ -70,8 +70,6 @@ public class Joe extends Figure implements IFighter, IGangster
             } 
         }
         
-        
-
         this.currentMotionSet = openingSet;
         this.setCurrentPose(Figure.POSE_STAND);
     }
@@ -82,11 +80,7 @@ public class Joe extends Figure implements IFighter, IGangster
     public void act() 
     {
         // Add your action code here.
-
-        //move();
-        //lookForMainCharacter();
         joeShowup();
-
     }    
     
     private void joeShowup(){
@@ -96,7 +90,7 @@ public class Joe extends Figure implements IFighter, IGangster
         }
         else
         {
-            runToMainCharacter();
+            lookForMainCharacter();
         }
     }
     
@@ -122,7 +116,6 @@ public class Joe extends Figure implements IFighter, IGangster
         }
     } 
     
-    
     public void runToMainCharacter(){
         if(moveVariable < moveSpeed){
             moveVariable++;
@@ -139,33 +132,26 @@ public class Joe extends Figure implements IFighter, IGangster
             current_motion_index = 0;
         }else{
             current_motion_index++;
+            Greenfoot.delay(5);
             setLocation(this.getX()-moveStepLength,this.getY());
         }
     }
+    
     public void lookForMainCharacter(){
-        if(moveVariable < moveSpeed){
-            moveVariable++;
-            return;
-        }else{
-            moveVariable = 0;
-        }
+        setLocation(this.getX(),340);
         if(bruce == null){
-            setLocation(this.getX(),340);
-            if(bruce == null){
-               bruce= this.getWorld().getObjects(BruceLee.class).get(0);
-            }
-            if(this.getX() > bruce.getX()){
-               runToMainCharacter(); 
-            }else{
-               hit();
-            }
+           bruce= this.getWorld().getObjects(BruceLee.class).get(0);
+        }
+        if(this.getX() > bruce.getX()+70){
+           runToMainCharacter(); 
+        }else{
+           hit();
         }
     }
     
     public void onAttacked(int damage){
-    
+        
     }
-
     
     public void hit(){
         if(moveVariable < moveSpeed){
@@ -183,6 +169,7 @@ public class Joe extends Figure implements IFighter, IGangster
             current_motion_index = 0;
         }else{
             current_motion_index++;
+            Greenfoot.delay(5);
             setLocation(this.getX(),this.getY());
         }
     }

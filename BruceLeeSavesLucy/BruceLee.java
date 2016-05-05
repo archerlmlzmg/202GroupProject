@@ -224,6 +224,10 @@ public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
         this.kick();
         return true;
     }
+    public boolean executeEnterKey(){
+ 
+        return false;
+    }
     //composite pattern
     public IKeyCommandReceiver getKeyCommandReceiverSuccessor(){
         return null;

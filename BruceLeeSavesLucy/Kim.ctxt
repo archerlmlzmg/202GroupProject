@@ -1,0 +1,27 @@
+#BlueJ class context
+comment0.target=Kim
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Kim\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=Kim()
+comment10.params=
+comment10.target=int\ defend()
+comment11.params=
+comment11.target=void\ die()
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ kim\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment3.params=
+comment3.target=void\ kimShowup()
+comment4.params=
+comment4.target=void\ kimInit()
+comment5.params=
+comment5.target=void\ runToMainCharacter()
+comment6.params=
+comment6.target=void\ lookForMainCharacter()
+comment7.params=damage
+comment7.target=void\ onAttacked(int)
+comment8.params=
+comment8.target=int\ punch()
+comment9.params=
+comment9.target=int\ kick()
+numComments=12

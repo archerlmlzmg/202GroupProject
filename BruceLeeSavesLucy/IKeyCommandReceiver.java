@@ -12,6 +12,7 @@ public interface IKeyCommandReceiver
     public boolean executeDownKey();
     public boolean executeAKey();
     public boolean executeSKey();
+    public boolean executeEnterKey();
     //composite pattern
     public IKeyCommandReceiver getKeyCommandReceiverSuccessor();
     public void addKeyCommandReceiverSuccessor(IKeyCommandReceiver rec);

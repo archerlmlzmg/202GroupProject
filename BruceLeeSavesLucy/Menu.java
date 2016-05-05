@@ -31,6 +31,7 @@ public class Menu extends World
     }
     public void act(){
         checkKeyPress();
+        checkMouseClick();
     }
     private void checkKeyPress(){
         if(Greenfoot.isKeyDown("up")){
@@ -45,6 +46,16 @@ public class Menu extends World
                 System.out.println(" new Floor1(new BruceLee())");
                 Greenfoot.setWorld(new Floor1(new BruceLee()));
             }
+        }
+    }
+        private void checkMouseClick(){
+        if(Greenfoot.mouseClicked(startButton)){
+            pointer.setLocation(pointerPos1[0],pointerPos1[1]);
+            menuIndex = 1;
+            Greenfoot.setWorld(new Floor1(new BruceLee()));
+        }else if (Greenfoot.mouseClicked(aboutButton)){
+            pointer.setLocation(pointerPos2[0],pointerPos2[1]);
+            menuIndex = 2;
         }
     }
 }

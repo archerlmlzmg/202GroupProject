@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class KeyCommandInvoker
 {
-    private IKeyCommand leftCommand,rightCommand,upCommand,downCommand,aCommand,sCommand;
+    private IKeyCommand leftCommand,rightCommand,upCommand,downCommand,aCommand,sCommand,enterCommand;
     /**
      * Act - do whatever the KeyCommandInvoker wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -20,6 +20,7 @@ public class KeyCommandInvoker
         downCommand = new DownCommand(r);
         aCommand = new ACommand(r);
         sCommand = new SCommand(r);
+        enterCommand = new EnterCommand(r);
     }
     public void checkKeyPress(){
         if(Greenfoot.isKeyDown("right")){
@@ -34,6 +35,8 @@ public class KeyCommandInvoker
             aCommand.execute();
         }else if(Greenfoot.isKeyDown("s")){
             sCommand.execute();
+        }else if(Greenfoot.isKeyDown("enter")){
+            enterCommand.execute();
         }
     }
 }
