@@ -9,11 +9,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Joe extends Figure implements IFighter, IGangster
 {
     int current_motion_index = 0;
-    int moveSpeed = 10;
+    int moveSpeed = 5;
     int moveVariable = 0;
     int moveStepLength = 3;
     private boolean opening = true;
-    public GreenfootImage[] moveSet, openingSet, punchSet;
+    public GreenfootImage[] walk2LeftSet, walk2RightSet, openingSet, punch2LeftSet;
     private BruceLee bruce;
     
     public Joe ()
@@ -34,39 +34,57 @@ public class Joe extends Figure implements IFighter, IGangster
             }
         }
 
-        moveSet = new GreenfootImage[12];
-        for (int i = 0; i < moveSet.length; i++)
+        walk2LeftSet = new GreenfootImage[12];
+        for (int i = 0; i < walk2LeftSet.length; i++)
         {
             int m = i+ 1;
             if (m < 10)
             {
                 GreenfootImage img = new GreenfootImage("Joe98_stance1_f0" + m +".gif");
                 img.scale(img.getWidth() - 60,img.getHeight() - 100);
-                moveSet[i] = img;
+                walk2LeftSet[i] = img;
             }
             else
             {
                 GreenfootImage img = new GreenfootImage("Joe98_stance1_f" + m +".gif");
                 img.scale(img.getWidth() - 60,img.getHeight() - 100);
-                moveSet[i] = img;
+                walk2LeftSet[i] = img;
             } 
         }
         
-        punchSet = new GreenfootImage[29];
-        for (int i = 0; i < punchSet.length; i++)
+        walk2RightSet = new GreenfootImage[12];
+        for (int i = 0; i < walk2RightSet.length; i++)
+        {
+            int m = i+ 1;
+            if (m < 10)
+            {
+                GreenfootImage img = new GreenfootImage("JoeMoveToRight_f0" + m +".gif");
+                img.scale(img.getWidth() - 60,img.getHeight() - 100);
+                walk2RightSet[i] = img;
+            }
+            else
+            {
+                GreenfootImage img = new GreenfootImage("JoeMoveToRight_f" + m +".gif");
+                img.scale(img.getWidth() - 60,img.getHeight() - 100);
+                walk2RightSet[i] = img;
+            } 
+        }
+        
+        punch2LeftSet = new GreenfootImage[29];
+        for (int i = 0; i < punch2LeftSet.length; i++)
         {
             int m = i+ 1;
             if (m < 10)
             {
                 GreenfootImage img = new GreenfootImage("JoePunch_f0" + m +".gif");
                 //img.scale(img.getWidth() - 60,img.getHeight() - 100);
-                punchSet[i] = img;
+                punch2LeftSet[i] = img;
             }
             else
             {
                 GreenfootImage img = new GreenfootImage("JoePunch_f" + m +".gif");
                 //img.scale(img.getWidth() - 60,img.getHeight() - 100);
-                punchSet[i] = img;
+                punch2LeftSet[i] = img;
             } 
         }
         
@@ -83,7 +101,8 @@ public class Joe extends Figure implements IFighter, IGangster
         joeShowup();
     }    
     
-    private void joeShowup(){
+    private void joeShowup()
+    {
        if (opening)
         {
             joeInit();
@@ -116,7 +135,8 @@ public class Joe extends Figure implements IFighter, IGangster
         }
     } 
     
-    public void runToMainCharacter(){
+    public void runToMainCharacter()
+    {
         if(moveVariable < moveSpeed){
             moveVariable++;
             return;
@@ -124,7 +144,7 @@ public class Joe extends Figure implements IFighter, IGangster
             moveVariable = 0;
         }
         //step to next motion
-        this.currentMotionSet = moveSet;
+        this.currentMotionSet = walk2LeftSet;
         if(current_motion_index >= currentMotionSet.length)
             current_motion_index = 0;
         setImage(currentMotionSet[current_motion_index]);
@@ -137,7 +157,8 @@ public class Joe extends Figure implements IFighter, IGangster
         }
     }
     
-    public void lookForMainCharacter(){
+    public void lookForMainCharacter()
+    {
         setLocation(this.getX(),340);
         if(bruce == null){
            bruce= this.getWorld().getObjects(BruceLee.class).get(0);
@@ -149,11 +170,13 @@ public class Joe extends Figure implements IFighter, IGangster
         }
     }
     
-    public void onAttacked(int damage){
+    public void onAttacked(int damage)
+    {
         
     }
     
-    public void hit(){
+    public void hit()
+    {
         if(moveVariable < moveSpeed){
             moveVariable++;
             return;
@@ -161,7 +184,7 @@ public class Joe extends Figure implements IFighter, IGangster
             moveVariable = 0;
         }
         //step to next motion
-        this.currentMotionSet = punchSet;
+        this.currentMotionSet = punch2LeftSet;
         if(current_motion_index >= currentMotionSet.length)
             current_motion_index = 0;
         setImage(currentMotionSet[current_motion_index]);
@@ -174,15 +197,19 @@ public class Joe extends Figure implements IFighter, IGangster
         }
     }
     
-    public int punch(){
+    public int punch()
+    {
         return 0;
     }
-    public int kick(){
+    public int kick()
+    {
         return 0;
     }
-    public int defend(){
+    public int defend()
+    {
         return 0;
     }
-    public void die(){
+    public void die()
+    {
     }
 }
