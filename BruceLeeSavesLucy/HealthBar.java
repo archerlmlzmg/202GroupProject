@@ -7,7 +7,7 @@ import java.awt.Color;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class HealthBar extends Actor
+public class HealthBar extends Actor implements IObserver
 {
     private int barWidth = 100;
     private int barHeight = 10;
@@ -181,4 +181,8 @@ public class HealthBar extends Actor
         // Add your action code here.
        
     }    
+    public void update(Figure f){
+        //update the figure's state
+        //this mehtod will be invoked when a figure calls notifyObserver()
+    };
 }

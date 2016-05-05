@@ -16,7 +16,7 @@ public class Floor1 extends BaseFloor
     public Floor1(IFighter mainCharacter)
     {
         super(mainCharacter);
-        System.out.println("constructe..");
+        System.out.println("constructing..");
         this.scenarioName = "The First Floor";
         // add Bruce Lee to this scenario
         objectsLocationMap.put((Actor)mainCharacter,new int[]{this.activeAreaXLeft+20,
@@ -32,6 +32,19 @@ public class Floor1 extends BaseFloor
         gangsters.add(g2);
         objectsLocationMap.put((Actor)g2,new int[]{this.activeAreaXRight -70,
         this.activeAreaYBottom-((Actor)g1).getImage().getHeight()});
+        
+        
+        IObserver healthBarBruce = new HealthBar("Bruce Lee: ", "", 100, 100);
+        IObserver healthBarBoss = new HealthBar("Boss: ", "",100, 100);
+        //attach observers
+        ((Figure)mainCharacter).attachObserver(healthBarBoss);
+        ((Figure)g2).attachObserver(healthBarBoss);
+        
+
+        objectsLocationMap.put((Actor)healthBarBruce,new int[]{150,50});
+        objectsLocationMap.put((Actor)healthBarBoss, new int[]{650, 50});   
+  
+        
         System.out.println("constructed.");
     }
     

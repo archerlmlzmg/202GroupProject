@@ -9,4 +9,5 @@ public interface ISubject
     public void attachObserver(IObserver ob);
     public void detachObserver();
     public void notifyObserver();
+    public String getName();
 }

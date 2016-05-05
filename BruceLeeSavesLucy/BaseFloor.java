@@ -8,7 +8,7 @@ import java.util.Collections;
  * @author (Ming Tang) 
  * @version (a version number or a date)
  */
-public class BaseFloor extends World implements IKeyCommandReceiver
+public class BaseFloor extends World implements IKeyCommandReceiver,ISecnarioTemplate
 {
     ArrayList<IFighter> gangsters = new ArrayList<>();;
     IFighter mainCharacter;
@@ -42,9 +42,9 @@ public class BaseFloor extends World implements IKeyCommandReceiver
     }
     public void act(){
         if(!isInitiated){
-            initElementsToWorld();
+            onCreate();
         }
-        keyCommandInvoker.checkKeyPress();
+        onAct();
         
     }
     public void initElementsToWorld(){
@@ -55,7 +55,7 @@ public class BaseFloor extends World implements IKeyCommandReceiver
             this.addObject(o,location[0],location[1]);
         }
         this.isInitiated = true;
-        this.isGameStarted = true;
+        onStart();
     }
 
  
@@ -122,4 +122,22 @@ public class BaseFloor extends World implements IKeyCommandReceiver
     public void removeKeyCommandReceiverSuccessor(){
         this.commandSuccessor = null;
     };
+    public void onCreate(){
+        initElementsToWorld();
+    } 
+    public void onStart(){
+        // pass the key control to main character
+        this.hasTakenOverKeyCommand = false;
+        this.isGameStarted = true;
+    }
+    public void onAct(){
+        keyCommandInvoker.checkKeyPress();
+    }
+    public void onPause(){
+    }
+    public void onEnd(){
+    }
+    public boolean isOver(){
+        return false;
+    }
 }

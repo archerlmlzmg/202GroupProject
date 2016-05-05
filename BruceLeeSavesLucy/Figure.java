@@ -6,15 +6,15 @@ import java.awt.Color;
 /**
  * 
  */
-public class Figure extends Actor
+public class Figure extends Actor implements ISubject
 {
     /* the health point*/
     private int hp = 0;
-    private String name;
+    private String name = "name me :(";
     /* the denfence ability indicates the point that can be deducted from every attack*/
-    private int walkingSpeed = 5;
+    final static int walkingSpeed = 5;
     /* ever attack a figure gets should be deducted by this attribute */
-    private int basicDenfence = 10;
+    final static int basicDenfence = 10;
     private int currentPose = 0;
     public final static int POSE_STAND = 0, POSE_WALK = 1, POSE_PUNCH = 2, POSE_KICK=3;
     public final static int DIRECTION_RIGHT = 0, DIRECTION_LEFT = 1;
@@ -25,6 +25,7 @@ public class Figure extends Actor
     kick2RightSet,
     punch2RightSet,
     currentMotionSet;
+    IObserver observer;
     public int direction = 0;
     /**
      * 
@@ -67,5 +68,21 @@ public class Figure extends Actor
     public void setPoseWalkRight(){
     }
     public void setPoseWalkLeft(){
+    }
+        public void addKeyCommandReceiverSuccessor(IKeyCommandReceiver rec){
+    }
+    public void removeKeyCommandReceiverSuccessor(){
+    }
+    public void attachObserver(IObserver ob){
+        this.observer = ob;
+    }
+    public void detachObserver(){
+        this.observer = null;
+    }
+    public void notifyObserver(){
+        this.observer.update(this);
+    }
+    public String getName(){
+        return this.name;
     }
 }
