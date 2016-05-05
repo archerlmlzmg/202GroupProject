@@ -172,7 +172,7 @@ public class Joe extends Figure implements IFighter, IGangster
     
     public void onAttacked(int damage)
     {
-        
+        this.notifyObserver();
     }
     
     public void hit()
@@ -199,7 +199,8 @@ public class Joe extends Figure implements IFighter, IGangster
     
     public int punch()
     {
-        return 0;
+        hit();
+        return 15;
     }
     public int kick()
     {
