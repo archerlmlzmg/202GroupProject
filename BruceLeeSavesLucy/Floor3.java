@@ -6,14 +6,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Floor2 extends BaseFloor
+public class Floor3 extends BaseFloor
 {
 
     /**
      * Constructor for objects of class Floor2.
      * 
      */
-    public Floor2(IFighter mainCharacter)
+    public Floor3(IFighter mainCharacter)
     {
         super(mainCharacter);
         System.out.println("constructing..");
