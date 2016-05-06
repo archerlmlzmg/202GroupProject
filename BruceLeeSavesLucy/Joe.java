@@ -269,12 +269,17 @@ public class Joe extends Figure implements IFighter, IGangster
         if (current_motion_index == currentMotionSet.length - 1)
         {
             current_motion_index = 0;
-            doActualBehavior();
             this.setCurrentPose(Figure.POSE_STAND);
             this.setCurrentMotionSet(stand2RightSet);
         }
         else
         {
+            if (current_motion_index == 2 || current_motion_index == 5)
+            {
+                doActualBehavior();
+                this.setCurrentPose(Figure.POSE_STAND);
+                this.setCurrentMotionSet(stand2RightSet);
+            }
             current_motion_index++;
             setLocation(this.getX(),this.getY());
         }
@@ -282,19 +287,9 @@ public class Joe extends Figure implements IFighter, IGangster
     
     private void doActualBehavior()
     {
-        System.out.println("Joe is doing actual behavior..");
-        switch (getCurrentPose())
-        {
-           case Figure.POSE_PUNCH:
-           System.out.println("Joe is doing actual punch behavior..");
-           if (getTargetFighter() != null)
-           {
-                getTargetFighter().onAttacked(getAttackPoint());
-                Greenfoot.playSound("punch3.mp3");
-                System.out.println("attacked ["+((Figure)getTargetFighter()).getName()+"] by "+getAttackPoint()+" point.");
-                break;
-           }
-           break;
+        bruce = (BruceLee) getOneIntersectingObject(BruceLee.class);  
+        if(bruce != null){
+            bruce.onAttacked(getAttackPoint());
         }
     }
     

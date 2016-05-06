@@ -24,6 +24,10 @@ class.Floor1.image=floor2_long.jpg
 class.Floor1.superclass=BaseFloor
 class.Floor2.image=floor2_long.jpg
 class.Floor2.superclass=BaseFloor
+<<<<<<< HEAD
+=======
+class.Floor3.image=bg3.jpg
+>>>>>>> origin/master
 class.Floor3.superclass=BaseFloor
 class.GangsterFactory.superclass=
 class.Goro.image=Gororun_2.gif
@@ -253,6 +257,7 @@ dependency62.type=UsesDependency
 dependency63.from=Kim
 dependency63.to=BruceLee
 dependency63.type=UsesDependency
+<<<<<<< HEAD
 dependency64.from=Floor2
 dependency64.to=IFighter
 dependency64.type=UsesDependency
@@ -268,6 +273,41 @@ dependency67.type=UsesDependency
 dependency7.from=Scene
 dependency7.to=HealthBar
 dependency7.type=UsesDependency
+=======
+dependency64.from=Menu
+dependency64.to=Transition1
+dependency64.type=UsesDependency
+dependency65.from=Floor3
+dependency65.to=IFighter
+dependency65.type=UsesDependency
+dependency66.from=Floor3
+dependency66.to=IObserver
+dependency66.type=UsesDependency
+dependency67.from=Floor3
+dependency67.to=HealthBar
+dependency67.type=UsesDependency
+dependency68.from=Floor3
+dependency68.to=Figure
+dependency68.type=UsesDependency
+dependency69.from=Floor2
+dependency69.to=IFighter
+dependency69.type=UsesDependency
+dependency7.from=Scene
+dependency7.to=HealthBar
+dependency7.type=UsesDependency
+dependency70.from=Floor2
+dependency70.to=IObserver
+dependency70.type=UsesDependency
+dependency71.from=Floor2
+dependency71.to=HealthBar
+dependency71.type=UsesDependency
+dependency72.from=Floor2
+dependency72.to=Figure
+dependency72.type=UsesDependency
+dependency73.from=Figure
+dependency73.to=IFighter
+dependency73.type=UsesDependency
+>>>>>>> origin/master
 dependency8.from=Scene
 dependency8.to=Lucy
 dependency8.type=UsesDependency
@@ -279,9 +319,15 @@ editor.fx.0.width=700
 editor.fx.0.x=0
 editor.fx.0.y=0
 editor.swing.0.height=700
+<<<<<<< HEAD
 editor.swing.0.width=700
 editor.swing.0.x=288
 editor.swing.0.y=29
+=======
+editor.swing.0.width=701
+editor.swing.0.x=0
+editor.swing.0.y=0
+>>>>>>> origin/master
 editor.swing.1.height=1064
 editor.swing.1.width=1944
 editor.swing.1.x=-12
@@ -290,11 +336,19 @@ editor.swing.2.height=1051
 editor.swing.2.width=982
 editor.swing.2.x=-11
 editor.swing.2.y=0
+<<<<<<< HEAD
 mainWindow.height=736
 mainWindow.width=1042
 mainWindow.x=238
 mainWindow.y=23
 package.numDependencies=67
+=======
+mainWindow.height=744
+mainWindow.width=1382
+mainWindow.x=-8
+mainWindow.y=-8
+package.numDependencies=73
+>>>>>>> origin/master
 package.numTargets=47
 project.charset=UTF-8
 readme.height=58
@@ -316,8 +370,13 @@ target10.name=Transition1
 target10.showInterface=false
 target10.type=ClassTarget
 target10.typeParameters=
+<<<<<<< HEAD
 target10.width=100
 target10.x=120
+=======
+target10.width=90
+target10.x=110
+>>>>>>> origin/master
 target10.y=970
 target11.height=50
 target11.name=Pointer
@@ -612,9 +671,15 @@ target44.name=Transition
 target44.showInterface=false
 target44.type=ClassTarget
 target44.typeParameters=
+<<<<<<< HEAD
 target44.width=90
 target44.x=10
 target44.y=1030
+=======
+target44.width=80
+target44.x=210
+target44.y=970
+>>>>>>> origin/master
 target45.height=50
 target45.name=ISubject
 target45.showInterface=false
@@ -660,7 +725,11 @@ target7.name=Transition2
 target7.showInterface=false
 target7.type=ClassTarget
 target7.typeParameters=
+<<<<<<< HEAD
 target7.width=100
+=======
+target7.width=90
+>>>>>>> origin/master
 target7.x=10
 target7.y=970
 target8.height=50
@@ -680,4 +749,8 @@ target9.width=80
 target9.x=160
 target9.y=70
 version=2.8.0
+<<<<<<< HEAD
 world.lastInstantiated=Menu
+=======
+world.lastInstantiated=Floor3
+>>>>>>> origin/master
