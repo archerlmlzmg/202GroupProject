@@ -10,13 +10,13 @@ import java.util.List;
 public abstract class Figure extends Actor implements ISubject
 {
     /* the current health point*/
-    private int hp = 0;
+    private int hp = 100;
     private int initHp = 100;
     private String name = "name me :(";
     /* the denfence ability indicates the point that can be deducted from every attack*/
     private int walkingSpeed = 5;
     /* ever attack a figure gets should be deducted by this attribute */
-    private int basicDenfence = 2;
+    private int basicDenfence = 1;
     private int attackPoint = 10;
     
     public final static int POSE_STAND = 0, POSE_WALK = 1, POSE_PUNCH = 2, POSE_KICK=3;

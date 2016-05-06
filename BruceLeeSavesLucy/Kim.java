@@ -49,7 +49,8 @@ public class Kim extends Figure implements IFighter, IGangster
         kimShowup();
     }    
     
-    private void kimShowup(){
+    private void kimShowup()
+    {
        if (opening)
         {
             kimInit();
@@ -82,7 +83,8 @@ public class Kim extends Figure implements IFighter, IGangster
         }
     } 
     
-    public void runToMainCharacter(){
+    public void runToMainCharacter()
+    {
         if(moveVariable < moveSpeed){
             moveVariable++;
             return;
@@ -103,7 +105,8 @@ public class Kim extends Figure implements IFighter, IGangster
         }
     }
     
-    public void lookForMainCharacter(){
+    public void lookForMainCharacter()
+    {
         setLocation(this.getX(),340);
         if(bruce == null){
            bruce= this.getWorld().getObjects(BruceLee.class).get(0);
@@ -115,20 +118,25 @@ public class Kim extends Figure implements IFighter, IGangster
         }
     }
     
-    public void onAttacked(int damage){
-        
+    public void onAttacked(int damage)
+    {
+        this.notifyObserver();
     }
     
-    public int punch(){
+    public int punch()
+    {
         return 0;
     }
-    public int kick(){
+    public int kick()
+    {
         return 0;
     }
-    public int defend(){
+    public int defend()
+    {
         return 0;
     }
-    public void die(){
+    public void die()
+    {
     }
     
 }

@@ -64,7 +64,7 @@ public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
         this.currentMotionSet = stand2RightSet;
         this.setCurrentPose(Figure.POSE_STAND);
         this.setDirection(Figure.DIRECTION_RIGHT);
-        
+        this.setAttackPoint(3);
         this.setFigureRadius(100);
     }
     
@@ -131,9 +131,7 @@ public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
             current_motion_index = 0;
         }
         this.setCurrentMotionSet(punch2RightSet);        
-        current_motion_index++;
         setLocation(getX()+kickMoveLength,getY());
-        Greenfoot.playSound("bruce_punch_2.mp3");
     }
     public void setWalk2Left(){
         this.setDirection(Figure.DIRECTION_LEFT);
@@ -141,10 +139,10 @@ public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
         setLocation(getX()+moveStepLength,getY());
     }
     private void traverseMotionSet(){
-        if(this.getCurrentPose() != Figure.POSE_STAND){
-            this.setCurrentPose(Figure.POSE_STAND);
-            return;
-        }
+        //if(this.getCurrentPose() != Figure.POSE_STAND){
+        //    this.setCurrentPose(Figure.POSE_STAND);
+         //   return;
+        //}
         //slow donw the motion
         if(moveVariable < moveSpeed){
             moveVariable++;
@@ -157,10 +155,13 @@ public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
         if(current_motion_index >= motionSet.length)
             current_motion_index = 0;
         setImage(motionSet[current_motion_index]);
+        /* HERE, this is very important, the thought is to do all the
+         * actual behavoir after the last frame of a motion set.
+         */
         if(current_motion_index == motionSet.length - 1){
             current_motion_index = 0;
             doActualBehavior();
-            
+            this.setCurrentPose(Figure.POSE_STAND);
             this.setCurrentMotionSet(stand2RightSet);
         }else{
             current_motion_index++;
@@ -168,7 +169,9 @@ public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
 
     }
     private void doActualBehavior(){
+        System.out.println("do actual behavior..");
         if(getCurrentPose() == Figure.POSE_PUNCH){
+           System.out.println("do actual punch behavior..");
            if(getTargetFighter()!=null){
             getTargetFighter().onAttacked(getAttackPoint());
             Greenfoot.playSound("bruce_punch_2.mp3");
