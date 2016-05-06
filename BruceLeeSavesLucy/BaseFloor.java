@@ -27,14 +27,18 @@ public class BaseFloor extends World implements IKeyCommandReceiver,IScenarioTem
     static final int worldWidth = 800;
     static final int worldHeight = 500;
     boolean isInitiated = false,
-    isGameStarted = false;
-    boolean isPaused = false, isOver = false;
+    isGameStarted = false,
+    isPaused = false,
+    isOver = false,// fighting is over, but the game is ongoing
+    isStopped = false, 
+    isEnded = false,
+    isMainCharacterWon = false;
     KeyCommandInvoker keyCommandInvoker = new KeyCommandInvoker();
     Window window = new Window();
     ResumeButton resumeBtn = new ResumeButton();
     ExitButton exitBtn = new ExitButton();
     Pointer pointer = new Pointer();
-    Transition nextTransition;
+    StateTransition nextTransition;
     int[] pointerPos1 = new int[]{340,250},
         pointerPos2 = new int[]{340,322};
     int menuIndex = 1;
@@ -42,19 +46,31 @@ public class BaseFloor extends World implements IKeyCommandReceiver,IScenarioTem
      * Constructor for objects of class BaseFloor.
      * 
      */
-    public BaseFloor(IFighter mainCharacter, Transition nextTransition)
+    public BaseFloor(IFighter mainCharacter, StateTransition transition)
     {    
         super(worldWidth, worldHeight, 1); 
         this.mainCharacter = mainCharacter;
         keyCommandInvoker.setCommandReceiver(this);
         this.addKeyCommandReceiverSuccessor((IKeyCommandReceiver)mainCharacter);
-        this.nextTransition = nextTransition;
+        this.nextTransition = transition;
     }
     public void act(){
         if(!isInitiated){
             onCreate();
+        }else
+        if(isInitiated && !isGameStarted){
+            onStart();
+        }else
+        if(isGameStarted && !isOver){
+            onAct();
+        }else
+        if(isOver && !isStopped){//fighting is over
+            onStop();
+        }else
+        if(isStopped && !isEnded){
+            onEnd();
         }
-        onAct();
+        
         
     }
     public void initElementsToWorld(){
@@ -65,7 +81,6 @@ public class BaseFloor extends World implements IKeyCommandReceiver,IScenarioTem
             this.addObject(o,location[0],location[1]);
         }
         this.isInitiated = true;
-        onStart();
     }
 
  
@@ -160,14 +175,18 @@ public class BaseFloor extends World implements IKeyCommandReceiver,IScenarioTem
     } 
     public void onStart(){
         // pass the key control to main character
+        System.out.println("Starting...");
         this.hasTakenOverKeyCommand = false;
         this.isGameStarted = true;
     }
     public void onAct(){
-        if(isOver)
-            return;
+
+        //checkTakingOverControl();
         keyCommandInvoker.checkKeyPress();
         checkMouseClick();
+        if(checkIsFightingOver())
+            isOver = true;
+
     }
     public void onPause(){
         isPaused = true;
@@ -198,10 +217,67 @@ public class BaseFloor extends World implements IKeyCommandReceiver,IScenarioTem
         removeObject(pointer);
     }
     public void onEnd(){
-        isOver = true;
+        System.out.println("its endding....");
         addObject(nextTransition,400,250);
+        if(isMainCharacterWon)
+            nextTransition.goToNextState();
+        else
+            nextTransition.goToBackState();
+        isEnded = true;
     }
-    public boolean isOver(){
-        return false;
+    /*
+     * is fighting stopped
+     */
+    private boolean checkIsFightingOver(){
+        System.out.println("==> checkIsFightingOver.....");
+        if(mainCharacter.getIsDying()){
+            isMainCharacterWon = false;
+            return true;
+        }
+        boolean allGangsterDying = true;
+        for(IFighter f : gangsters){
+            System.out.println("==>"+((Figure)f).getName()+" is dying?:"+f.getIsDying());
+            if (!f.getIsDying()){
+                allGangsterDying = false;
+            }
+        }
+        if(allGangsterDying){
+            isMainCharacterWon = true;
+        }
+        return allGangsterDying;
+    }
+    private boolean checkIsStopped(){
+        System.out.println("==>checkIsStopped.....");
+        if(mainCharacter.getIsDied()){
+            isMainCharacterWon = false;
+            return true;
+        }
+        boolean allGangsterDied = true;
+        for(IFighter f : gangsters){
+            System.out.println("==>"+((Figure)f).getName()+" is died?:"+f.getIsDied());
+            if (!f.getIsDied())
+                allGangsterDied = false;
+        }
+        if(allGangsterDied){
+            isMainCharacterWon = true;
+        }
+        return allGangsterDied;
+    }
+    public void onStop(){
+        if(checkIsStopped())
+            isStopped = true;
+    }
+    public void checkTakingOverControl(){
+        if(mainCharacter.getIsDying() || mainCharacter.getIsDied()){
+            this.hasTakenOverKeyCommand = true;
+        }
+        boolean allGangsterDied = false;
+        for(IFighter f : gangsters){
+            if (!f.getIsDying() || !f.getIsDied()){
+                allGangsterDied = false;
+            }
+        }
+        if(allGangsterDied)
+            this.hasTakenOverKeyCommand = true;
     }
 }

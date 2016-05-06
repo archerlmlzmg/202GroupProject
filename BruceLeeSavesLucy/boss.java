@@ -108,7 +108,7 @@ public class boss extends Figure implements IFighter
                     current_motion_index = 0;
                 }else{
                     current_motion_index++;
-                    Greenfoot.delay(5);
+                    //Greenfoot.delay(5);
                     setLocation(this.getX(),i*4);
                 }
                 if(this.getY()>330){
@@ -273,7 +273,7 @@ public class boss extends Figure implements IFighter
             else
             {
                 current_motion_index++;
-                Greenfoot.delay(5);
+                //Greenfoot.delay(5);
                 setLocation(this.getX(),this.getY());
             }
             if (current_motion_index >= 2)
@@ -311,22 +311,24 @@ public class boss extends Figure implements IFighter
         notifyObserver();
         if(getCurrentHP()<=0){
             death=true;
+            setIsDying(true);
+            System.out.println("boss is dying......");
             die();
         }
     };
     public void die(){
-		//do the next line before removing this figure
-		IScenarioTemplate w = (IScenarioTemplate)getWorld();
-		Greenfoot.delay(5);
-		if(!finishing){
-			crush();
-			//JOptionPane.showMessageDialog(null, "Game Over! Bruce Lee saved Lucy!");
-		}else{
-			//getWorld().removeObject(this);
-			JOptionPane.showMessageDialog(null, "Game Over! Bruce Lee saved Lucy!");
-			finishing=true;
-		}
-		// tell the world that game is over
-		w.onEnd();
+        //Greenfoot.delay(5);
+        if(!finishing){
+            crush();
+            //JOptionPane.showMessageDialog(null, "Game Over! Bruce Lee saved Lucy!");
+        }else{
+            //getWorld().removeObject(this);
+            finishing=true;
+            if(!getIsDied()){
+                setIsDied(true);
+                System.out.println("boss is died...............");
+            }
+        }
+        
     };
 }

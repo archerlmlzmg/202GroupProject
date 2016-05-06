@@ -64,12 +64,14 @@ public class Menu extends World
     }
     private void startNextWorld(){
         needsCheckKey = false;
+        Menu menu = new Menu();
         Floor3 floor3= new Floor3(new BruceLee(), null);
-        Transition3 t3= new Transition3(floor3); 
+        StateTransition3 t3= new StateTransition3(menu,floor3); 
         Floor2 floor2 = new Floor2(new BruceLee(),t3);
-        Transition2 t2= new Transition2(floor2); 
+        StateTransition2 t2= new StateTransition2(menu,floor2); 
         Floor1 floor1 = new Floor1(new BruceLee(),t2);
-        Transition1 t1 = new Transition1(floor1);
+        StateTransition1 t1 = new StateTransition1(menu,floor1);
         addObject(t1,400,250);
+        t1.goToNextState();
     }
 }

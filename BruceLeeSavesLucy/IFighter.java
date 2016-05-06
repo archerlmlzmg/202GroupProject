@@ -19,4 +19,6 @@ public interface IFighter
      */
     public void onAttacked(int damage);
     public void die();
+    public boolean getIsDied();
+    public boolean getIsDying();
 }

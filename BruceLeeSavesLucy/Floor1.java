@@ -13,7 +13,7 @@ public class Floor1 extends BaseFloor
      * Constructor for objects of class Floor1.
      * 
      */
-    public Floor1(IFighter mainCharacter , Transition transition)
+    public Floor1(IFighter mainCharacter , StateTransition transition)
     {
         super(mainCharacter,transition);
         System.out.println("constructing..");
@@ -23,15 +23,15 @@ public class Floor1 extends BaseFloor
         this.activeAreaYBottom-((Actor)mainCharacter).getImage().getHeight()});
         
         // add Bruce Joe to this scenario
-        IFighter g1 = gangsterFactory.generate("Joe");
-        gangsters.add(g1);
+        //IFighter g1 = gangsterFactory.generate("Joe");
+        //gangsters.add(g1);
         //objectsLocationMap.put((Actor)g1,new int[]{this.activeAreaXRight -50,
         //this.activeAreaYBottom-((Actor)g1).getImage().getHeight()});
         //add boss
-        IFighter g2 = gangsterFactory.generate("boss");
-        gangsters.add(g2);
-        objectsLocationMap.put((Actor)g2,new int[]{this.activeAreaXRight -70,
-        this.activeAreaYBottom-((Actor)g1).getImage().getHeight()});
+        IFighter newBoss = gangsterFactory.generate("boss");
+        gangsters.add(newBoss);
+        objectsLocationMap.put((Actor)newBoss,new int[]{this.activeAreaXRight -70,
+        this.activeAreaYBottom-((Actor)newBoss).getImage().getHeight()});
         
         
         IObserver healthBarBruce = new HealthBar("Bruce Lee: ", "", ((Figure)mainCharacter).getInitHP(),
@@ -39,7 +39,7 @@ public class Floor1 extends BaseFloor
         IObserver healthBarBoss = new HealthBar("Paul: ", "",100, 100);
         //attach observers
         ((Figure)mainCharacter).attachObserver(healthBarBruce);
-        ((Figure)g2).attachObserver(healthBarBoss);
+        ((Figure)newBoss).attachObserver(healthBarBoss);
         
         objectsLocationMap.put((Actor)healthBarBruce,new int[]{150,50});
         objectsLocationMap.put((Actor)healthBarBoss, new int[]{650,50});   

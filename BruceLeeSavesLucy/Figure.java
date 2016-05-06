@@ -18,7 +18,7 @@ public abstract class Figure extends Actor implements ISubject
     /* ever attack a figure gets should be deducted by this attribute */
     private int basicDenfence = 1;
     private int attackPoint = 10;
-    
+    private boolean isDied = false, isDying = false;
     public final static int POSE_STAND = 0, POSE_WALK = 1, POSE_PUNCH = 2, POSE_KICK=3;
     public final static int DIRECTION_RIGHT = 0, DIRECTION_LEFT = 1;
     private IFighter targetFighter;
@@ -55,7 +55,11 @@ public abstract class Figure extends Actor implements ISubject
             targetFighter = null;
             return true;
         }else if (fs.get(0).getX() >= this.getX()){
-            targetFighter = (IFighter)fs.get(0);
+            Figure f =fs.get(0);
+            if(isEnemy(fs.get(0)))
+                targetFighter = (IFighter)f;
+            else
+                 targetFighter = null;
             return false;
         }
         return true;
@@ -67,11 +71,32 @@ public abstract class Figure extends Actor implements ISubject
             return true;
         }
         if (fs.get(0).getX() <= this.getX()){
-            targetFighter = (IFighter)fs.get(0);
+            Figure f =fs.get(0);
+            if(isEnemy(fs.get(0)))
+                targetFighter = (IFighter)f;
+            else
+                 targetFighter = null;
             return false;
         }
         return true;
     };
+    private boolean isEnemy(Figure target){
+        boolean isCurrentMainCharacter = false, isTargetGangster = false;
+        if(this instanceof IGangster){
+            isCurrentMainCharacter = true;
+        }
+        
+        if(target instanceof IGangster){
+            isTargetGangster = true;
+        }
+        
+        if(isCurrentMainCharacter && isTargetGangster)
+            return true;
+        else if(!isCurrentMainCharacter && !isTargetGangster)
+            return true;
+        else 
+            return false;
+    }
     public int getCurrentPose(){
         return this.currentPose;
     }
@@ -149,5 +174,17 @@ public abstract class Figure extends Actor implements ISubject
     }
     public int getAttackPoint(){
         return this.attackPoint;
+    }
+    public void setIsDied(boolean b){
+        this.isDied = b;
+    }
+    public boolean getIsDied(){
+        return this.isDied;
+    }
+    public void setIsDying(boolean b){
+        this.isDying = b;
+    }
+    public boolean getIsDying(){
+        return this.isDying;
     }
 }

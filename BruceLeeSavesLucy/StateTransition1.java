@@ -6,10 +6,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Transition1 extends Transition
+public class StateTransition1 extends StateTransition
 {  
-    public Transition1(World nextWorld){
-        super(nextWorld);
+    public StateTransition1(World lossWorld,World nextWorld){
+        super(lossWorld,nextWorld);
         images = new GreenfootImage[12];
         for(int i=0; i<images.length;i++){
             int m = i+ 1;

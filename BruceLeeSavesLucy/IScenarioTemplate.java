@@ -10,6 +10,6 @@ public interface IScenarioTemplate
     public void onStart(); 
     public void onAct(); 
     public void onPause();
+    public void onStop();
     public void onEnd();
-    public boolean isOver();
 }

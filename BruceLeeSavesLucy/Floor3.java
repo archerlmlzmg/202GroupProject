@@ -13,7 +13,7 @@ public class Floor3 extends BaseFloor
      * Constructor for objects of class Floor2.
      * 
      */
-    public Floor3(IFighter mainCharacter , Transition transition)
+    public Floor3(IFighter mainCharacter , StateTransition transition)
     {
         super(mainCharacter,transition);
         System.out.println("constructing..");
@@ -30,14 +30,14 @@ public class Floor3 extends BaseFloor
        
         
         IObserver healthBarBruce = new HealthBar("Bruce Lee: ", "", 100, 100);
-        IObserver healthBarJoe = new HealthBar("Joe: ", "",100, 100);
+        IObserver healthBarBoss = new HealthBar("Joe: ", "",100, 100);
         
         //attach observers
-        ((Figure)mainCharacter).attachObserver(healthBarBruce);
-        ((Figure)g1).attachObserver(healthBarJoe);
+        ((Figure)mainCharacter).attachObserver(healthBarBoss);
+        ((Figure)g1).attachObserver(healthBarBoss);
         
         objectsLocationMap.put((Actor)healthBarBruce,new int[]{150,50});
-        objectsLocationMap.put((Actor)healthBarJoe, new int[]{650, 50});   
+        objectsLocationMap.put((Actor)healthBarBoss, new int[]{650, 50});   
           
         System.out.println("constructed.");
     }
