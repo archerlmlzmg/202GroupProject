@@ -237,7 +237,7 @@ public class Joe extends Figure implements IFighter, IGangster
     
     public void onAttacked(int damage)
     {
-        this.notifyObserver();
+        notifyObserver();
     }
     
     public void hit()
