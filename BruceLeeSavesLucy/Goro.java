@@ -14,9 +14,9 @@ public class Goro extends Figure implements IFighter, IGangster
     int moveVariable = 0;
     int moveStepLength = 3;
     private boolean opening = true;
-    public GreenfootImage[] openingSet, punchSet;
+    public GreenfootImage[] openingSet, punchSet, hitSet;
     private BruceLee bruce;
-    private boolean isPunchEffect = false;
+    private boolean isHit = false;
       
     
     public Goro()
@@ -56,9 +56,16 @@ public class Goro extends Figure implements IFighter, IGangster
         {
             
             GreenfootImage img = new GreenfootImage("goroPunchToLeft_" + i +".gif");
-            img.scale(img.getWidth() - 100,img.getHeight() - 143);
+            img.scale(img.getWidth() - 120,img.getHeight() - 160);
             punchSet[i] = img;
            
+        }
+        
+        hitSet = new GreenfootImage[7];
+        for(int i = 0; i < hitSet.length; i++)
+        {
+            GreenfootImage img = new GreenfootImage("gorolefthit" + i + ".png");
+            hitSet[i] = img;
         }
         
         this.currentMotionSet = openingSet;
@@ -94,6 +101,7 @@ public class Goro extends Figure implements IFighter, IGangster
         death(die);
         */
        goroShowup();
+       goroHitted();
     }
     
     private void goroShowup(){
@@ -109,13 +117,14 @@ public class Goro extends Figure implements IFighter, IGangster
     
     public void goroInit()
     {
-        if(moveVariable < moveSpeed){
-            moveVariable++;
-            return;
-        }else{
-            moveVariable = 0;
-        }
+        
         for(int i=0; i<15; i++){
+            if(moveVariable < moveSpeed){
+                moveVariable++;
+                return;
+            }else{
+                moveVariable = 0;
+            }
             
             if(current_motion_index >= currentMotionSet.length) {
                     current_motion_index = 0;
@@ -125,7 +134,6 @@ public class Goro extends Figure implements IFighter, IGangster
                     current_motion_index = 0;
             }else{
                     current_motion_index++;
-            //        Greenfoot.delay(5);
             }
             if(current_motion_index>=14){
                 opening = false;  
@@ -227,10 +235,10 @@ public class Goro extends Figure implements IFighter, IGangster
     
     public void onAttacked(int damage){
     
+        isHit = true;       
         setCurrentHP(getCurrentHP()-damage+getDefencePoint());
         this.notifyObserver();
     }
-
     
     public int punch(){
         if(moveVariable < moveSpeed){
@@ -262,7 +270,12 @@ public class Goro extends Figure implements IFighter, IGangster
     }
     
     
-    
+    private void goroHitted(){
+        if(isHit){
+            hit();
+            isHit = false;
+        }
+    }
     
     
     /**
@@ -270,10 +283,27 @@ public class Goro extends Figure implements IFighter, IGangster
     */   
     public void hit()
     {
-
-    /*    damage++;
-        death(0);
-        */
+        //step to next motion
+        System.out.println("Enter goro's hit function");
+        this.currentMotionSet = hitSet;
+        System.out.println("hitSet length is: " + hitSet.length);
+        for(int i= 0; i < hitSet.length; i++){
+            Greenfoot.delay(2);
+            if(current_motion_index >= currentMotionSet.length)
+            {
+                current_motion_index = 0;
+            }
+            setImage(currentMotionSet[current_motion_index]);
+            if(current_motion_index == currentMotionSet.length - 1)
+            {
+                current_motion_index = 0;
+            }
+            else
+            {
+                current_motion_index++;
+                setLocation(this.getX(),this.getY());
+            }
+        }
     }
     
     
