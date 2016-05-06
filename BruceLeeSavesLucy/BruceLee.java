@@ -169,16 +169,25 @@ public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
     }
     private void doActualBehavior(){
         System.out.println("do actual behavior..");
-        //swtch(getCurrentPose()){
-        //case:
-        //}
-        if(getCurrentPose() == Figure.POSE_PUNCH){
+        switch (getCurrentPose()){
+        case Figure.POSE_PUNCH:
            System.out.println("do actual punch behavior..");
            if(getTargetFighter()!=null){
-            getTargetFighter().onAttacked(getAttackPoint());
-            Greenfoot.playSound("bruce_punch_2.mp3");
-            System.out.println("attacked ["+((Figure)getTargetFighter()).getName()+"] by "+getAttackPoint()+" point.");
+                getTargetFighter().onAttacked(getAttackPoint());
+                Greenfoot.playSound("bruce_punch_2.mp3");
+                System.out.println("attacked ["+((Figure)getTargetFighter()).getName()+"] by "+getAttackPoint()+" point.");
+                break;
            }
+           break;
+        case Figure.POSE_KICK:
+            System.out.println("do actual kick behavior..");
+           if(getTargetFighter()!=null){
+                getTargetFighter().onAttacked(getAttackPoint()+2);
+                Greenfoot.playSound("bruce_punch_2.mp3");
+                System.out.println("attacked ["+((Figure)getTargetFighter()).getName()+"] by "+getAttackPoint()+2+" point.");
+                break;
+           }
+           break;
         }
     }
     public void printState(){
