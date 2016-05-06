@@ -196,13 +196,13 @@ public class Joe extends Figure implements IFighter, IGangster
         else
         {
             current_motion_index++;
-            setLocation(this.getX()+moveStepLength,this.getY());
+            setLocation(this.getX() + moveStepLength,this.getY());
         }
     }
     
     public void lookForMainCharacter()
     {
-        setLocation(this.getX(),340);
+        setLocation(this.getX(), this.getY());
         if(bruce == null)
         {
            bruce = this.getWorld().getObjects(BruceLee.class).get(0);
@@ -263,7 +263,7 @@ public class Joe extends Figure implements IFighter, IGangster
         else
         {
             current_motion_index++;
-            setLocation(this.getX(),this.getY());
+            setLocation(this.getX(), this.getY());
         }
     }
     
