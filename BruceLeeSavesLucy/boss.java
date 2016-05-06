@@ -310,11 +310,16 @@ public class boss extends Figure implements IFighter
         }
     };
     public void die(){
+            IScenarioTemplate w = (IScenarioTemplate)getWorld();
             Greenfoot.delay(5);
+            
             if(!finishing){
                 crush();
             }else{
                 getWorld().removeObject(this);
             }
+            // tell the world that game is over
+            
+            w.onEnd();
     };
 }

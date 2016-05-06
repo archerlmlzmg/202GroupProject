@@ -4,7 +4,7 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public interface ISecnarioTemplate  
+public interface IScenarioTemplate  
 {
     public void onCreate(); 
     public void onStart(); 

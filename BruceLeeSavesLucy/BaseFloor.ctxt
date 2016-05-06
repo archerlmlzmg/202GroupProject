@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=BaseFloor
-comment0.text=\n\ Write\ a\ description\ of\ class\ BaseFloor\ here.\n\ \n\ @author\ (Ming\ Tang)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=mainCharacter
-comment1.target=BaseFloor(IFighter)
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ BaseFloor.\n\ \n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ BaseFloor\ here.\r\n\ \r\n\ @author\ (Ming\ Tang)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=mainCharacter\ nextTransition
+comment1.target=BaseFloor(IFighter,\ Transition)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ BaseFloor.\r\n\ \r\n
 comment10.params=
 comment10.target=boolean\ executeSKey()
 comment11.params=

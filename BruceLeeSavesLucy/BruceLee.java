@@ -64,7 +64,7 @@ public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
         this.currentMotionSet = stand2RightSet;
         this.setCurrentPose(Figure.POSE_STAND);
         this.setDirection(Figure.DIRECTION_RIGHT);
-        this.setAttackPoint(10);
+        this.setAttackPoint(1000);
         this.setFigureRadius(100);
         this.setName("Bruce Lee");
         this.setInitHP(100);

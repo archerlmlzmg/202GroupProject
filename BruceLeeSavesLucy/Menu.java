@@ -64,7 +64,12 @@ public class Menu extends World
     }
     private void startNextWorld(){
         needsCheckKey = false;
-        Transition1 t = new Transition1(new Floor1(new BruceLee()));
-        addObject(t,400,250);
+        Floor3 floor3= new Floor3(new BruceLee(), null);
+        Transition3 t3= new Transition3(floor3); 
+        Floor2 floor2 = new Floor2(new BruceLee(),t3);
+        Transition2 t2= new Transition2(floor2); 
+        Floor1 floor1 = new Floor1(new BruceLee(),t2);
+        Transition1 t1 = new Transition1(floor1);
+        addObject(t1,400,250);
     }
 }

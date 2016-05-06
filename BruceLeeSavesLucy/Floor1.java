@@ -13,9 +13,9 @@ public class Floor1 extends BaseFloor
      * Constructor for objects of class Floor1.
      * 
      */
-    public Floor1(IFighter mainCharacter)
+    public Floor1(IFighter mainCharacter , Transition transition)
     {
-        super(mainCharacter);
+        super(mainCharacter,transition);
         System.out.println("constructing..");
         this.scenarioName = "The First Floor";
         // add Bruce Lee to this scenario

@@ -8,7 +8,7 @@ import java.util.Collections;
  * @author (Ming Tang) 
  * @version (a version number or a date)
  */
-public class BaseFloor extends World implements IKeyCommandReceiver,ISecnarioTemplate
+public class BaseFloor extends World implements IKeyCommandReceiver,IScenarioTemplate
 {
     ArrayList<IFighter> gangsters = new ArrayList<>();
     IFighter mainCharacter;
@@ -28,12 +28,13 @@ public class BaseFloor extends World implements IKeyCommandReceiver,ISecnarioTem
     static final int worldHeight = 500;
     boolean isInitiated = false,
     isGameStarted = false;
-    boolean isPaused = false;
+    boolean isPaused = false, isOver = false;
     KeyCommandInvoker keyCommandInvoker = new KeyCommandInvoker();
     Window window = new Window();
     ResumeButton resumeBtn = new ResumeButton();
     ExitButton exitBtn = new ExitButton();
     Pointer pointer = new Pointer();
+    Transition nextTransition;
     int[] pointerPos1 = new int[]{340,250},
         pointerPos2 = new int[]{340,322};
     int menuIndex = 1;
@@ -41,12 +42,13 @@ public class BaseFloor extends World implements IKeyCommandReceiver,ISecnarioTem
      * Constructor for objects of class BaseFloor.
      * 
      */
-    public BaseFloor(IFighter mainCharacter)
+    public BaseFloor(IFighter mainCharacter, Transition nextTransition)
     {    
         super(worldWidth, worldHeight, 1); 
         this.mainCharacter = mainCharacter;
         keyCommandInvoker.setCommandReceiver(this);
         this.addKeyCommandReceiverSuccessor((IKeyCommandReceiver)mainCharacter);
+        this.nextTransition = nextTransition;
     }
     public void act(){
         if(!isInitiated){
@@ -162,6 +164,8 @@ public class BaseFloor extends World implements IKeyCommandReceiver,ISecnarioTem
         this.isGameStarted = true;
     }
     public void onAct(){
+        if(isOver)
+            return;
         keyCommandInvoker.checkKeyPress();
         checkMouseClick();
     }
@@ -194,6 +198,8 @@ public class BaseFloor extends World implements IKeyCommandReceiver,ISecnarioTem
         removeObject(pointer);
     }
     public void onEnd(){
+        isOver = true;
+        addObject(nextTransition,400,250);
     }
     public boolean isOver(){
         return false;
