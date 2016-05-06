@@ -162,10 +162,10 @@ public class boss extends Figure implements IFighter
         setImage(currentMotionSet[current_motion_index]);
         if(current_motion_index == currentMotionSet.length - 1){
             current_motion_index = 0;
-            doActualBehavior();
+            
         }else{
             current_motion_index++;
-            setLocation(this.getX()-moveStepLength,this.getY());
+            if(isLeftMovable()){setLocation(this.getX()-moveStepLength,this.getY());}
         }
     }
     public void runAwayBruceLee()
@@ -189,12 +189,12 @@ public class boss extends Figure implements IFighter
         if(current_motion_index == currentMotionSet.length - 1)
         {
             current_motion_index = 0;
-            doActualBehavior();
+            
         }
         else
         {
             current_motion_index++;
-            setLocation(this.getX()+moveStepLength,this.getY());
+            if(isRightMovable()){setLocation(this.getX()+moveStepLength,this.getY());}
         }
     }
     private void highkickBruceLee(){
@@ -212,7 +212,7 @@ public class boss extends Figure implements IFighter
         setImage(currentMotionSet[current_motion_index]);
         if(current_motion_index == currentMotionSet.length - 1){
             current_motion_index = 0;
-            doActualBehavior();
+            
         }else{
             current_motion_index++;
             setLocation(this.getX(),this.getY());
@@ -234,7 +234,7 @@ public class boss extends Figure implements IFighter
         setImage(currentMotionSet[current_motion_index]);
         if(current_motion_index == currentMotionSet.length - 1){
             current_motion_index = 0;
-            doActualBehavior();
+            
         }else{
             current_motion_index++;
             setLocation(this.getX(),this.getY());
@@ -293,8 +293,8 @@ public class boss extends Figure implements IFighter
      * time when this figure is attacked.
      */
     private void doActualBehavior(){
-           if(bruce!=null){
-                bruce.onAttacked(20);
+           if(getTargetFighter()!=null){
+                getTargetFighter().onAttacked(getAttackPoint());
                 Greenfoot.playSound("bruce_punch_2.mp3");
                 System.out.println("attacked ["+((Figure)getTargetFighter()).getName()+"] by "+getAttackPoint()+" point.");
            }
