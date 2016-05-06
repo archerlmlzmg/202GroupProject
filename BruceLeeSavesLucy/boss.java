@@ -1,5 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.lang.*;
+import java.awt.Color;
+import java.util.List;
+import javax.swing.JOptionPane;
+import java.io.File;
+
 /**
  * Write a description of class boss here.
  * 
@@ -313,8 +318,11 @@ public class boss extends Figure implements IFighter
             Greenfoot.delay(5);
             if(!finishing){
                 crush();
+                //JOptionPane.showMessageDialog(null, "Game Over! Bruce Lee saved Lucy!");
             }else{
-                getWorld().removeObject(this);
+                //getWorld().removeObject(this);
+                JOptionPane.showMessageDialog(null, "Game Over! Bruce Lee saved Lucy!");
+                finishing=true;
             }
     };
 }
