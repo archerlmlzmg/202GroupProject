@@ -11,10 +11,10 @@ public class boss extends Figure implements IFighter
     int current_motion_index = 0;
     int moveSpeed = 3;
     int moveVariable = 0;
-    int moveStepLength = 10;
+    int moveStepLength = 2;
     private BruceLee bruce;
     boolean onGround = false;
-    public GreenfootImage[] fallSet, hitSet, crushSet, highkickSet, jumpSet, runSet, spinkickSet, currentMotionSet;
+    public GreenfootImage[] fallSet, hitSet, crushSet, highkickSet, jumpSet, walk2LeftSet, walk2RightSet, spinkickSet, currentMotionSet;
     public boss(){
         //initialize falling
         fallSet = new GreenfootImage[4];
@@ -56,13 +56,21 @@ public class boss extends Figure implements IFighter
             img.scale(img.getWidth() - 50,img.getHeight() - 70);
             jumpSet[i] = img;
         }
-        //initialize run
-        runSet = new GreenfootImage[8];
-        for(int i=0; i<runSet.length;i++){
+        //initialize walk to left set
+        walk2LeftSet = new GreenfootImage[8];
+        for(int i=0; i<walk2LeftSet.length;i++){
             int m = i+ 1;
             GreenfootImage img = new GreenfootImage("boss_run_" + m +".gif");
             img.scale(img.getWidth() - 50,img.getHeight() - 70);
-            runSet[i] = img;
+            walk2LeftSet[i] = img;
+        }
+        //initialize walk to right set
+        walk2RightSet = new GreenfootImage[8];
+        for(int i=0; i<walk2RightSet.length;i++){
+            int m = i+ 1;
+            GreenfootImage img = new GreenfootImage("boss_run2_" + m +".gif");
+            img.scale(img.getWidth() - 50,img.getHeight() - 70);
+            walk2RightSet[i] = img;
         }
         //initialize spinkick
         spinkickSet = new GreenfootImage[13];
@@ -74,6 +82,7 @@ public class boss extends Figure implements IFighter
         }
         this.currentMotionSet = fallSet;
         this.setCurrentPose(Figure.POSE_STAND);
+        this.setDirection(Figure.DIRECTION_LEFT);
     }
     private void bossShowup(){
        if(onGround){
@@ -115,13 +124,24 @@ public class boss extends Figure implements IFighter
         if(bruce == null){
            bruce= this.getWorld().getObjects(BruceLee.class).get(0);
         }
-        if(this.getX() > bruce.getX()+70){
-           runToBruceLee(); 
+        if (this.getX() < 500) this.setDirection(0);
+        if (this.getX() > 700) this.setDirection(1);
+        if (this.getDirection() == 1)
+            {
+            if(this.getX() > bruce.getX()+70){
+               runToBruceLee(); 
+            }else{
+               spinkickBruceLee();
+            }
         }else{
-           spinkickBruceLee();
+            if(this.getX() > bruce.getX()+70){
+               runAwayBruceLee(); 
+            }else{
+               spinkickBruceLee();
+            }
         }
     }
-        private void runToBruceLee(){
+    private void runToBruceLee(){
        //slow donw the motion
         if(moveVariable < moveSpeed){
             moveVariable++;
@@ -130,7 +150,7 @@ public class boss extends Figure implements IFighter
             moveVariable = 0;
         }
         //step to next motion
-        this.currentMotionSet = runSet;
+        this.currentMotionSet = walk2LeftSet;
         if(current_motion_index >= currentMotionSet.length)
             current_motion_index = 0;
         setImage(currentMotionSet[current_motion_index]);
@@ -139,6 +159,26 @@ public class boss extends Figure implements IFighter
         }else{
             current_motion_index++;
             setLocation(this.getX()-moveStepLength,this.getY());
+        }
+    }
+    private void runAwayBruceLee(){
+       //slow donw the motion
+        if(moveVariable < moveSpeed){
+            moveVariable++;
+            return;
+        }else{
+            moveVariable = 0;
+        }
+        //step to next motion
+        this.currentMotionSet = walk2RightSet;
+        if(current_motion_index >= currentMotionSet.length)
+            current_motion_index = 0;
+        setImage(currentMotionSet[current_motion_index]);
+        if(current_motion_index == currentMotionSet.length - 1){
+            current_motion_index = 0;
+        }else{
+            current_motion_index++;
+            setLocation(this.getX()+moveStepLength,this.getY());
         }
     }
     private void highkickBruceLee(){
@@ -198,6 +238,8 @@ public class boss extends Figure implements IFighter
      * time when this figure is attacked.
      */
     public void onAttacked(int damage){
+        setCurrentHP(getCurrentHP()-damage+getDefencePoint());
+        notifyObserver();
     };
     public void die(){
     
