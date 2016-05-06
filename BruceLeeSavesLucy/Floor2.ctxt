@@ -3,5 +3,5 @@ comment0.target=Floor2
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Floor2\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=mainCharacter\ transition
 comment1.target=Floor2(IFighter,\ Transition)
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Floor2.\r\n\ \r\n
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Floor1.\r\n\ \r\n
 numComments=2

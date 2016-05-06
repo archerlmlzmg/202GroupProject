@@ -1,5 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.lang.*;
+import java.awt.Color;
+import java.util.List;
+import javax.swing.JOptionPane;
+import java.io.File;
+
 /**
  * Write a description of class boss here.
  * 
@@ -84,7 +89,7 @@ public class boss extends Figure implements IFighter
         }
         this.currentMotionSet = fallSet;
         this.setCurrentPose(Figure.POSE_STAND);
-        this.setAttackPoint(5);
+        this.setAttackPoint(4);
         this.setFigureRadius(100);
     }
     private void bossShowup(){
@@ -310,16 +315,18 @@ public class boss extends Figure implements IFighter
         }
     };
     public void die(){
-            IScenarioTemplate w = (IScenarioTemplate)getWorld();
-            Greenfoot.delay(5);
-            
-            if(!finishing){
-                crush();
-            }else{
-                getWorld().removeObject(this);
-            }
-            // tell the world that game is over
-            
-            w.onEnd();
+		//do the next line before removing this figure
+		IScenarioTemplate w = (IScenarioTemplate)getWorld();
+		Greenfoot.delay(5);
+		if(!finishing){
+			crush();
+			//JOptionPane.showMessageDialog(null, "Game Over! Bruce Lee saved Lucy!");
+		}else{
+			//getWorld().removeObject(this);
+			JOptionPane.showMessageDialog(null, "Game Over! Bruce Lee saved Lucy!");
+			finishing=true;
+		}
+		// tell the world that game is over
+		w.onEnd();
     };
 }

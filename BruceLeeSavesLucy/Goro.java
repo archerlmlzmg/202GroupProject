@@ -8,13 +8,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Goro extends Figure implements IFighter, IGangster
 {
-   int current_motion_index = 0;
-    int moveSpeed = 3;
+  
+    int current_motion_index = 0;
+    int moveSpeed = 6;
     int moveVariable = 0;
     int moveStepLength = 3;
     private boolean opening = true;
-    public GreenfootImage[] moveSet, openingSet, punchSet, Blood;
+    public GreenfootImage[] openingSet, punchSet, hitSet;
     private BruceLee bruce;
+    private boolean isHit = false;
+      
     
     public Goro()
     {
@@ -30,14 +33,21 @@ public class Goro extends Figure implements IFighter, IGangster
            
         }
         
-        moveSet = new GreenfootImage[6];
-        for (int i = 0; i < moveSet.length; i++)
+        walk2LeftSet = new GreenfootImage[6];
+        for (int i = 0; i < walk2LeftSet.length; i++)
         {
                  
             GreenfootImage img = new GreenfootImage("goroRunLeft_" + i +".gif");
-           // System.out.println("GoroRun x is: " + img.getWidth() + "GoroRun y is: " + img.getHeight());
-            //img.scale(img.getWidth(),img.getHeight());
-            moveSet[i] = img;
+            walk2LeftSet[i] = img;
+           
+        }
+        
+        walk2RightSet = new GreenfootImage[6];
+        for (int i = 0; i < walk2RightSet.length; i++)
+        {
+                 
+            GreenfootImage img = new GreenfootImage("Gororun_" + i +".gif");
+            walk2RightSet[i] = img;
            
         }
         
@@ -46,9 +56,16 @@ public class Goro extends Figure implements IFighter, IGangster
         {
             
             GreenfootImage img = new GreenfootImage("goroPunchToLeft_" + i +".gif");
-            img.scale(img.getWidth() - 100,img.getHeight() - 143);
+            img.scale(img.getWidth() - 120,img.getHeight() - 160);
             punchSet[i] = img;
            
+        }
+        
+        hitSet = new GreenfootImage[7];
+        for(int i = 0; i < hitSet.length; i++)
+        {
+            GreenfootImage img = new GreenfootImage("gorolefthit" + i + ".png");
+            hitSet[i] = img;
         }
         
         this.currentMotionSet = openingSet;
@@ -84,6 +101,7 @@ public class Goro extends Figure implements IFighter, IGangster
         death(die);
         */
        goroShowup();
+       goroHitted();
     }
     
     private void goroShowup(){
@@ -99,8 +117,14 @@ public class Goro extends Figure implements IFighter, IGangster
     
     public void goroInit()
     {
-        //Greenfoot.delay(5);
+        
         for(int i=0; i<15; i++){
+            if(moveVariable < moveSpeed){
+                moveVariable++;
+                return;
+            }else{
+                moveVariable = 0;
+            }
             
             if(current_motion_index >= currentMotionSet.length) {
                     current_motion_index = 0;
@@ -110,7 +134,6 @@ public class Goro extends Figure implements IFighter, IGangster
                     current_motion_index = 0;
             }else{
                     current_motion_index++;
-            //        Greenfoot.delay(5);
             }
             if(current_motion_index>=14){
                 opening = false;  
@@ -127,42 +150,95 @@ public class Goro extends Figure implements IFighter, IGangster
         }else{
             moveVariable = 0;
         }
+        
         //step to next motion
-        this.currentMotionSet = moveSet;
+        this.currentMotionSet = walk2LeftSet;
         if(current_motion_index >= currentMotionSet.length)
+        {
             current_motion_index = 0;
+        }
         setImage(currentMotionSet[current_motion_index]);
-        if(current_motion_index == currentMotionSet.length - 1){
+        if(current_motion_index == currentMotionSet.length - 1)
+        {
             current_motion_index = 0;
-        }else{
+        }
+        else
+        {
             current_motion_index++;
             setLocation(this.getX()-moveStepLength,this.getY());
-        //    Greenfoot.delay(5);
         }
     }
-    public void lookForMainCharacter(){
-    /*    if(moveVariable < moveSpeed){
+    
+    public void runAwayMainCharacter()
+    {
+        if(moveVariable < moveSpeed)
+        {
             moveVariable++;
             return;
-        }else{
+        }
+        else
+        {
             moveVariable = 0;
-        } */
-        setLocation(this.getX(),340);
-        if(bruce == null){
-           bruce= this.getWorld().getObjects(BruceLee.class).get(0);
         }
-        if(this.getX()-50 > bruce.getX()){
-           runToMainCharacter(); 
-        }else{
-           punch();
+        //step to next motion
+        this.currentMotionSet = walk2RightSet;
+        if(current_motion_index >= currentMotionSet.length)
+        {
+            current_motion_index = 0;
         }
-
+        setImage(currentMotionSet[current_motion_index]);
+        if(current_motion_index == currentMotionSet.length - 1)
+        {
+            current_motion_index = 0;
+        }
+        else
+        {
+            current_motion_index++;
+            setLocation(this.getX()+moveStepLength,this.getY());
+        }
+    }
+    
+    public void lookForMainCharacter(){
+    
+        setLocation(this.getX(),390);
+        if(bruce == null)
+        {
+           bruce = this.getWorld().getObjects(BruceLee.class).get(0);
+        }
+        
+        if (this.getX() < 400) this.setDirection(0);
+        if (this.getX() > 690) this.setDirection(1);
+        
+        if (this.getDirection() == 1)
+        {
+            if (this.getX() > bruce.getX() + 70)
+            {
+                runToMainCharacter(); 
+            }
+            else
+            {
+                punch();
+            }
+        }
+        else
+        {
+            if (this.getX() > bruce.getX() + 70)
+            {
+                runAwayMainCharacter(); 
+            }
+            else
+            {
+                punch();
+            }
+        }
     }
     
     public void onAttacked(int damage){
     
+        isHit = true;       
+        setCurrentHP(getCurrentHP()-damage+getDefencePoint());
+        this.notifyObserver();
     }
-
     
     public int punch(){
         if(moveVariable < moveSpeed){
@@ -173,20 +249,33 @@ public class Goro extends Figure implements IFighter, IGangster
         }
         //step to next motion
         this.currentMotionSet = punchSet;
-        if(current_motion_index >= currentMotionSet.length)
+        if(current_motion_index >= currentMotionSet.length){
             current_motion_index = 0;
+        }
         setImage(currentMotionSet[current_motion_index]);
         if(current_motion_index == currentMotionSet.length - 1){
             current_motion_index = 0;
+            Greenfoot.playSound("punch.mp3");
+            
+            bruce = (BruceLee) getOneIntersectingObject(BruceLee.class);  
+            if(bruce != null){
+                bruce.onAttacked(getAttackPoint());
+            }
         }else{
             current_motion_index++;
             setLocation(this.getX(),this.getY());
         }
+        
         return 0;
     }
     
     
-    
+    private void goroHitted(){
+        if(isHit){
+            hit();
+            isHit = false;
+        }
+    }
     
     
     /**
@@ -194,10 +283,27 @@ public class Goro extends Figure implements IFighter, IGangster
     */   
     public void hit()
     {
-
-    /*    damage++;
-        death(0);
-        */
+        //step to next motion
+        System.out.println("Enter goro's hit function");
+        this.currentMotionSet = hitSet;
+        System.out.println("hitSet length is: " + hitSet.length);
+        for(int i= 0; i < hitSet.length; i++){
+            Greenfoot.delay(2);
+            if(current_motion_index >= currentMotionSet.length)
+            {
+                current_motion_index = 0;
+            }
+            setImage(currentMotionSet[current_motion_index]);
+            if(current_motion_index == currentMotionSet.length - 1)
+            {
+                current_motion_index = 0;
+            }
+            else
+            {
+                current_motion_index++;
+                setLocation(this.getX(),this.getY());
+            }
+        }
     }
     
     
