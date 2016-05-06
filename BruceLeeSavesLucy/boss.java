@@ -14,6 +14,8 @@ public class boss extends Figure implements IFighter
     int moveStepLength = 10;
     private BruceLee bruce;
     boolean onGround = false;
+    boolean death=false;
+    boolean finishing = false;
     public GreenfootImage[] fallSet, hitSet, crushSet, highkickSet, jumpSet, runSet, spinkickSet, currentMotionSet;
     public boss(){
         //initialize falling
@@ -25,7 +27,7 @@ public class boss extends Figure implements IFighter
             fallSet[i] = img;
         }
         //initialize being hit
-        hitSet = new GreenfootImage[6];
+        hitSet = new GreenfootImage[3];
         for(int i=0; i<hitSet.length;i++){
             int m = i+ 1;
             GreenfootImage img = new GreenfootImage("boss_hit_" + m +".gif");
@@ -82,6 +84,8 @@ public class boss extends Figure implements IFighter
         }
         this.currentMotionSet = fallSet;
         this.setCurrentPose(Figure.POSE_STAND);
+        this.setAttackPoint(5);
+        this.setFigureRadius(100);
     }
     private void bossShowup(){
        if(onGround){
@@ -119,26 +123,29 @@ public class boss extends Figure implements IFighter
     }
     private void lookForBruceLee(){
         //slow down the motion
+        if(death==false){    
         setLocation(this.getX(),340);
-    if(bruce == null){
+        if(bruce == null){
            bruce= this.getWorld().getObjects(BruceLee.class).get(0);
         }
         if (this.getX() < 500) this.setDirection(0);
         if (this.getX() > 700) this.setDirection(1);
-    if (this.getDirection() == 1)
-        {
-        if(this.getX() > bruce.getX()+70){
-           runToBruceLee(); 
-        }else{
-           spinkickBruceLee();
-        }
-        }else{
+        if (this.getDirection() == 1){
             if(this.getX() > bruce.getX()+70){
-           runAwayBruceLee(); 
+               runToBruceLee(); 
+            }else{
+               spinkickBruceLee();
+            }
+            }else{
+                if(this.getX() > bruce.getX()+70){
+               runAwayBruceLee(); 
+            }else{
+               highkickBruceLee();
+            }
+            }
         }else{
-           highkickBruceLee();
-        }
-        }
+            die();
+        }    
     }
         private void runToBruceLee(){
        //slow donw the motion
@@ -155,6 +162,7 @@ public class boss extends Figure implements IFighter
         setImage(currentMotionSet[current_motion_index]);
         if(current_motion_index == currentMotionSet.length - 1){
             current_motion_index = 0;
+            doActualBehavior();
         }else{
             current_motion_index++;
             setLocation(this.getX()-moveStepLength,this.getY());
@@ -181,6 +189,7 @@ public class boss extends Figure implements IFighter
         if(current_motion_index == currentMotionSet.length - 1)
         {
             current_motion_index = 0;
+            doActualBehavior();
         }
         else
         {
@@ -203,6 +212,7 @@ public class boss extends Figure implements IFighter
         setImage(currentMotionSet[current_motion_index]);
         if(current_motion_index == currentMotionSet.length - 1){
             current_motion_index = 0;
+            doActualBehavior();
         }else{
             current_motion_index++;
             setLocation(this.getX(),this.getY());
@@ -210,6 +220,7 @@ public class boss extends Figure implements IFighter
     }
     private void spinkickBruceLee(){
         //slow donw the motion
+        
         if(moveVariable < moveSpeed){
             moveVariable++;
             return;
@@ -223,9 +234,46 @@ public class boss extends Figure implements IFighter
         setImage(currentMotionSet[current_motion_index]);
         if(current_motion_index == currentMotionSet.length - 1){
             current_motion_index = 0;
+            doActualBehavior();
         }else{
             current_motion_index++;
             setLocation(this.getX(),this.getY());
+        }
+    }
+    private void crush(){
+        for(int i=0; i<3; i++)
+        {
+            if(moveVariable < moveSpeed)
+            {
+                moveVariable++;
+                return;
+            }
+            else
+            {
+                moveVariable = 0;
+            }
+            //step to next motion
+            this.currentMotionSet = crushSet;
+            if(current_motion_index >= currentMotionSet.length)
+            {
+                current_motion_index = 0;
+            }
+            setImage(currentMotionSet[current_motion_index]);
+            if(current_motion_index == currentMotionSet.length - 1)
+            {
+                current_motion_index = 0;
+            }
+            else
+            {
+                current_motion_index++;
+                Greenfoot.delay(5);
+                setLocation(this.getX(),this.getY());
+            }
+            if (current_motion_index >= 2)
+                {  
+                    finishing=true;
+                    break;
+                }
         }
     }
     public int punch(){
@@ -244,11 +292,27 @@ public class boss extends Figure implements IFighter
      * when a figure is attected by someone, this method will be called, and given the certain damage every
      * time when this figure is attacked.
      */
+    private void doActualBehavior(){
+           if(bruce!=null){
+                bruce.onAttacked(20);
+                Greenfoot.playSound("bruce_punch_2.mp3");
+                System.out.println("attacked ["+((Figure)getTargetFighter()).getName()+"] by "+getAttackPoint()+" point.");
+           }
+        }
     public void onAttacked(int damage){
-        //setCurrentHP(getCurrentHP()-damage+getDefencePoint());
+        setCurrentHP(getCurrentHP()-damage+getDefencePoint());
         notifyObserver();
+        if(getCurrentHP()<=0){
+            death=true;
+            die();
+        }
     };
     public void die(){
-    
+            Greenfoot.delay(5);
+            if(!finishing){
+                crush();
+            }else{
+                getWorld().removeObject(this);
+            }
     };
 }
