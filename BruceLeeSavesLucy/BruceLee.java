@@ -67,6 +67,8 @@ public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
         this.setAttackPoint(10);
         this.setFigureRadius(100);
         this.setName("Bruce Lee");
+        this.setInitHP(100);
+        this.setCurrentHP(100);
     }
     
      /**
@@ -204,6 +206,7 @@ public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
     {
         // do being attacked animotion
         // deduct HP
+        System.out.println("Bruce Lee is being faught.....");
         this.setCurrentHP(this.getCurrentHP()-damage+getDefencePoint());
         this.notifyObserver();
     }

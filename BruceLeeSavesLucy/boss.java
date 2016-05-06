@@ -119,6 +119,7 @@ public class boss extends Figure implements IFighter
      */
     public void act() 
     {
+        isLeftMovable();
         bossShowup();
     }
     private void lookForBruceLee(){
@@ -236,6 +237,9 @@ public class boss extends Figure implements IFighter
         }else{
             current_motion_index++;
             setLocation(this.getX(),this.getY());
+        }
+        if(getTargetFighter() != null){
+            getTargetFighter().onAttacked(getAttackPoint());
         }
     }
     private void crush(){
