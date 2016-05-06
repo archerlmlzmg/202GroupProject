@@ -91,7 +91,9 @@ public class Joe extends Figure implements IFighter, IGangster
         this.currentMotionSet = openingSet;
         this.setCurrentPose(Figure.POSE_STAND);
         this.setDirection(Figure.DIRECTION_LEFT);
+        this.setAttackPoint(15);
     }
+    
     /**
      * Act - do whatever the Joe wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -144,6 +146,7 @@ public class Joe extends Figure implements IFighter, IGangster
     
     public void runToMainCharacter()
     {
+        this.setCurrentPose(Figure.POSE_WALK);
         if(moveVariable < moveSpeed)
         {
             moveVariable++;
@@ -173,6 +176,7 @@ public class Joe extends Figure implements IFighter, IGangster
     
     public void runAwayMainCharacter()
     {
+        this.setCurrentPose(Figure.POSE_WALK);
         if(moveVariable < moveSpeed)
         {
             moveVariable++;
@@ -237,7 +241,12 @@ public class Joe extends Figure implements IFighter, IGangster
     
     public void onAttacked(int damage)
     {
+        setCurrentHP(getCurrentHP() - damage + getDefencePoint());
         notifyObserver();
+        /*if (getCurrentHP() <= 0)
+        {
+            die();
+        }*/
     }
     
     public void hit()
@@ -267,10 +276,27 @@ public class Joe extends Figure implements IFighter, IGangster
         }
     }
     
+    private void doActualBehavior()
+    {
+        System.out.println("do actual behavior..");
+        if (getCurrentPose() == Figure.POSE_PUNCH)
+        {
+           System.out.println("do actual punch behavior..");
+           if (getTargetFighter() != null)
+           {
+                getTargetFighter().onAttacked(getAttackPoint());
+                Greenfoot.playSound("punch3.mp3");
+                System.out.println("attacked ["+((Figure)getTargetFighter()).getName()+"] by "+getAttackPoint()+" point.");
+           }
+        }
+    }
+    
     public int punch()
     {
         hit();
-        return 15;
+        this.setCurrentPose(Figure.POSE_PUNCH);
+        doActualBehavior();
+        return 0;
     }
     
     public int kick()
@@ -280,7 +306,7 @@ public class Joe extends Figure implements IFighter, IGangster
     
     public int defend()
     {
-        return 0;
+        return (Greenfoot.getRandomNumber(5));
     }
     
     public void die()
