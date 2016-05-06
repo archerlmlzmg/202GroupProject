@@ -170,7 +170,7 @@ public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
     private void doActualBehavior(){
         System.out.println("do actual behavior..");
         swtch(getCurrentPose()){
-        
+        case:
         }
         if(getCurrentPose() == Figure.POSE_PUNCH){
            System.out.println("do actual punch behavior..");

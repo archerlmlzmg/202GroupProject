@@ -33,10 +33,14 @@ public class Floor1 extends BaseFloor
         objectsLocationMap.put((Actor)g2,new int[]{this.activeAreaXRight -70,
         this.activeAreaYBottom-((Actor)g1).getImage().getHeight()});
         
+        //add Goro
+        IFighter g3 = gangsterFactory.generate("Goro");
+        gangsters.add(g3);
+        objectsLocationMap.put((Actor)g3,new int[]{this.activeAreaXRight -100,
+        this.activeAreaYBottom - 100});
         
-        IObserver healthBarBruce = new HealthBar("Bruce Lee: ", "", ((Figure)mainCharacter).getInitHP(),
-        ((Figure)mainCharacter).getInitHP());
-        IObserver healthBarBoss = new HealthBar("Paul: ", "",100, 100);
+        IObserver healthBarBruce = new HealthBar("Bruce Lee: ", "", 100, 100);
+        IObserver healthBarBoss = new HealthBar("Boss: ", "",100, 100);
         //attach observers
         ((Figure)mainCharacter).attachObserver(healthBarBoss);
         ((Figure)g2).attachObserver(healthBarBoss);
