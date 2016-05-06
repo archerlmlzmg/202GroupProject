@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Floor3
+comment0.text=\n\ Write\ a\ description\ of\ class\ Floor2\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=mainCharacter
+comment1.target=Floor3(IFighter)
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Floor2.\n\ \n
+numComments=2
