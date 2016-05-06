@@ -16,7 +16,8 @@ public abstract class Figure extends Actor implements ISubject
     /* the denfence ability indicates the point that can be deducted from every attack*/
     private int walkingSpeed = 5;
     /* ever attack a figure gets should be deducted by this attribute */
-    private int basicDenfence = 10;
+    private int basicDenfence = 2;
+    private int attackPoint = 10;
     
     public final static int POSE_STAND = 0, POSE_WALK = 1, POSE_PUNCH = 2, POSE_KICK=3;
     public final static int DIRECTION_RIGHT = 0, DIRECTION_LEFT = 1;
@@ -49,9 +50,11 @@ public abstract class Figure extends Actor implements ISubject
     }
     public boolean isRightMovable(){
         List<Figure> fs = getObjectsInRange(figureRadius,Figure.class);
-        if(fs.size()==0)
+        System.out.println("intersected:"+fs.size());
+        if(fs.size()==0){
+            targetFighter = null;
             return true;
-        if (fs.get(0).getX() >= this.getX()){
+        }else if (fs.get(0).getX() >= this.getX()){
             targetFighter = (IFighter)fs.get(0);
             return false;
         }
@@ -59,8 +62,10 @@ public abstract class Figure extends Actor implements ISubject
     };
     public boolean isLeftMovable(){
         List<Figure> fs = getObjectsInRange(figureRadius,Figure.class);
-        if(fs.size()==0)
+        if(fs.size()==0){
+            targetFighter = null;
             return true;
+        }
         if (fs.get(0).getX() <= this.getX()){
             targetFighter = (IFighter)fs.get(0);
             return false;
@@ -138,5 +143,11 @@ public abstract class Figure extends Actor implements ISubject
     }
     public void setFigureRadius(int r){
         this.figureRadius = r;
+    }
+    public void setAttackPoint(int a){
+        this.attackPoint = a;
+    }
+    public int getAttackPoint(){
+        return this.attackPoint;
     }
 }

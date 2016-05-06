@@ -184,5 +184,8 @@ public class HealthBar extends Actor implements IObserver
     public void update(Figure f){
         //update the figure's state
         //this mehtod will be invoked when a figure calls notifyObserver()
+        value = f.getCurrentHP();
+        checkValue();
+        barImage();
     };
 }

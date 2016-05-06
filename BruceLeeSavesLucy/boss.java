@@ -198,6 +198,8 @@ public class boss extends Figure implements IFighter
      * time when this figure is attacked.
      */
     public void onAttacked(int damage){
+        setCurrentHP(getCurrentHP()-damage+getDefencePoint());
+        notifyObserver();
     };
     public void die(){
     
