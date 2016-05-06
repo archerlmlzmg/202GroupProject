@@ -92,6 +92,7 @@ public class Joe extends Figure implements IFighter, IGangster
         this.setCurrentPose(Figure.POSE_STAND);
         this.setDirection(Figure.DIRECTION_LEFT);
         this.setAttackPoint(15);
+        this.setFigureRadius(100);
     }
     
     /**
@@ -213,7 +214,7 @@ public class Joe extends Figure implements IFighter, IGangster
         }
         
         if (this.getX() < 400) this.setDirection(0);
-        if (this.getX() > 780) this.setDirection(1);
+        if (this.getX() > 760) this.setDirection(1);
         
         if (this.getDirection() == 1)
         {
@@ -268,6 +269,9 @@ public class Joe extends Figure implements IFighter, IGangster
         if (current_motion_index == currentMotionSet.length - 1)
         {
             current_motion_index = 0;
+            doActualBehavior();
+            this.setCurrentPose(Figure.POSE_STAND);
+            this.setCurrentMotionSet(stand2RightSet);
         }
         else
         {
@@ -278,16 +282,19 @@ public class Joe extends Figure implements IFighter, IGangster
     
     private void doActualBehavior()
     {
-        System.out.println("do actual behavior..");
-        if (getCurrentPose() == Figure.POSE_PUNCH)
+        System.out.println("Joe is doing actual behavior..");
+        switch (getCurrentPose())
         {
-           System.out.println("do actual punch behavior..");
+           case Figure.POSE_PUNCH:
+           System.out.println("Joe is doing actual punch behavior..");
            if (getTargetFighter() != null)
            {
                 getTargetFighter().onAttacked(getAttackPoint());
                 Greenfoot.playSound("punch3.mp3");
                 System.out.println("attacked ["+((Figure)getTargetFighter()).getName()+"] by "+getAttackPoint()+" point.");
+                break;
            }
+           break;
         }
     }
     
@@ -295,7 +302,6 @@ public class Joe extends Figure implements IFighter, IGangster
     {
         hit();
         this.setCurrentPose(Figure.POSE_PUNCH);
-        doActualBehavior();
         return 0;
     }
     
