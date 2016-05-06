@@ -25,8 +25,8 @@ public class Floor1 extends BaseFloor
         // add Bruce Joe to this scenario
         IFighter g1 = gangsterFactory.generate("Joe");
         gangsters.add(g1);
-        objectsLocationMap.put((Actor)g1,new int[]{this.activeAreaXRight -50,
-        this.activeAreaYBottom-((Actor)g1).getImage().getHeight()});
+        //objectsLocationMap.put((Actor)g1,new int[]{this.activeAreaXRight -50,
+        //this.activeAreaYBottom-((Actor)g1).getImage().getHeight()});
         //add boss
         IFighter g2 = gangsterFactory.generate("boss");
         gangsters.add(g2);
