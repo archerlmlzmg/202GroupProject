@@ -1,5 +1,9 @@
 #Greenfoot properties
+<<<<<<< Updated upstream
 #Thu May 05 20:53:09 PDT 2016
+=======
+#Thu May 05 20:52:21 PDT 2016
+>>>>>>> Stashed changes
 target24.type=ClassTarget
 target16.name=Weapon2
 target43.name=ResumeButton
@@ -79,8 +83,8 @@ target31.name=BaseCommand
 dependency46.from=Floor1
 dependency21.from=BaseFloor
 class.ACommand.superclass=BaseCommand
-target7.name=HealthBar
 target14.width=80
+target7.name=HealthBar
 target2.width=80
 dependency11.to=IFighter
 target14.height=50
@@ -145,10 +149,16 @@ dependency35.to=ACommand
 target9.typeParameters=
 target27.height=50
 target8.name=IFighter
+<<<<<<< Updated upstream
 target7.y=130
 target27.width=90
 target7.x=100
+=======
+target27.width=80
+target7.y=130
+>>>>>>> Stashed changes
 target30.height=50
+target7.x=100
 target3.height=50
 dependency29.to=IKeyCommandReceiver
 dependency10.type=UsesDependency
@@ -203,8 +213,8 @@ dependency23.from=BaseFloor
 target9.name=Pointer
 target43.height=50
 dependency50.from=Menu
-target42.showInterface=false
 class.ResumeButton.superclass=Button
+target42.showInterface=false
 target13.height=50
 editor.swing.1.height=1064
 dependency11.type=UsesDependency
@@ -369,8 +379,8 @@ target24.x=140
 dependency39.to=IObserver
 target31.type=ClassTarget
 target4.typeParameters=
-target8.y=70
 target18.typeParameters=
+target8.y=70
 target8.x=160
 dependency13.from=GangsterFactory
 target7.type=ClassTarget
@@ -503,8 +513,8 @@ class.Button.image=blue-draught.png
 dependency42.from=BruceLee
 readme.y=10
 target16.height=50
-target9.showInterface=false
 readme.x=10
+target9.showInterface=false
 target38.typeParameters=
 target3.name=IKeyCommandReceiver
 target29.width=110
@@ -557,8 +567,8 @@ dependency25.to=IKeyCommandReceiver
 target19.y=610
 target19.x=10
 class.IGangster.superclass=
-target9.height=50
 dependency43.from=Figure
+target9.height=50
 target32.height=50
 target11.y=370
 target4.name=boss
@@ -591,17 +601,24 @@ target42.name=Lucy
 class.UpCommand.superclass=BaseCommand
 dependency57.from=BaseFloor
 dependency61.to=EnterCommand
+<<<<<<< Updated upstream
 dependency32.from=KeyCommandInvoker
 target33.width=80
 target36.y=190
 target36.x=190
+=======
+target33.width=100
+dependency32.from=KeyCommandInvoker
+target36.y=10
+target36.x=160
+>>>>>>> Stashed changes
 target23.height=50
 dependency18.type=UsesDependency
 target28.width=80
 class.IFighter.superclass=
 project.charset=UTF-8
-dependency55.to=ResumeButton
 dependency45.type=UsesDependency
+dependency55.to=ResumeButton
 dependency20.type=UsesDependency
 target20.showInterface=false
 target35.type=ClassTarget
@@ -610,9 +627,15 @@ dependency49.to=StartButton
 dependency17.from=GangsterFactory
 dependency44.from=Figure
 target15.height=50
+<<<<<<< Updated upstream
 target5.name=Wall
 target25.y=910
 target25.x=130
+=======
+target25.y=430
+target5.name=Wall
+target25.x=210
+>>>>>>> Stashed changes
 target19.width=90
 target7.width=80
 target29.name=EnterCommand
@@ -622,14 +645,14 @@ target9.x=10
 dependency50.to=AboutButton
 class.ResumeButton.image=button_resume.png
 class.ExitButton.image=button_exit.png
-target1.y=550
 dependency9.from=BruceLee
+target1.y=550
 target1.x=130
 dependency44.to=IObserver
-target3.width=160
 dependency59.type=UsesDependency
+target3.width=160
 dependency34.type=UsesDependency
-target14.y=310
 target10.height=50
+target14.y=310
 target14.x=100
 dependency38.to=IKeyCommandReceiver
