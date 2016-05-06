@@ -84,7 +84,7 @@ public class boss extends Figure implements IFighter
         }
         this.currentMotionSet = fallSet;
         this.setCurrentPose(Figure.POSE_STAND);
-        this.setAttackPoint(5);
+        this.setAttackPoint(4);
         this.setFigureRadius(100);
     }
     private void bossShowup(){
