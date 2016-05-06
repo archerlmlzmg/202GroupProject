@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Thu May 05 14:52:14 PDT 2016
+#Thu May 05 17:41:07 PDT 2016
 target24.type=ClassTarget
 target16.name=Weapon2
 target11.typeParameters=
@@ -396,7 +396,7 @@ class.Floor1.superclass=BaseFloor
 target30.typeParameters=
 dependency55.type=UsesDependency
 target18.type=ClassTarget
-editor.swing.0.height=744
+editor.swing.0.height=0
 dependency30.type=UsesDependency
 target21.showInterface=false
 class.DownCommand.superclass=BaseCommand
@@ -444,7 +444,7 @@ target27.y=10
 target27.x=70
 target34.typeParameters=
 dependency58.to=Menu
-editor.swing.0.width=1382
+editor.swing.0.width=0
 class.ScenarioFactory.superclass=
 target29.height=50
 dependency6.from=Scene
@@ -561,8 +561,8 @@ editor.fx.0.x=0
 dependency8.to=Lucy
 target26.showInterface=false
 target28.name=EnterCommand
-editor.swing.0.y=-8
-editor.swing.0.x=-8
+editor.swing.0.y=0
+editor.swing.0.x=0
 mainWindow.height=744
 target42.width=110
 dependency8.from=Scene
