@@ -41,7 +41,6 @@ public class Floor1 extends BaseFloor
         ((Figure)mainCharacter).attachObserver(healthBarBoss);
         ((Figure)g2).attachObserver(healthBarBoss);
         
-
         objectsLocationMap.put((Actor)healthBarBruce,new int[]{150,50});
         objectsLocationMap.put((Actor)healthBarBoss, new int[]{650,50});   
   

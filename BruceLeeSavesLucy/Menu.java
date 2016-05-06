@@ -14,6 +14,7 @@ public class Menu extends World
     int[] pointerPos1 = new int[]{320,266};
     int[] pointerPos2 = new int[]{320,327};
     int menuIndex = 1;
+    boolean needsCheckKey = true;
     /**
      * Constructor for objects of class Menu.
      * 
@@ -30,8 +31,11 @@ public class Menu extends World
         addObject(pointer,pointerPos1[0],pointerPos1[1]);
     }
     public void act(){
-        checkKeyPress();
-        checkMouseClick();
+        if(needsCheckKey){
+            checkKeyPress();
+            checkMouseClick();
+        }
+        
     }
     private void checkKeyPress(){
         if(Greenfoot.isKeyDown("up")){
@@ -44,7 +48,7 @@ public class Menu extends World
             System.out.println("enter");
             if(menuIndex == 1){
                 System.out.println(" new Floor1(new BruceLee())");
-                Greenfoot.setWorld(new Floor1(new BruceLee()));
+                startNextWorld();
             }
         }
     }
@@ -52,10 +56,15 @@ public class Menu extends World
         if(Greenfoot.mouseClicked(startButton)){
             pointer.setLocation(pointerPos1[0],pointerPos1[1]);
             menuIndex = 1;
-            Greenfoot.setWorld(new Floor1(new BruceLee()));
+            startNextWorld();
         }else if (Greenfoot.mouseClicked(aboutButton)){
             pointer.setLocation(pointerPos2[0],pointerPos2[1]);
             menuIndex = 2;
         }
+    }
+    private void startNextWorld(){
+        needsCheckKey = false;
+        Transition1 t = new Transition1(new Floor1(new BruceLee()));
+        addObject(t,400,250);
     }
 }
