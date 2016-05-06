@@ -120,7 +120,6 @@ public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
             current_motion_index = 0;
         }
         this.setCurrentMotionSet(kick2RightSet);        
-        current_motion_index++;
         setLocation(getX()+kickMoveLength,getY());
         
     }
@@ -170,6 +169,9 @@ public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
     }
     private void doActualBehavior(){
         System.out.println("do actual behavior..");
+        swtch(getCurrentPose()){
+        
+        }
         if(getCurrentPose() == Figure.POSE_PUNCH){
            System.out.println("do actual punch behavior..");
            if(getTargetFighter()!=null){
@@ -192,6 +194,7 @@ public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
     {
         // do being attacked animotion
         // deduct HP
+        this.setCurrentHP(this.getCurrentHP()-damage+getDefencePoint());
         this.notifyObserver();
     }
     
