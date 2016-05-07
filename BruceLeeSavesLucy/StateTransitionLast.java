@@ -16,4 +16,28 @@ public class StateTransitionLast extends StateTransition
             images[i] = new GreenfootImage("transition_win_" + m +".gif");
         }
     }
+    public void act() 
+    {
+        if(!needsWork)
+            return;
+                //slow donw the motion
+        if(moveVariable < moveSpeed){
+            moveVariable++;
+            return;
+        }else{
+            moveVariable = 0;
+        }
+        this.setImage(currentMotionSet[motion_index]);
+        if(motion_index>=2 && motion_index<=8){//
+            Greenfoot.delay(10);
+        }
+        //if(!isGoingToNext && motion_index == (currentMotionSet.length-1)){
+        //    Greenfoot.delay(10);
+        //}
+        if(motion_index >= currentMotionSet.length-1){
+            needsWork = false;
+            Greenfoot.setWorld(nextWorld);
+        }else
+            motion_index++;
+    }
 }
