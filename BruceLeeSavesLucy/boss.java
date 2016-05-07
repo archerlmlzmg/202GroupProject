@@ -89,7 +89,7 @@ public class boss extends Figure implements IFighter
         }
         this.currentMotionSet = fallSet;
         this.setCurrentPose(Figure.POSE_STAND);
-        this.setAttackPoint(1);
+        this.setAttackPoint(2);
         this.setFigureRadius(100);
     }
     private void bossShowup(){
@@ -130,7 +130,7 @@ public class boss extends Figure implements IFighter
     private void lookForBruceLee(){
         //slow down the motion
         if(death==false){    
-        setLocation(this.getX(),340);
+        setLocation(this.getX(),370);
         if(bruce == null){
            bruce= this.getWorld().getObjects(BruceLee.class).get(0);
         }
