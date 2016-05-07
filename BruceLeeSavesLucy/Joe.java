@@ -102,7 +102,7 @@ public class Joe extends Figure implements IFighter, IGangster
         this.currentMotionSet = openingSet;
         this.setCurrentPose(Figure.POSE_STAND);
         this.setDirection(Figure.DIRECTION_LEFT);
-        this.setAttackPoint(15);
+        this.setAttackPoint(3);
         this.setFigureRadius(100);
     }
     

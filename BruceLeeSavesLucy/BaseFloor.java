@@ -42,6 +42,7 @@ public class BaseFloor extends World implements IKeyCommandReceiver,IScenarioTem
     int[] pointerPos1 = new int[]{340,250},
         pointerPos2 = new int[]{340,322};
     int menuIndex = 1;
+    GreenfootSound musicBackground = new GreenfootSound("floor1_m.mp3");
     /**
      * Constructor for objects of class BaseFloor.
      * 
@@ -174,6 +175,9 @@ public class BaseFloor extends World implements IKeyCommandReceiver,IScenarioTem
         initElementsToWorld();
     } 
     public void onStart(){
+        if(!musicBackground.isPlaying()){
+            musicBackground.playLoop();
+        }
         // pass the key control to main character
         System.out.println("Starting...");
         this.hasTakenOverKeyCommand = false;
@@ -217,6 +221,7 @@ public class BaseFloor extends World implements IKeyCommandReceiver,IScenarioTem
         removeObject(pointer);
     }
     public void onEnd(){
+        musicBackground.stop();
         System.out.println("its endding....");
         addObject(nextTransition,400,250);
         if(isMainCharacterWon)

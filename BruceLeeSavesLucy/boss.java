@@ -89,7 +89,7 @@ public class boss extends Figure implements IFighter
         }
         this.currentMotionSet = fallSet;
         this.setCurrentPose(Figure.POSE_STAND);
-        this.setAttackPoint(4);
+        this.setAttackPoint(1);
         this.setFigureRadius(100);
     }
     private void bossShowup(){
@@ -108,7 +108,7 @@ public class boss extends Figure implements IFighter
                     current_motion_index = 0;
                 }else{
                     current_motion_index++;
-                    //Greenfoot.delay(5);
+                    Greenfoot.delay(5);
                     setLocation(this.getX(),i*4);
                 }
                 if(this.getY()>330){
@@ -273,7 +273,7 @@ public class boss extends Figure implements IFighter
             else
             {
                 current_motion_index++;
-                //Greenfoot.delay(5);
+                Greenfoot.delay(5);
                 setLocation(this.getX(),this.getY());
             }
             if (current_motion_index >= 2)
@@ -318,6 +318,7 @@ public class boss extends Figure implements IFighter
     };
     public void die(){
         //Greenfoot.delay(5);
+
         if(!finishing){
             crush();
             //JOptionPane.showMessageDialog(null, "Game Over! Bruce Lee saved Lucy!");

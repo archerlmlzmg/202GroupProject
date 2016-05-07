@@ -96,7 +96,7 @@ public class Goro extends Figure implements IFighter, IGangster
             PRight[i] = new GreenfootImage("goroPunchToRight_" + i +".gif");
             PLeft[i] = new GreenfootImage("goroPunchToLeft_" + i +".gif"); 
         }*/
-    
+    this.setName("Goro");
     }
       
     /**
@@ -111,6 +111,9 @@ public class Goro extends Figure implements IFighter, IGangster
         */
        goroShowup();
        goroHitted();
+       if(this.getIsDying()){
+           die();
+        }
     }
     
     private void goroShowup(){
@@ -250,7 +253,7 @@ public class Goro extends Figure implements IFighter, IGangster
         if(getCurrentHP()<=0){
             death=true;
             setIsDying(true);
-            System.out.println("boss is dying......");
+            System.out.println("Gore is dying......");
             die();
         }
     }
@@ -359,6 +362,7 @@ public class Goro extends Figure implements IFighter, IGangster
             else
             {
                 current_motion_index++;
+                Greenfoot.delay(5);
                 setLocation(this.getX(),this.getY());
             }
             if (current_motion_index >= 2)

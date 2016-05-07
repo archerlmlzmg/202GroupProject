@@ -42,6 +42,9 @@ public class StateTransition extends Actor implements IState
             moveVariable = 0;
         }
         this.setImage(currentMotionSet[motion_index]);
+        if(!isGoingToNext && motion_index == (currentMotionSet.length-1)){
+            Greenfoot.delay(10);
+        }
         if(motion_index >= currentMotionSet.length-1){
             needsWork = false;
             Greenfoot.setWorld(nextWorld);
@@ -52,10 +55,12 @@ public class StateTransition extends Actor implements IState
         this.isGoingToNext = false;       
         currentMotionSet = lossImages;
         this.needsWork = true;
+        
     }
     public void goToNextState(){
         this.isGoingToNext = true;        
         currentMotionSet = images;
         this.needsWork = true;
+        Greenfoot.playSound("woda.mp3");
     }
 }

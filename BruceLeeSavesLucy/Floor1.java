@@ -47,5 +47,4 @@ public class Floor1 extends BaseFloor
         
         System.out.println("constructed.");
     }
-    
 }
