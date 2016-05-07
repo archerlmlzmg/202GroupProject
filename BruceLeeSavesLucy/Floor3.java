@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Floor2 here.
+ * Write a description of class Floor1 here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
@@ -10,7 +10,7 @@ public class Floor3 extends BaseFloor
 {
 
     /**
-     * Constructor for objects of class Floor2.
+     * Constructor for objects of class Floor1.
      * 
      */
     public Floor3(IFighter mainCharacter , StateTransition transition)
@@ -23,22 +23,29 @@ public class Floor3 extends BaseFloor
         this.activeAreaYBottom-((Actor)mainCharacter).getImage().getHeight()});
         
         // add Bruce Joe to this scenario
-        IFighter g1 = gangsterFactory.generate("Joe");
-        gangsters.add(g1);
-        objectsLocationMap.put((Actor)g1,new int[]{this.activeAreaXRight - 50,
-        this.activeAreaYBottom - ((Actor)g1).getImage().getHeight() + 88});
-       
+        //IFighter g1 = gangsterFactory.generate("Joe");
+        //gangsters.add(g1);
+        //objectsLocationMap.put((Actor)g1,new int[]{this.activeAreaXRight -50,
+        //this.activeAreaYBottom-((Actor)g1).getImage().getHeight()});
+        //add boss
+        IFighter newJoe = gangsterFactory.generate("Joe");
+        gangsters.add(newJoe);
+        objectsLocationMap.put((Actor)newJoe,new int[]{this.activeAreaXRight -70,
+        this.activeAreaYBottom-((Actor)newJoe).getImage().getHeight()});
         
-        IObserver healthBarBruce = new HealthBar("Bruce Lee: ", "", 100, 100);
-        IObserver healthBarBoss = new HealthBar("Joe: ", "",100, 100);
         
+        IObserver healthBarBruce = new HealthBar("Bruce Lee: ", "", ((Figure)mainCharacter).getInitHP(),
+        ((Figure)mainCharacter).getInitHP());
+        IObserver healthBarJoe = new HealthBar("Joe: ", "",100, 100);
         //attach observers
-        ((Figure)mainCharacter).attachObserver(healthBarBoss);
-        ((Figure)g1).attachObserver(healthBarBoss);
+        ((Figure)mainCharacter).attachObserver(healthBarBruce);
+        ((Figure)newJoe).attachObserver(healthBarJoe);
         
         objectsLocationMap.put((Actor)healthBarBruce,new int[]{150,50});
-        objectsLocationMap.put((Actor)healthBarBoss, new int[]{650, 50});   
-          
+        objectsLocationMap.put((Actor)healthBarJoe, new int[]{650,50});   
+  
+        
         System.out.println("constructed.");
     }
+    
 }

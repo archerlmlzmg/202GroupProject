@@ -14,9 +14,11 @@ public class Goro extends Figure implements IFighter, IGangster
     int moveVariable = 0;
     int moveStepLength = 3;
     private boolean opening = true;
-    public GreenfootImage[] openingSet, punchSet, hitSet;
+    public GreenfootImage[] openingSet, punchSet, hitSet, crushSet;
     private BruceLee bruce;
     private boolean isHit = false;
+    private boolean death = false;
+    private boolean finishing = false;
       
     
     public Goro()
@@ -66,6 +68,13 @@ public class Goro extends Figure implements IFighter, IGangster
         {
             GreenfootImage img = new GreenfootImage("gorolefthit" + i + ".png");
             hitSet[i] = img;
+        }
+        
+        crushSet = new GreenfootImage[8];
+        for(int i = 0; i < crushSet.length; i++)
+        {
+            GreenfootImage img = new GreenfootImage("rightblood" + i + ".png");
+            crushSet[i]=img;
         }
         
         this.currentMotionSet = openingSet;
@@ -238,6 +247,12 @@ public class Goro extends Figure implements IFighter, IGangster
         isHit = true;       
         setCurrentHP(getCurrentHP()-damage+getDefencePoint());
         this.notifyObserver();
+        if(getCurrentHP()<=0){
+            death=true;
+            setIsDying(true);
+            System.out.println("boss is dying......");
+            die();
+        }
     }
     
     public int punch(){
@@ -313,7 +328,45 @@ public class Goro extends Figure implements IFighter, IGangster
     */
     public void die()
     { 
-       
+       //Greenfoot.delay(5);
+        if(!finishing){
+            crush();
+            //JOptionPane.showMessageDialog(null, "Game Over! Bruce Lee saved Lucy!");
+        }else{
+            //getWorld().removeObject(this);
+            finishing=true;
+            if(!getIsDied()){
+                setIsDied(true);
+                System.out.println("boss is died...............");
+            }
+        }
+    }
+    
+    private void crush(){
+        for(int i=0; i<8; i++)
+        {
+            //step to next motion
+            this.currentMotionSet = crushSet;
+            if(current_motion_index >= currentMotionSet.length)
+            {
+                current_motion_index = 0;
+            }
+            setImage(currentMotionSet[current_motion_index]);
+            if(current_motion_index == currentMotionSet.length - 1)
+            {
+                current_motion_index = 0;
+            }
+            else
+            {
+                current_motion_index++;
+                setLocation(this.getX(),this.getY());
+            }
+            if (current_motion_index >= 2)
+                {  
+                    finishing=true;
+                    break;
+                }
+        }
     }
     
     public int kick(){
