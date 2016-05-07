@@ -13,6 +13,7 @@ public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
     int moveSpeed = 3;
     int moveVariable = 0;
     int moveStepLength = 10, kickMoveLength = 0;
+    Context context;
     // state of death
  
     //Ming is workin on this part
@@ -64,7 +65,7 @@ public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
         this.currentMotionSet = stand2RightSet;
         this.setCurrentPose(Figure.POSE_STAND);
         this.setDirection(Figure.DIRECTION_RIGHT);
-        this.setAttackPoint(1000);
+        this.setAttackPoint(10);
         this.setFigureRadius(100);
         this.setName("Bruce Lee");
         this.setInitHP(100);
@@ -176,7 +177,14 @@ public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
         case Figure.POSE_PUNCH:
            System.out.println("do actual punch behavior..");
            if(getTargetFighter()!=null){
-                getTargetFighter().onAttacked(getAttackPoint());
+               if(getCurrentHP()>50){
+                   context = new Context(new NormalDamageStrategy());
+              
+                }else{
+                    context = new Context(new RageDamageStrategy());
+                }
+               
+                getTargetFighter().onAttacked(context.action());
                 Greenfoot.playSound("bruce_punch_2.mp3");
                 System.out.println("attacked ["+((Figure)getTargetFighter()).getName()+"] by "+getAttackPoint()+" point.");
                 break;

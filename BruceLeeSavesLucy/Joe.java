@@ -13,7 +13,7 @@ public class Joe extends Figure implements IFighter, IGangster
     int moveVariable = 0;
     int moveStepLength = 3;
     private boolean opening = true;
-    public GreenfootImage[] walk2LeftSet, walk2RightSet, openingSet, punch2LeftSet, crushSet;
+    public GreenfootImage[] walk2LeftSet, walk2RightSet, openingSet, punch2LeftSet;
     private BruceLee bruce;
     boolean death =false;
     boolean finishing = false;
@@ -90,6 +90,7 @@ public class Joe extends Figure implements IFighter, IGangster
             } 
         }
         
+<<<<<<< HEAD
         crushSet = new GreenfootImage[4];
         for(int i=0; i<crushSet.length;i++)
         {
@@ -108,6 +109,8 @@ public class Joe extends Figure implements IFighter, IGangster
             } 
         }
         
+=======
+>>>>>>> origin/master
         this.currentMotionSet = openingSet;
         this.setCurrentPose(Figure.POSE_STAND);
         this.setDirection(Figure.DIRECTION_LEFT);
@@ -263,7 +266,11 @@ public class Joe extends Figure implements IFighter, IGangster
     
     public void onAttacked(int damage)
     {
+<<<<<<< HEAD
         setCurrentHP(getCurrentHP()-damage+getDefencePoint());
+=======
+        setCurrentHP(getCurrentHP() - damage + getDefencePoint());
+>>>>>>> origin/master
         notifyObserver();
         /*if (getCurrentHP() <= 0)
         {
@@ -330,7 +337,11 @@ public class Joe extends Figure implements IFighter, IGangster
     
     public int defend()
     {
+<<<<<<< HEAD
         return 0;
+=======
+        return (Greenfoot.getRandomNumber(5));
+>>>>>>> origin/master
     }
     
     public void die()
