@@ -14,6 +14,7 @@ public class About extends World
     int[] pointerPos1 = new int[]{630,440};
     int menuIndex = 1;
     boolean needsCheckKey = true;
+    GreenfootSound musicBackground = new GreenfootSound("menu_bg_m.mp3");
     /**
      * Constructor for objects of class About.
      * 
@@ -28,6 +29,8 @@ public class About extends World
         addObject(pointer,pointerPos1[0],pointerPos1[1]);
     }
     public void act(){
+        if(!musicBackground.isPlaying())
+        musicBackground.play();
         if(needsCheckKey){
             checkKeyPress();
             checkMouseClick();
@@ -47,6 +50,7 @@ public class About extends World
         }
     }
     private void startNextWorld(){
+        musicBackground.stop();
         needsCheckKey = false;
         Greenfoot.setWorld(new Menu());
     }

@@ -20,7 +20,7 @@ public class Floor2 extends BaseFloor
         this.scenarioName = "The First Floor";
         // add Bruce Lee to this scenario
         objectsLocationMap.put((Actor)mainCharacter,new int[]{this.activeAreaXLeft+20,
-        this.activeAreaYBottom-((Actor)mainCharacter).getImage().getHeight()});
+        this.activeAreaYBottom-((Actor)mainCharacter).getImage().getHeight()+15});
         
       //add Goro
         IFighter g3 = gangsterFactory.generate("Goro");

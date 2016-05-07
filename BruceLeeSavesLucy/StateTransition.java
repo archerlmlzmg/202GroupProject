@@ -26,6 +26,7 @@ public class StateTransition extends Actor implements IState
     }
     boolean needsWork = false;
     boolean isGoingToNext = true;
+    boolean isLost = false;
     /**
      * Act - do whatever the Transition wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -42,6 +43,17 @@ public class StateTransition extends Actor implements IState
             moveVariable = 0;
         }
         this.setImage(currentMotionSet[motion_index]);
+        if(isGoingToNext && motion_index==2){
+            
+            Greenfoot.delay(100);
+            Greenfoot.playSound("woda.mp3");
+        }
+        if(!isGoingToNext && motion_index==2){
+            Greenfoot.playSound("lost.mp3");
+        }
+        if(!isGoingToNext && motion_index==4){
+            Greenfoot.delay(100);
+        }
         if(!isGoingToNext && motion_index == (currentMotionSet.length-1)){
             Greenfoot.delay(10);
         }
@@ -55,12 +67,13 @@ public class StateTransition extends Actor implements IState
         this.isGoingToNext = false;       
         currentMotionSet = lossImages;
         this.needsWork = true;
-        
+        this.nextWorld = backWorld;
+        isLost = true;
     }
     public void goToNextState(){
         this.isGoingToNext = true;        
         currentMotionSet = images;
         this.needsWork = true;
-        Greenfoot.playSound("woda.mp3");
+       
     }
 }

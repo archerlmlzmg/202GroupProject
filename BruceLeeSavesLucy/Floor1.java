@@ -31,7 +31,7 @@ public class Floor1 extends BaseFloor
         IFighter newJoe = gangsterFactory.generate("Joe");
         gangsters.add(newJoe);
         objectsLocationMap.put((Actor)newJoe,new int[]{this.activeAreaXRight - 70,
-        this.activeAreaYBottom-((Actor)newJoe).getImage().getHeight() + 40});
+        this.activeAreaYBottom-((Actor)newJoe).getImage().getHeight() + 58});
         
         
         IObserver healthBarBruce = new HealthBar("Bruce Lee: ", "", ((Figure)mainCharacter).getInitHP(),

@@ -28,12 +28,22 @@ public class StateTransitionLast extends StateTransition
             moveVariable = 0;
         }
         this.setImage(currentMotionSet[motion_index]);
-        if(motion_index>=2 && motion_index<=8){//
+        if(isGoingToNext && motion_index==2){
+            Greenfoot.delay(100);
+            Greenfoot.playSound("welldone1.mp3");
+        }
+        if(!isGoingToNext && motion_index==2){
+            Greenfoot.playSound("lost.mp3");
+        }
+        if(isGoingToNext && motion_index==6){
+            Greenfoot.playSound("no.mp3");
+        }
+        if(isGoingToNext && motion_index>=4 && motion_index<=8){
+            Greenfoot.delay(100);
+        }
+        if(!isGoingToNext && motion_index == (currentMotionSet.length-1)){
             Greenfoot.delay(10);
         }
-        //if(!isGoingToNext && motion_index == (currentMotionSet.length-1)){
-        //    Greenfoot.delay(10);
-        //}
         if(motion_index >= currentMotionSet.length-1){
             needsWork = false;
             Greenfoot.setWorld(nextWorld);

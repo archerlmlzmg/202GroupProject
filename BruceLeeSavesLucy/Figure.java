@@ -19,7 +19,7 @@ public abstract class Figure extends Actor implements ISubject
     private int basicDenfence = 1;
     private int attackPoint = 10;
     private boolean isDied = false, isDying = false;
-    public final static int POSE_STAND = 0, POSE_WALK = 1, POSE_PUNCH = 2, POSE_KICK=3;
+    public final static int POSE_STAND = 0, POSE_WALK = 1, POSE_PUNCH = 2, POSE_KICK=3,POSE_DEFENCE = 4;
     public final static int DIRECTION_RIGHT = 0, DIRECTION_LEFT = 1;
     private IFighter targetFighter;
     private int currentPose = POSE_STAND, figureRadius = 50;

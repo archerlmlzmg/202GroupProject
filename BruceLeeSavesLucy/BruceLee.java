@@ -14,6 +14,7 @@ public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
     int moveVariable = 0;
     int moveStepLength = 10, kickMoveLength = 0;
     Context context;
+    GreenfootImage[] defenceMotionSet;
     // state of death
  
     //Ming is workin on this part
@@ -58,10 +59,16 @@ public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
         punch2RightSet[5]=new GreenfootImage("bruce_punch_3.gif");
         punch2RightSet[6]=new GreenfootImage("bruce_punch_3.gif");
         punch2RightSet[7]=new GreenfootImage("bruce_punch_3.gif");
-        /*for(int i=0; i<kick2RightSet.length; i++){
-            int m = i+ 1;
-            kick2RightSet[i]=new GreenfootImage("bruce_kick_" + m +".gif");
-        }*/
+        
+        defenceMotionSet = new GreenfootImage[8];
+        defenceMotionSet[0]=new GreenfootImage("bruce_defend_2.gif");
+        defenceMotionSet[1]=new GreenfootImage("bruce_defend_2.gif");
+        defenceMotionSet[2]=new GreenfootImage("bruce_defend_2.gif");
+        defenceMotionSet[3]=new GreenfootImage("bruce_defend_2.gif");
+        defenceMotionSet[4]=new GreenfootImage("bruce_defend_2.gif");
+        defenceMotionSet[5]=new GreenfootImage("bruce_defend_2.gif");
+        defenceMotionSet[6]=new GreenfootImage("bruce_defend_2.gif");
+        defenceMotionSet[7]=new GreenfootImage("bruce_defend_2.gif");
         this.currentMotionSet = stand2RightSet;
         this.setCurrentPose(Figure.POSE_STAND);
         this.setDirection(Figure.DIRECTION_RIGHT);
@@ -92,7 +99,7 @@ public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
     public void act() 
     {
         traverseMotionSet();
-		if(this.getIsDying()){
+        if(this.getIsDying()){
             this.setIsDied(true);
         }
         
@@ -143,6 +150,11 @@ public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
         this.setDirection(Figure.DIRECTION_LEFT);
         this.setCurrentMotionSet(walk2LeftSet);
         setLocation(getX()+moveStepLength,getY());
+    }
+    public void setDefend2Right(){
+        this.setDirection(Figure.DIRECTION_LEFT);
+        this.setCurrentPose(Figure.POSE_DEFENCE);
+        this.setCurrentMotionSet(defenceMotionSet);
     }
     private void traverseMotionSet(){
         //if(this.getCurrentPose() != Figure.POSE_STAND){
@@ -210,15 +222,22 @@ public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
         System.out.println("current motion index:"+this.current_motion_index);
         System.out.println("current Pose:"+this.getCurrentPose()+"\n");
     }
-    
+    GreenfootSound musicDying = new GreenfootSound("Ahh.mp3");
     public void onAttacked(int damage)
     {
         // do being attacked animotion
+        if(getCurrentPose() == Figure.POSE_DEFENCE){
+        System.out.println("Bruce is defending..No damage!");
+        return;
+        }
         // deduct HP
         System.out.println("Bruce Lee is being faught.....");
         this.setCurrentHP(this.getCurrentHP()-damage+getDefencePoint());
         this.notifyObserver();
-		if(this.getCurrentHP() <= 0){//is died
+        if(this.getCurrentHP() <= 0){//is died
+            if(!musicDying.isPlaying()){
+              musicDying.play();
+              }
             this.setIsDying(true);
         }
     }
@@ -240,6 +259,7 @@ public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
     }  
     
     public int defend(){
+        setDefend2Right();
         return 0;
     }
     
@@ -260,6 +280,7 @@ public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
         return true;
     }
     public boolean executeDownKey(){
+        defend();
         return true;
     }
     public boolean executeAKey(){
