@@ -22,20 +22,22 @@ public class Floor2 extends BaseFloor
         objectsLocationMap.put((Actor)mainCharacter,new int[]{this.activeAreaXLeft+20,
         this.activeAreaYBottom-((Actor)mainCharacter).getImage().getHeight()});
         
-      //add Goro
-        IFighter g3 = gangsterFactory.generate("Goro");
-        gangsters.add(g3);
-        objectsLocationMap.put((Actor)g3,new int[]{this.activeAreaXRight,
-        this.activeAreaYBottom - 120});
+        // add Bruce Joe to this scenario
+        IFighter g1 = gangsterFactory.generate("Joe");
+        gangsters.add(g1);
+        objectsLocationMap.put((Actor)g1,new int[]{this.activeAreaXRight - 50,
+        this.activeAreaYBottom - ((Actor)g1).getImage().getHeight() + 88});
+       
         
         IObserver healthBarBruce = new HealthBar("Bruce Lee: ", "", 100, 100);
-        IObserver healthBarGoro = new HealthBar("Goro: ", "",100, 100);
+        IObserver healthBarBoss = new HealthBar("Joe: ", "",100, 100);
+        
         //attach observers
-        ((Figure)mainCharacter).attachObserver(healthBarBruce);
-        ((Figure)g3).attachObserver(healthBarGoro);
+        ((Figure)mainCharacter).attachObserver(healthBarBoss);
+        ((Figure)g1).attachObserver(healthBarBoss);
         
         objectsLocationMap.put((Actor)healthBarBruce,new int[]{150,50});
-        objectsLocationMap.put((Actor)healthBarGoro, new int[]{650, 50}); 
+        objectsLocationMap.put((Actor)healthBarBoss, new int[]{650, 50});   
           
         System.out.println("constructed.");
     }
