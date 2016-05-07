@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=BaseFloor
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ BaseFloor\ here.\r\n\ \r\n\ @author\ (Ming\ Tang)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ BaseFloor\ here.\n\ \n\ @author\ (Ming\ Tang)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=mainCharacter\ transition
 comment1.target=BaseFloor(IFighter,\ StateTransition)
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ BaseFloor.\r\n\ \r\n
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ BaseFloor.\n\ \n
 comment10.params=
 comment10.target=boolean\ executeSKey()
 comment11.params=
@@ -34,7 +34,7 @@ comment22.params=
 comment22.target=void\ onEnd()
 comment23.params=
 comment23.target=boolean\ checkIsFightingOver()
-comment23.text=\r\n\ is\ fighting\ stopped\r\n
+comment23.text=\n\ is\ fighting\ stopped\n
 comment24.params=
 comment24.target=boolean\ checkIsStopped()
 comment25.params=

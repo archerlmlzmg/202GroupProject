@@ -36,7 +36,7 @@ public class Floor3 extends BaseFloor
         
         IObserver healthBarBruce = new HealthBar("Bruce Lee: ", "", ((Figure)mainCharacter).getInitHP(),
         ((Figure)mainCharacter).getInitHP());
-        IObserver healthBarBoss = new HealthBar("Paul: ", "",100, 100);
+        IObserver healthBarBoss = new HealthBar("Boss: ", "",100, 100);
         //attach observers
         ((Figure)mainCharacter).attachObserver(healthBarBruce);
         ((Figure)newBoss).attachObserver(healthBarBoss);

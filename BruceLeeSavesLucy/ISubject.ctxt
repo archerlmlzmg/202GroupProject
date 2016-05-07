@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=ISubject
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ ISubject\ here.\r\n\ \r\n\ @author\ (Ming\ Tang)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ ISubject\ here.\n\ \n\ @author\ (Ming\ Tang)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=ob
 comment1.target=void\ attachObserver(IObserver)
 comment2.params=
