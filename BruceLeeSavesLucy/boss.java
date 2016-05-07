@@ -11,7 +11,7 @@ import java.io.File;
  * @author (Minglu Liu) 
  * @version (a version number or a date)
  */
-public class boss extends Figure implements IFighter
+public class boss extends Figure implements IFighter, IGangster
 {
     int current_motion_index = 0;
     int moveSpeed = 3;
@@ -94,7 +94,7 @@ public class boss extends Figure implements IFighter
     }
     private void bossShowup(){
        if(onGround){
-           lookForBruceLee();
+           lookForMainCharacter();
        }else{   
            bossInitialization();
        }
@@ -127,7 +127,7 @@ public class boss extends Figure implements IFighter
         isLeftMovable();
         bossShowup();
     }
-    private void lookForBruceLee(){
+    public void lookForMainCharacter(){
         //slow down the motion
         if(death==false){    
         setLocation(this.getX(),340);
