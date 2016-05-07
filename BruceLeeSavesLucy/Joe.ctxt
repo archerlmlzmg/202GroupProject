@@ -10,9 +10,15 @@ comment11.target=int\ defend()
 comment12.params=
 comment12.target=void\ crush()
 comment13.params=
+
+comment13.target=int\ defend()
+comment14.params=
+comment14.target=void\ crush()
+
 comment13.target=void\ doActualBehavior()
 comment14.params=damage
 comment14.target=void\ onAttacked(int)
+
 comment15.params=
 comment15.target=void\ die()
 comment2.params=
@@ -31,5 +37,9 @@ comment7.target=void\ lookForMainCharacter()
 comment8.params=
 comment8.target=void\ hit()
 comment9.params=
+
+comment9.target=void\ hit()
+
 comment9.target=int\ punch()
+
 numComments=16

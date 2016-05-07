@@ -12,11 +12,11 @@ public class Joe extends Figure implements IFighter, IGangster
     int moveSpeed = 6;
     int moveVariable = 0;
     int moveStepLength = 3;
+    boolean death = false;
+    boolean finishing = false;
     private boolean opening = true;
     public GreenfootImage[] walk2LeftSet, walk2RightSet, openingSet, punch2LeftSet, crushSet;
     private BruceLee bruce;
-    boolean death =false;
-    boolean finishing = false;
     
     public Joe ()
     {
@@ -90,15 +90,24 @@ public class Joe extends Figure implements IFighter, IGangster
             } 
         }
         
-        crushSet = new GreenfootImage[4];
-        for(int i=0; i< crushSet.length;i++)
+        crushSet = new GreenfootImage[29];
+        for (int i = 0; i < crushSet.length; i++)
         {
             int m = i+ 1;
-            GreenfootImage img = new GreenfootImage("JoeDie_f0" + m +".gif");
-            //img.scale(img.getWidth() - 60,img.getHeight() - 100);
-            crushSet[i] = img;
+            if (m < 10)
+            {
+                GreenfootImage img = new GreenfootImage("JoePunch_f0" + m +".gif");
+                //img.scale(img.getWidth() - 60,img.getHeight() - 100);
+                crushSet[i] = img;
+            }
+            else
+            {
+                GreenfootImage img = new GreenfootImage("JoePunch_f" + m +".gif");
+                //img.scale(img.getWidth() - 60,img.getHeight() - 100);
+                crushSet[i] = img;
+            } 
         }
-
+        
         this.currentMotionSet = openingSet;
         this.setCurrentPose(Figure.POSE_STAND);
         this.setDirection(Figure.DIRECTION_LEFT);
@@ -113,7 +122,6 @@ public class Joe extends Figure implements IFighter, IGangster
     public void act() 
     {
         // Add your action code here.
-        isLeftMovable();
         joeShowup();
     }    
     
@@ -243,6 +251,22 @@ public class Joe extends Figure implements IFighter, IGangster
         }  
     }
     
+<<<<<<< HEAD
+=======
+    public void onAttacked(int damage)
+    {
+        setCurrentHP(getCurrentHP() - damage + defend());
+        notifyObserver();
+        if (getCurrentHP() <= 0)
+        {
+            death = true;
+            setIsDying(true);
+            System.out.println("joe is dying......");
+            die();
+        }
+    }
+    
+>>>>>>> parent of bf17ed0... add
     public void hit()
     {
         if (moveVariable < moveSpeed)
@@ -269,7 +293,6 @@ public class Joe extends Figure implements IFighter, IGangster
         {
             if (current_motion_index == 2 || current_motion_index == 5)
             {
-                Greenfoot.playSound("Punch3.mp3");
                 doActualBehavior();
                 this.setCurrentPose(Figure.POSE_STAND);
                 this.setCurrentMotionSet(stand2RightSet);
@@ -277,8 +300,18 @@ public class Joe extends Figure implements IFighter, IGangster
             current_motion_index++;
             setLocation(this.getX(),this.getY());
         }
+<<<<<<< HEAD
         if(getTargetFighter() != null){
             getTargetFighter().onAttacked(getAttackPoint());
+=======
+    }
+    
+    private void doActualBehavior()
+    {
+        bruce = (BruceLee) getOneIntersectingObject(BruceLee.class);  
+        if(bruce != null){
+            bruce.onAttacked(getAttackPoint());
+>>>>>>> parent of bf17ed0... add
         }
     }
     
@@ -296,9 +329,48 @@ public class Joe extends Figure implements IFighter, IGangster
     
     public int defend()
     {
-        return 0;
+        return (Greenfoot.getRandomNumber(5));
     }
     
+    public void crush()
+    {
+        for(int i=0; i<3; i++)
+        {
+            if(moveVariable < moveSpeed)
+            {
+                moveVariable++;
+                return;
+            }
+            else
+            {
+                moveVariable = 0;
+            }
+            //step to next motion
+            this.currentMotionSet = crushSet;
+            if(current_motion_index >= currentMotionSet.length)
+            {
+                current_motion_index = 0;
+            }
+            setImage(currentMotionSet[current_motion_index]);
+            if(current_motion_index == currentMotionSet.length - 1)
+            {
+                current_motion_index = 0;
+            }
+            else
+            {
+                current_motion_index++;
+                setLocation(this.getX(),this.getY());
+            }
+            
+            if (current_motion_index >= 2)
+            {  
+                 finishing = true;
+                 break;
+            }
+        }
+    }
+    
+<<<<<<< HEAD
     private void crush(){
         for(int i=0; i<3; i++)
         {
@@ -357,6 +429,10 @@ public class Joe extends Figure implements IFighter, IGangster
     
     public void die(){
         //Greenfoot.delay(5);
+=======
+    public void die()
+    {
+>>>>>>> parent of bf17ed0... add
         if(!finishing){
             crush();
             //JOptionPane.showMessageDialog(null, "Game Over! Bruce Lee saved Lucy!");
@@ -364,6 +440,7 @@ public class Joe extends Figure implements IFighter, IGangster
         else
         {
             //getWorld().removeObject(this);
+<<<<<<< HEAD
             finishing=true;
             if(!getIsDied()){
                 setIsDied(true);
@@ -371,5 +448,14 @@ public class Joe extends Figure implements IFighter, IGangster
             }
         }
         
+=======
+            finishing = true;
+            if (!getIsDied())
+            {
+                setIsDied(true);
+                System.out.println("joe is died...............");
+            }
+        }
+>>>>>>> parent of bf17ed0... add
     }
 }
