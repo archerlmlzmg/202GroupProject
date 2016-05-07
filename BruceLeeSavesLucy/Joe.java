@@ -13,7 +13,7 @@ public class Joe extends Figure implements IFighter, IGangster
     int moveVariable = 0;
     int moveStepLength = 3;
     private boolean opening = true;
-    public GreenfootImage[] walk2LeftSet, walk2RightSet, openingSet, punch2LeftSet;
+    public GreenfootImage[] walk2LeftSet, walk2RightSet, openingSet, punch2LeftSet, crushSet;
     private BruceLee bruce;
     boolean death =false;
     boolean finishing = false;
@@ -90,27 +90,15 @@ public class Joe extends Figure implements IFighter, IGangster
             } 
         }
         
-<<<<<<< HEAD
         crushSet = new GreenfootImage[4];
-        for(int i=0; i<crushSet.length;i++)
+        for(int i=0; i< crushSet.length;i++)
         {
             int m = i+ 1;
-            if (m < 10)
-            {
-                GreenfootImage img = new GreenfootImage("JoeDie_f0" + m +".gif");
-                //img.scale(img.getWidth() - 60,img.getHeight() - 100);
-                punch2LeftSet[i] = img;
-            }
-            else
-            {
-                GreenfootImage img = new GreenfootImage("JoeDie_f" + m +".gif");
-                //img.scale(img.getWidth() - 60,img.getHeight() - 100);
-                punch2LeftSet[i] = img;
-            } 
+            GreenfootImage img = new GreenfootImage("JoeDie_f0" + m +".gif");
+            //img.scale(img.getWidth() - 60,img.getHeight() - 100);
+            crushSet[i] = img;
         }
-        
-=======
->>>>>>> origin/master
+
         this.currentMotionSet = openingSet;
         this.setCurrentPose(Figure.POSE_STAND);
         this.setDirection(Figure.DIRECTION_LEFT);
@@ -266,11 +254,7 @@ public class Joe extends Figure implements IFighter, IGangster
     
     public void onAttacked(int damage)
     {
-<<<<<<< HEAD
-        setCurrentHP(getCurrentHP()-damage+getDefencePoint());
-=======
         setCurrentHP(getCurrentHP() - damage + getDefencePoint());
->>>>>>> origin/master
         notifyObserver();
         /*if (getCurrentHP() <= 0)
         {
@@ -337,11 +321,7 @@ public class Joe extends Figure implements IFighter, IGangster
     
     public int defend()
     {
-<<<<<<< HEAD
         return 0;
-=======
-        return (Greenfoot.getRandomNumber(5));
->>>>>>> origin/master
     }
     
     public void die()
