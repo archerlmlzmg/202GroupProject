@@ -131,7 +131,6 @@ public class Joe extends Figure implements IFighter, IGangster
     
     public void joeInit()
     {
-        Greenfoot.delay(5);
         for(int i=0; i<30; i++)
         {
             
@@ -252,16 +251,6 @@ public class Joe extends Figure implements IFighter, IGangster
         }
     }
     
-    public void onAttacked(int damage)
-    {
-        setCurrentHP(getCurrentHP() - damage + getDefencePoint());
-        notifyObserver();
-        /*if (getCurrentHP() <= 0)
-        {
-            die();
-        }*/
-    }
-    
     public void hit()
     {
         if (moveVariable < moveSpeed)
@@ -296,14 +285,8 @@ public class Joe extends Figure implements IFighter, IGangster
             current_motion_index++;
             setLocation(this.getX(),this.getY());
         }
-    }
-    
-    private void doActualBehavior()
-    {
-        if (getTargetFighter()!=null)
-        {
-              getTargetFighter().onAttacked(getAttackPoint());
-              System.out.println("attacked ["+((Figure)getTargetFighter()).getName()+"] by "+getAttackPoint()+" point.");
+        if(getTargetFighter() != null){
+            getTargetFighter().onAttacked(getAttackPoint());
         }
     }
     
@@ -324,7 +307,77 @@ public class Joe extends Figure implements IFighter, IGangster
         return 0;
     }
     
-    public void die()
-    {
+    private void crush(){
+        for(int i=0; i<3; i++)
+        {
+            if(moveVariable < moveSpeed)
+            {
+                moveVariable++;
+                return;
+            }
+            else
+            {
+                moveVariable = 0;
+            }
+            //step to next motion
+            this.currentMotionSet = crushSet;
+            if(current_motion_index >= currentMotionSet.length)
+            {
+                current_motion_index = 0;
+            }
+            setImage(currentMotionSet[current_motion_index]);
+            if(current_motion_index == currentMotionSet.length - 1)
+            {
+                current_motion_index = 0;
+            }
+            else
+            {
+                current_motion_index++;
+                //Greenfoot.delay(5);
+                setLocation(this.getX(),this.getY());
+            }
+            if (current_motion_index >= 2)
+            {  
+                    finishing=true;
+                    break;
+              }
+        }
+    }
+    
+    private void doActualBehavior(){
+           if(getTargetFighter()!=null){
+                getTargetFighter().onAttacked(getAttackPoint());
+                Greenfoot.playSound("bruce_punch_2.mp3");
+                System.out.println("attacked ["+((Figure)getTargetFighter()).getName()+"] by "+getAttackPoint()+" point.");
+           }
+        }
+    
+    public void onAttacked(int damage){
+        setCurrentHP(getCurrentHP()-damage+getDefencePoint());
+        notifyObserver();
+        if (getCurrentHP()<=0) {
+            death=true;
+            setIsDying(true);
+            System.out.println("boss is dying......");
+            die();
+        }
+    }
+    
+    public void die(){
+        //Greenfoot.delay(5);
+        if(!finishing){
+            crush();
+            //JOptionPane.showMessageDialog(null, "Game Over! Bruce Lee saved Lucy!");
+        }
+        else
+        {
+            //getWorld().removeObject(this);
+            finishing=true;
+            if(!getIsDied()){
+                setIsDied(true);
+                System.out.println("boss is died...............");
+            }
+        }
+        
     }
 }
