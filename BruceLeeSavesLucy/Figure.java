@@ -63,7 +63,7 @@ public abstract class Figure extends Actor implements ISubject
             return false;
         }
         return true;
-    };
+    }
     public boolean isLeftMovable(){
         List<Figure> fs = getObjectsInRange(figureRadius,Figure.class);
         if(fs.size()==0){
