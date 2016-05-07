@@ -200,8 +200,6 @@ public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
         System.out.println("current Pose:"+this.getCurrentPose()+"\n");
     }
     
- 
-    
     public void onAttacked(int damage)
     {
         // do being attacked animotion
