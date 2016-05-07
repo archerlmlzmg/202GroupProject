@@ -344,10 +344,17 @@ editor.fx.0.height=700
 editor.fx.0.width=700
 editor.fx.0.x=0
 editor.fx.0.y=0
+<<<<<<< HEAD
 editor.swing.0.height=700
 editor.swing.0.width=700
 editor.swing.0.x=7
 editor.swing.0.y=31
+=======
+editor.swing.0.height=0
+editor.swing.0.width=0
+editor.swing.0.x=0
+editor.swing.0.y=0
+>>>>>>> parent of a9b17f7... boss IGangster
 editor.swing.1.height=1064
 editor.swing.1.width=1944
 editor.swing.1.x=-12
@@ -356,10 +363,17 @@ editor.swing.2.height=1051
 editor.swing.2.width=982
 editor.swing.2.x=-11
 editor.swing.2.y=0
+<<<<<<< HEAD
 mainWindow.height=700
 mainWindow.width=1104
 mainWindow.x=32
 mainWindow.y=38
+=======
+mainWindow.height=1200
+mainWindow.width=1563
+mainWindow.x=3931
+mainWindow.y=56
+>>>>>>> parent of a9b17f7... boss IGangster
 package.numDependencies=88
 package.numTargets=48
 project.charset=UTF-8
@@ -368,7 +382,11 @@ readme.name=@README
 readme.width=47
 readme.x=10
 readme.y=10
+<<<<<<< HEAD
 simulation.speed=49
+=======
+simulation.speed=50
+>>>>>>> parent of a9b17f7... boss IGangster
 target1.height=50
 target1.name=IGangster
 target1.showInterface=false
