@@ -111,7 +111,7 @@ public class boss extends Figure implements IFighter
                     Greenfoot.delay(5);
                     setLocation(this.getX(),i*4);
                 }
-                if(this.getY()>330){
+                if(this.getY()>355){
                     onGround = true;
                     break;
                 }
