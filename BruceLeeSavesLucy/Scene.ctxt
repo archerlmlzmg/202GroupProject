@@ -1,17 +1,17 @@
 #BlueJ class context
 comment0.target=Scene
-comment0.text=\r\n\ this\ backgroud\ is\ supposed\ to\ change\ after\ every\ time\ bruce\ lee\ pass\ a\ floor\r\n
+comment0.text=\n\ this\ backgroud\ is\ supposed\ to\ change\ after\ every\ time\ bruce\ lee\ pass\ a\ floor\n
 comment1.params=
 comment1.target=Scene()
-comment1.text=\r\n\ \r\n
+comment1.text=\n\ \n
 comment2.params=
 comment2.target=void\ act()
 comment3.params=currentLevel
 comment3.target=void\ checkLevel(int)
 comment4.params=
 comment4.target=int\ getWorldWidth()
-comment4.text=\r\n\ \r\n\ This\ method\ getWorldWidth,\ This\ returns\ the\ world\ width.\r\n
+comment4.text=\n\ \n\ This\ method\ getWorldWidth,\ This\ returns\ the\ world\ width.\n
 comment5.params=
 comment5.target=int\ getWorldHeight()
-comment5.text=\r\n\ This\ method\ getWorldHeight.\ This\ returns\ the\ world\ height.\r\n
+comment5.text=\n\ This\ method\ getWorldHeight.\ This\ returns\ the\ world\ height.\n
 numComments=6

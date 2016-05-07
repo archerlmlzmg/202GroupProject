@@ -1,23 +1,23 @@
 #BlueJ class context
 comment0.target=Goro
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Goro\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ Goro\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=Goro()
 comment10.params=
 comment10.target=void\ goroHitted()
 comment11.params=
 comment11.target=void\ hit()
-comment11.text=\r\n\ This\ method\ hit,\ It\ checks\ if\ goro\ is\ attacked.\r\n
+comment11.text=\n\ This\ method\ hit,\ It\ checks\ if\ goro\ is\ attacked.\n
 comment12.params=
 comment12.target=void\ die()
-comment12.text=\r\n\ This\ method\ death,\ It\ checks\ to\ see\ if\ the\ damage\ to\ goro\ is\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ above\ 6\ hits,\ and\ calls\ to\ GoroExploding.\r\n
+comment12.text=\n\ This\ method\ death,\ It\ checks\ to\ see\ if\ the\ damage\ to\ goro\ is\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ above\ 6\ hits,\ and\ calls\ to\ GoroExploding.\n
 comment13.params=
 comment13.target=int\ kick()
 comment14.params=
 comment14.target=int\ defend()
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Goro\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment2.text=\n\ Act\ -\ do\ whatever\ the\ Goro\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
 comment3.params=
 comment3.target=void\ goroShowup()
 comment4.params=
