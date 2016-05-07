@@ -12,10 +12,8 @@ public class Joe extends Figure implements IFighter, IGangster
     int moveSpeed = 5;
     int moveVariable = 0;
     int moveStepLength = 3;
-    boolean death = false;
-    boolean finishing = false;
     private boolean opening = true;
-    public GreenfootImage[] walk2LeftSet, walk2RightSet, openingSet, punch2LeftSet, crushSet;
+    public GreenfootImage[] walk2LeftSet, walk2RightSet, openingSet, punch2LeftSet;
     private BruceLee bruce;
     
     public Joe ()
@@ -87,24 +85,6 @@ public class Joe extends Figure implements IFighter, IGangster
                 GreenfootImage img = new GreenfootImage("JoePunch_f" + m +".gif");
                 //img.scale(img.getWidth() - 60,img.getHeight() - 100);
                 punch2LeftSet[i] = img;
-            } 
-        }
-        
-        crushSet = new GreenfootImage[29];
-        for (int i = 0; i < crushSet.length; i++)
-        {
-            int m = i+ 1;
-            if (m < 10)
-            {
-                GreenfootImage img = new GreenfootImage("JoePunch_f0" + m +".gif");
-                //img.scale(img.getWidth() - 60,img.getHeight() - 100);
-                crushSet[i] = img;
-            }
-            else
-            {
-                GreenfootImage img = new GreenfootImage("JoePunch_f" + m +".gif");
-                //img.scale(img.getWidth() - 60,img.getHeight() - 100);
-                crushSet[i] = img;
             } 
         }
         
@@ -262,15 +242,12 @@ public class Joe extends Figure implements IFighter, IGangster
     
     public void onAttacked(int damage)
     {
-        setCurrentHP(getCurrentHP() - damage + defend());
+        setCurrentHP(getCurrentHP() - damage + getDefencePoint());
         notifyObserver();
-        if (getCurrentHP() <= 0)
+        /*if (getCurrentHP() <= 0)
         {
-            death = true;
-            setIsDying(true);
-            System.out.println("joe is dying......");
             die();
-        }
+        }*/
     }
     
     public void hit()
@@ -333,59 +310,7 @@ public class Joe extends Figure implements IFighter, IGangster
         return (Greenfoot.getRandomNumber(5));
     }
     
-    public void crush()
-    {
-        for(int i=0; i<3; i++)
-        {
-            if(moveVariable < moveSpeed)
-            {
-                moveVariable++;
-                return;
-            }
-            else
-            {
-                moveVariable = 0;
-            }
-            //step to next motion
-            this.currentMotionSet = crushSet;
-            if(current_motion_index >= currentMotionSet.length)
-            {
-                current_motion_index = 0;
-            }
-            setImage(currentMotionSet[current_motion_index]);
-            if(current_motion_index == currentMotionSet.length - 1)
-            {
-                current_motion_index = 0;
-            }
-            else
-            {
-                current_motion_index++;
-                setLocation(this.getX(),this.getY());
-            }
-            
-            if (current_motion_index >= 2)
-            {  
-                 finishing = true;
-                 break;
-            }
-        }
-    }
-    
     public void die()
     {
-        if(!finishing){
-            crush();
-            //JOptionPane.showMessageDialog(null, "Game Over! Bruce Lee saved Lucy!");
-        }
-        else
-        {
-            //getWorld().removeObject(this);
-            finishing = true;
-            if (!getIsDied())
-            {
-                setIsDied(true);
-                System.out.println("joe is died...............");
-            }
-        }
     }
 }
