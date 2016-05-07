@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=Figure
-comment0.text=\n\ \n
+comment0.text=\r\n\ \r\n
 comment1.params=
 comment1.target=void\ act()
-comment1.text=\n\ \n
+comment1.text=\r\n\ \r\n
 comment10.params=direction
 comment10.target=void\ setDirection(int)
 comment11.params=set
@@ -26,7 +26,7 @@ comment19.params=ob
 comment19.target=void\ attachObserver(IObserver)
 comment2.params=
 comment2.target=void\ walkLeft()
-comment2.text=\n\ \n
+comment2.text=\r\n\ \r\n
 comment20.params=
 comment20.target=void\ detachObserver()
 comment21.params=
