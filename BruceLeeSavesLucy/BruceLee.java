@@ -91,7 +91,9 @@ public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
     public void act() 
     {
         traverseMotionSet();
-        
+        if(this.getIsDying()){
+            this.setIsDied(true);
+        }
     }
     private void setStand2Right(){
         //if(this.getCurrentPose() == Figure.POSE_STAND && this.getCurrentMotionSet.equal(stand2Right))
@@ -209,6 +211,9 @@ public class BruceLee extends Figure implements IFighter, IKeyCommandReceiver
         System.out.println("Bruce Lee is being faught.....");
         this.setCurrentHP(this.getCurrentHP()-damage+getDefencePoint());
         this.notifyObserver();
+        if(this.getCurrentHP() <= 0){//is died
+            this.setIsDying(true);
+        }
     }
     
     public int punch(){

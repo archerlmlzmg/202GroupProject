@@ -79,15 +79,17 @@ public abstract class Figure extends Actor implements ISubject
             return false;
         }
         return true;
-    };
+    }
     private boolean isEnemy(Figure target){
         boolean isCurrentMainCharacter = false, isTargetGangster = false;
-        if(this instanceof IGangster){
-            isCurrentMainCharacter = true;
+        if(this instanceof IGangster){ // current gangster,
+            isCurrentMainCharacter = false;
+            isTargetGangster = false; 
         }
         
         if(target instanceof IGangster){
             isTargetGangster = true;
+            isCurrentMainCharacter = true;
         }
         
         if(isCurrentMainCharacter && isTargetGangster)
