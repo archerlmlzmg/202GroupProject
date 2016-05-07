@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Joe extends Figure implements IFighter, IGangster
 {
     int current_motion_index = 0;
-    int moveSpeed = 5;
+    int moveSpeed = 6;
     int moveVariable = 0;
     int moveStepLength = 3;
     private boolean opening = true;
@@ -218,37 +218,29 @@ public class Joe extends Figure implements IFighter, IGangster
     
     public void lookForMainCharacter()
     {
+       if(death==false){    
         setLocation(this.getX(),340);
-        if(bruce == null)
-        {
-           bruce = this.getWorld().getObjects(BruceLee.class).get(0);
+        if(bruce == null){
+           bruce= this.getWorld().getObjects(BruceLee.class).get(0);
         }
-        
         if (this.getX() < 400) this.setDirection(0);
-        if (this.getX() > 760) this.setDirection(1);
-        
-        if (this.getDirection() == 1)
-        {
-            if (this.getX() > bruce.getX() + 70)
-            {
-                runToMainCharacter(); 
+        if (this.getX() > 750) this.setDirection(1);
+        if (this.getDirection() == 1){
+            if(this.getX() > bruce.getX()+70){
+               runToMainCharacter(); 
+            }else{
+               punch();
             }
-            else
-            {
-                punch();
+            }else{
+                if(this.getX() > bruce.getX()+70){
+               runAwayMainCharacter(); 
+            }else{
+               punch();
             }
-        }
-        else
-        {
-            if (this.getX() > bruce.getX() + 70)
-            {
-                runAwayMainCharacter(); 
             }
-            else
-            {
-                punch();
-            }
-        }
+        }else{
+            die();
+        }  
     }
     
     public void hit()

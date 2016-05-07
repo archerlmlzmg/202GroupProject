@@ -20,7 +20,7 @@ public class Floor1 extends BaseFloor
         this.scenarioName = "The First Floor";
         // add Bruce Lee to this scenario
         objectsLocationMap.put((Actor)mainCharacter,new int[]{this.activeAreaXLeft+20,
-        this.activeAreaYBottom-((Actor)mainCharacter).getImage().getHeight()});
+        this.activeAreaYBottom-((Actor)mainCharacter).getImage().getHeight() - 20});
         
         // add Bruce Joe to this scenario
         //IFighter g1 = gangsterFactory.generate("Joe");
@@ -30,8 +30,8 @@ public class Floor1 extends BaseFloor
         //add boss
         IFighter newJoe = gangsterFactory.generate("Joe");
         gangsters.add(newJoe);
-        objectsLocationMap.put((Actor)newJoe,new int[]{this.activeAreaXRight -70,
-        this.activeAreaYBottom-((Actor)newJoe).getImage().getHeight()});
+        objectsLocationMap.put((Actor)newJoe,new int[]{this.activeAreaXRight - 70,
+        this.activeAreaYBottom-((Actor)newJoe).getImage().getHeight() + 40});
         
         
         IObserver healthBarBruce = new HealthBar("Bruce Lee: ", "", ((Figure)mainCharacter).getInitHP(),

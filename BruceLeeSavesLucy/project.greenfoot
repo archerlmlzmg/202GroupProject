@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Sat May 07 00:39:21 PDT 2016
+#Sat May 07 01:51:48 PDT 2016
 target49.type=AbstractTarget
 target24.type=InterfaceTarget
 target16.name=BaseCommand
@@ -52,7 +52,7 @@ class.BaseCommand.superclass=
 target14.showInterface=false
 dependency68.to=Figure
 target32.width=80
-mainWindow.width=1386
+mainWindow.width=1382
 target8.showInterface=false
 target1.typeParameters=
 target1.type=InterfaceTarget
