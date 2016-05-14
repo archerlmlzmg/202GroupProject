@@ -18,6 +18,7 @@ public class Floor1 extends BaseFloor
         super(mainCharacter,transition);
         System.out.println("constructing..");
         this.scenarioName = "The First Floor";
+        this.timer.setAmount(1000*60*2);
         // add Bruce Lee to this scenario
         objectsLocationMap.put((Actor)mainCharacter,new int[]{this.activeAreaXLeft+20,
         this.activeAreaYBottom-((Actor)mainCharacter).getImage().getHeight() - 20});
@@ -28,7 +29,7 @@ public class Floor1 extends BaseFloor
         //objectsLocationMap.put((Actor)g1,new int[]{this.activeAreaXRight -50,
         //this.activeAreaYBottom-((Actor)g1).getImage().getHeight()});
         //add boss
-        IFighter newJoe = gangsterFactory.generate("Joe");
+        IFighter newJoe = fighterFactory.generate("Joe");
         gangsters.add(newJoe);
         objectsLocationMap.put((Actor)newJoe,new int[]{this.activeAreaXRight - 70,
         this.activeAreaYBottom-((Actor)newJoe).getImage().getHeight() + 58});
@@ -43,8 +44,6 @@ public class Floor1 extends BaseFloor
         
         objectsLocationMap.put((Actor)healthBarBruce,new int[]{150,50});
         objectsLocationMap.put((Actor)healthBarJoe, new int[]{650,50});   
-  
-        
         System.out.println("constructed.");
     }
 }

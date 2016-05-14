@@ -23,7 +23,7 @@ public class Floor2 extends BaseFloor
         this.activeAreaYBottom-((Actor)mainCharacter).getImage().getHeight()+15});
         
       //add Goro
-        IFighter g3 = gangsterFactory.generate("Goro");
+        IFighter g3 = fighterFactory.generate("Goro");
         gangsters.add(g3);
         objectsLocationMap.put((Actor)g3,new int[]{this.activeAreaXRight,
         this.activeAreaYBottom - 120});

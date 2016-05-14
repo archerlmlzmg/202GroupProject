@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=TimerActor
+comment1.params=world
+comment1.target=void\ addedToWorld(greenfoot.World)
+comment10.params=
+comment10.target=void\ updateImage()
+comment2.params=
+comment2.target=TimerActor()
+comment3.params=
+comment3.target=void\ start()
+comment4.params=
+comment4.target=void\ gamePaused()
+comment5.params=
+comment5.target=void\ pause()
+comment6.params=
+comment6.target=void\ resume()
+comment7.params=time
+comment7.target=void\ setAmount(int)
+comment8.params=
+comment8.target=boolean\ getIsTimeUp()
+comment9.params=
+comment9.target=void\ act()
+numComments=11

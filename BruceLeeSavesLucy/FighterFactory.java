@@ -4,12 +4,12 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class GangsterFactory  
+public class FighterFactory  
 {
     /**
      * Constructor for objects of class GangsterFactory
      */
-    public GangsterFactory()
+    public FighterFactory()
     {
     }
     public IFighter generate(String name){

@@ -53,13 +53,14 @@ public class Menu extends World
             Greenfoot.playSound("click.mp3");
         }else if(Greenfoot.isKeyDown("enter")){
             System.out.println("enter");
+            Greenfoot.playSound("click.mp3");
             if(menuIndex == 1){
                 System.out.println(" new Floor1(new BruceLee())");
                 startNextWorld();
             }else{
                  Greenfoot.setWorld(new About());
             }
-            Greenfoot.playSound("click.mp3");
+            
         }
     }
         private void checkMouseClick(){

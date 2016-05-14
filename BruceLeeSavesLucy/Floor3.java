@@ -28,7 +28,7 @@ public class Floor3 extends BaseFloor
         //objectsLocationMap.put((Actor)g1,new int[]{this.activeAreaXRight -50,
         //this.activeAreaYBottom-((Actor)g1).getImage().getHeight()});
         //add boss
-        IFighter newBoss = gangsterFactory.generate("boss");
+        IFighter newBoss = fighterFactory.generate("boss");
         gangsters.add(newBoss);
         objectsLocationMap.put((Actor)newBoss,new int[]{this.activeAreaXRight -70,
         this.activeAreaYBottom-((Actor)newBoss).getImage().getHeight()});

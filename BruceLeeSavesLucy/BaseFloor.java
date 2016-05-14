@@ -18,7 +18,7 @@ public class BaseFloor extends World implements IKeyCommandReceiver,IScenarioTem
     boolean hasTakenOverKeyCommand = false;
     HashMap<Actor,int[]> objectsLocationMap = new HashMap<Actor,int[]>();
     World world;
-    GangsterFactory gangsterFactory  = new GangsterFactory();
+    FighterFactory fighterFactory  = new FighterFactory();
     static final int horizonLine = 350;
     static final int activeAreaXLeft = 10;
     static final int activeAreaXRight = 700;
@@ -42,6 +42,7 @@ public class BaseFloor extends World implements IKeyCommandReceiver,IScenarioTem
     int[] pointerPos1 = new int[]{340,250},
         pointerPos2 = new int[]{340,322};
     int menuIndex = 1;
+    TimerActor timer = new TimerActor();
     GreenfootSound musicBackground = new GreenfootSound("floor1_m.mp3");
     /**
      * Constructor for objects of class BaseFloor.
@@ -81,6 +82,7 @@ public class BaseFloor extends World implements IKeyCommandReceiver,IScenarioTem
             System.out.println("add an object x:"+location[0]+", "+location[1]);
             this.addObject(o,location[0],location[1]);
         }
+        this.addObject(timer,400,50);
         this.isInitiated = true;
     }
 
@@ -155,6 +157,7 @@ public class BaseFloor extends World implements IKeyCommandReceiver,IScenarioTem
                 if(menuIndex == 1){ // resume
                     hasTakenOverKeyCommand = false;
                     isPaused = false;
+                    timer.resume();
                     closePauseWindow();
                 }else{
                     Greenfoot.setWorld(new Menu());
@@ -177,6 +180,7 @@ public class BaseFloor extends World implements IKeyCommandReceiver,IScenarioTem
     public void onStart(){
         if(!musicBackground.isPlaying()){
             musicBackground.playLoop();
+            timer.start();
         }
         // pass the key control to main character
         System.out.println("Starting...");
@@ -190,11 +194,18 @@ public class BaseFloor extends World implements IKeyCommandReceiver,IScenarioTem
         checkMouseClick();
         if(checkIsFightingOver())
             isOver = true;
+        if(timer.getIsTimeUp()){
+            isMainCharacterWon = false;
+            isOver = true;
+            isStopped = true;
+            //nextTransition.goToBackState();
+        }    
 
     }
     public void onPause(){
         isPaused = true;
         hasTakenOverKeyCommand = true;
+        timer.pause();
         //add window and buttons
         showPauseWindow();
     }
@@ -223,12 +234,33 @@ public class BaseFloor extends World implements IKeyCommandReceiver,IScenarioTem
     public void onEnd(){
         musicBackground.stop();
         System.out.println("its endding....");
-        addObject(nextTransition,400,250);
-        if(isMainCharacterWon)
-            nextTransition.goToNextState();
-        else
-            nextTransition.goToBackState();
-        isEnded = true;
+        if(isMainCharacterWon && !isEndingMotionOver){
+            palyEnding();
+        }else{
+            addObject(nextTransition,400,250);
+            if(isMainCharacterWon)
+                nextTransition.goToNextState();
+            else
+                nextTransition.goToBackState();
+            isEnded = true;
+        }
+
+    }
+    private boolean isPalyingStarted =false,isEndingMotionOver = false;
+    private int endX = 790;
+    private int endingMovieSpeed = 5;
+    
+    private void palyEnding(){
+        if(!isPalyingStarted){
+            //((Actor)mainCharacter).setLocation(objectsLocationMap.get(mainCharacter)[0],objectsLocationMap.get(mainCharacter)[1]);
+            this.removeObject((Actor)gangsters.get(0));
+            isPalyingStarted = true;
+        }
+        if(((Actor)mainCharacter).getX()<= endX){
+            ((Actor)mainCharacter).setLocation( ((Actor)mainCharacter).getX()+endingMovieSpeed,((Actor)mainCharacter).getY());
+        }else{
+            isEndingMotionOver = true;
+        }
     }
     /*
      * is fighting stopped
